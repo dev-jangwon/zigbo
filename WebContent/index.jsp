@@ -63,12 +63,146 @@
             <div class="motto">
             		<img class="img-responsive" src="img/profile.png" alt="">
 				<h1 class="title-uppercase">직구 뽀개기</h1>
+				<hr class="custom-hr-white">
  				<h3>직구 뽀개기</h3>
             </div>
     </div>
-    
+
     <div class="main">
-    		main contents
+    		<div class="section section-white section-with-space">
+            <div class="container tim-container">
+            		<div class="row">
+            			<div class="class=col-lg-12 text-center sale-list-text">
+            				<h2>판매 목록</h2>
+            				<hr class="custom-hr-dark">
+            			</div>
+            		</div>
+                <div class="row">
+  					<div class="col-sm-4 col-md-3">
+    						<div class="thumbnail">
+      						<img src="img/profile.png" alt="">
+      							<div class="caption">
+        								<h3>Thumbnail label</h3>
+        									<p>...</p>
+        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      							</div>
+    						</div>
+  					</div>
+  					<div class="col-sm-4 col-md-3">
+    						<div class="thumbnail">
+      						<img src="img/profile.png" alt="">
+      							<div class="caption">
+        								<h3>Thumbnail label</h3>
+        									<p>...</p>
+        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      							</div>
+    						</div>
+  					</div>
+  					<div class="col-sm-4 col-md-3">
+    						<div class="thumbnail">
+      						<img src="img/profile.png" alt="">
+      							<div class="caption">
+        								<h3>Thumbnail label</h3>
+        									<p>...</p>
+        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      							</div>
+    						</div>
+  					</div>
+  					<div class="col-sm-4 col-md-3">
+    						<div class="thumbnail">
+      						<img src="img/profile.png" alt="">
+      							<div class="caption">
+        								<h3>Thumbnail label</h3>
+        									<p>...</p>
+        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      							</div>
+    						</div>
+  					</div>
+				</div>
+            </div>
+        </div>
+        <div class="section section-white section-with-space">
+            <div class="container tim-container">
+            		<div class="row">
+            			<div class="class=col-lg-12 text-center sale-list-text">
+            				<h2>구매 목록</h2>
+            				<hr class="custom-hr-dark">
+            			</div>
+            		</div>
+                <div class="row">
+  					<div class="col-sm-4 col-md-3">
+    						<div class="thumbnail">
+      						<img src="img/profile.png" alt="">
+      							<div class="caption">
+        								<h3>Thumbnail label</h3>
+        									<p>...</p>
+        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      							</div>
+    						</div>
+  					</div>
+  					<div class="col-sm-4 col-md-3">
+    						<div class="thumbnail">
+      						<img src="img/profile.png" alt="">
+      							<div class="caption">
+        								<h3>Thumbnail label</h3>
+        									<p>...</p>
+        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      							</div>
+    						</div>
+  					</div>
+  					<div class="col-sm-4 col-md-3">
+    						<div class="thumbnail">
+      						<img src="img/profile.png" alt="">
+      							<div class="caption">
+        								<h3>Thumbnail label</h3>
+        									<p>...</p>
+        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      							</div>
+    						</div>
+  					</div>
+  					<div class="col-sm-4 col-md-3">
+    						<div class="thumbnail">
+      						<img src="img/profile.png" alt="">
+      							<div class="caption">
+        								<h3>Thumbnail label</h3>
+        									<p>...</p>
+        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      							</div>
+    						</div>
+  					</div>
+				</div>
+            </div>
+        </div>
+        <div class="section section-white section-with-space">
+            <div class="container tim-container text-center">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center about-text">
+                        <h2>About Zigbbo</h2>
+                        <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go. More importantly, looking at them will give you a picture of what you can built with this powerful kit.</p>
+                    </div>
+                </div>
+                <div class="row example-pages">
+                    <div class="col-md-4">
+                        <a href="examples/landing.html" target="_blank">
+                            <img src="assets/paper_img/examples/landing.jpg" alt="Rounded Image" class="img-rounded img-responsive">
+                            <h5>판매</h5>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="examples/register.html" target="_blank">
+                            <img src="assets/paper_img/examples/register.jpg" alt="Rounded Image" class="img-rounded img-responsive">
+                            <h5>구매</h5>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="examples/profile.html" target="_blank">
+                            <img src="assets/paper_img/examples/profile.jpg" alt="Rounded Image" class="img-rounded img-responsive">
+                            <h5>지원</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     </div>
 

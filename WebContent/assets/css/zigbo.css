@@ -1,3 +1,35 @@
 .img-responsive {
 	margin: 0 auto 20px;
 }
+.about-text {
+	color: #2C3E50;	
+}
+.custom-hr-dark {
+	border-color: #2C3E50;
+	padding: 0;
+	border: none;
+	border-top: solid 3px;
+	text-align: center;
+	max-width: 250px;
+	margin: 25px auto 30px;
+}
+.custom-hr-white {
+	border-color: #fff;
+	padding: 0;
+	border: none;
+	border-top: solid 3px;
+	text-align: center;
+	max-width: 250px;
+	margin: 25px auto 30px;
+}
+.sale-list-text h2 {
+	color: #2C3E50;
+	font-weight: bold;
+}
+.motto .title-uppercase {
+	font-weight: bold;
+}
+.motto h3 {
+	font-weight: bold;
+}
+
