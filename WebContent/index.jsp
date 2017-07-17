@@ -77,6 +77,24 @@
             				<hr class="custom-hr-dark">
             			</div>
             		</div>
+            		<div class="jb-extra-row row">
+            			<div class="col-lg-9">
+            			</div>
+            			<div class="col-lg-3">
+            				<div class="jb-extra-dropdown dropdown">
+								<button class="btn dropdown-toggle" type="button" id="dropdownMenuSale" data-toggle="dropdown">
+									정렬
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSale">
+									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">최신</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">조회수</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">찜</a></li>
+			    					</ul>
+								<button class="btn btn-primary">더보기</button>
+							</div>
+            			</div>
+            		</div>
                 <div class="row">
   					<div class="col-sm-4 col-md-3">
     						<div class="thumbnail">
@@ -127,6 +145,13 @@
             			<div class="class=col-lg-12 text-center sale-list-text">
             				<h2>구매 목록</h2>
             				<hr class="custom-hr-dark">
+            			</div>
+            		</div>
+            		<div class="jb-extra-row row">
+            			<div class="col-lg-11">
+            			</div>
+            			<div class="col-lg-1">
+						<button class="btn btn-primary pull-right">더보기</button>
             			</div>
             		</div>
                 <div class="row">

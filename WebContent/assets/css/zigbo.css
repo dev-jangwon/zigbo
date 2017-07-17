@@ -32,4 +32,17 @@
 .motto h3 {
 	font-weight: bold;
 }
-
+.jb-extra-dropdown {
+	text-align: right;
+}
+#dropdownMenuSale {
+	margin-right: 10px;
+}
+.jb-extra-row {
+	margin-bottom: 15px;
+}
+@media (max-width: 768px){
+    .btn, .btn-morphing{
+        margin-bottom: 0px;
+    }
+}
