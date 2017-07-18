@@ -41,6 +41,10 @@ h3, .h3 {
   margin: 20px 0 10px;
 }
 
+.title{
+	text-align : center;
+}
+
 h4, .h4 {
   font-size: 1.5em;
   font-weight: 600;
@@ -288,6 +292,7 @@ input.ct-red + span + label + span.switch-right {
   -o-transition: all 150ms linear;
   -ms-transition: all 150ms linear;
   transition: all 150ms linear;
+  margin-top: 20px;
 }
 .btn:hover, .btn:focus, .btn:active, .btn.active, .open > .btn.dropdown-toggle,
 .navbar .navbar-nav > li > a.btn:hover,
@@ -567,13 +572,13 @@ input.ct-red + span + label + span.switch-right {
 }
 
 .navbar .navbar-nav > li > a.btn-danger, .btn-danger {
-  border-color: #EB5E28;
-  color: #EB5E28;
+  border-color: #18BC9C;
+  color: #18BC9C;
 }
 .navbar .navbar-nav > li > a.btn-danger:hover, .navbar .navbar-nav > li > a.btn-danger:focus, .navbar .navbar-nav > li > a.btn-danger:active, .navbar .navbar-nav > li > a.btn-danger.active, .open > .navbar .navbar-nav > li > a.btn-danger.dropdown-toggle, .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
-  background-color: #EB5E28;
+  background-color: #18BC9C;
   color: rgba(255, 255, 255, 0.7);
-  border-color: #EB5E28;
+  border-color: #18BC9C;
 }
 .navbar .navbar-nav > li > a.btn-danger:hover .caret, .navbar .navbar-nav > li > a.btn-danger:focus .caret, .navbar .navbar-nav > li > a.btn-danger:active .caret, .navbar .navbar-nav > li > a.btn-danger.active .caret, .open > .navbar .navbar-nav > li > a.btn-danger.dropdown-toggle .caret, .btn-danger:hover .caret, .btn-danger:focus .caret, .btn-danger:active .caret, .btn-danger.active .caret, .open > .btn-danger.dropdown-toggle .caret {
   border-top-color: rgba(255, 255, 255, 0.7);
@@ -598,7 +603,7 @@ input.ct-red + span + label + span.switch-right {
 }
 .navbar .navbar-nav > li > a.btn-danger.btn-simple:hover, .navbar .navbar-nav > li > a.btn-danger.btn-simple:focus, .navbar .navbar-nav > li > a.btn-danger.btn-simple:active, .navbar .navbar-nav > li > a.btn-danger.btn-simple.active, .open > .navbar .navbar-nav > li > a.btn-danger.btn-simple.dropdown-toggle, .btn-danger.btn-simple:hover, .btn-danger.btn-simple:focus, .btn-danger.btn-simple:active, .btn-danger.btn-simple.active, .open > .btn-danger.btn-simple.dropdown-toggle {
   background-color: transparent;
-  color: #B33C12;
+  color:#96e0d2;
 }
 .navbar .navbar-nav > li > a.btn-danger.btn-simple .caret, .btn-danger.btn-simple .caret {
   border-top-color: #FFFFFF;
@@ -762,6 +767,7 @@ input.ct-red + span + label + span.switch-right {
   height: 40px;
   -webkit-box-shadow: none;
   box-shadow: none;
+  margin-bottom:8px;
 }
 .form-control:focus {
   background-color: #FFFFFF;
@@ -3339,4 +3345,13 @@ textarea.form-control {
 .datepicker-months thead {
   padding: 0 0 3px;
   display: block;
+}
+
+btn btn-simple btn-danger{
+	text-align : center;
+}
+#dropdownMenu1{
+	font-size : 10px;
+	border : none;
+	margin-top: 0;
 }
