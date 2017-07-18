@@ -61,19 +61,58 @@
 		<div class="sales-write-main">
 			<div class="section section-white section-with-space">
 	            <div class="container tim-container">
-					<div class="row zigbbo-list-header">
-						<div class="col-md-1">
-						</div>
-						<div class="col-md-2">
-							<span class="list-text">판매 등록</span>
-						</div>
-						<div class="col-md-2">
-						</div>
-					</div>
-	            </div>
-        </div>
+					<div id="buttons">
+	                    <div class="tim-title" style="text-align:center;">
+	                        <h3>판매 등록 <br>
+	                            <small>판매 등록할 상품의 정보를 입력해주세요 </small>
+	                        </h3>
+	                    </div>
+	                    <div class="row">
+	                        <div class="col-md-8 col-md-offset-2">
+		                        	<div class="form-group">
+			                        	<div class="row" style="margin-bottom:20px;">
+			                        		<div class="col-md-2">
+			                        			<h4 style="margin:0px;padding-top:5px;">상품명</h4>
+			                        		</div>
+			                        		<div class="col-md-10">
+			                        			<input type="text" value="" placeholder="상품명 또는 판매 제목을 입력하세요" class="form-control">		
+			                        		</div>
+			                        	</div>
+			                        	<div class="row" style="margin-bottom:20px;">
+			                        		<div class="col-md-2">
+			                        			<h4 style="margin:0px;padding-top:5px;">제품 설명</h4>
+			                        		</div>
+			                        		<div class="col-md-10">
+			                        			<textarea class="form-control" rows="4" cols="50" placeholder="상품에 대한 상세 설명을 해주세요"></textarea>		
+			                        		</div>
+			                        	</div>
+			                        	<div class="row" style="margin-bottom:20px;">
+			                        		<div class="col-md-2">
+			                        			<h4 style="margin:0px;padding-top:5px;">판매 가격</h4>
+			                        		</div>
+			                        		<div class="col-md-10">
+			                        			<input type="text" value="" placeholder="판매 가격을 입력해주세요" class="form-control">
+			                        		</div>
+			                        	</div>
+			                        	<div class="row" style="margin-bottom:20px;">
+			                        		<div class="col-md-2">
+			                        			<h4 style="margin:0px;padding-top:5px;">이미지</h4>
+			                        		</div>
+			                        		<div class="col-md-10">
+			                        			
+			                        		</div>
+			                        	</div>
+			                        <div class="row text-center" style="margin-bottom:20px;">
+			                        		<button href="#" class="btn btn-fill btn-primary">등록</button>
+			                        	</div>
+			                    	</div> 
+	                        </div>
+	            			</div>
+	           		 </div>
+        			</div>
+			</div>
 		</div>
-	</div>
+	</div>	
 	<footer class="footer-demo section-dark">
 	    <div class="container">
 	        <div class="copyright center-block">

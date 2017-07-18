@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import zigbo.model.dto.PaymentDTO;
-import zigbo.model.dto.RequestDTO;
-import zigbo.model.dto.SellingDTO;
 import zigbo.model.util.DBUtil;
 
 public class PaymentDAO {
