@@ -76,7 +76,14 @@
 		</div>
 	</div>
 
-
+	<footer class="footer-demo section-dark">
+	    <div class="container">
+	        <div class="copyright center-block">
+	            &copy; 2017, made with <i class="fa fa-heart heart"></i> by Zigbbo,  
+	            <a href="https://github.com/dev-jangwon/zigbo">GitHub</a>
+	        </div>
+	    </div>
+	</footer>
  	<script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 
