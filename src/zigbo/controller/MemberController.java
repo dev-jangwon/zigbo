@@ -27,6 +27,7 @@ public class MemberController extends HttpServlet {
 			s.printStackTrace();
 		}
 		
+		
 	}
 	
 	public void addMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
