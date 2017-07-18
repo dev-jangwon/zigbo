@@ -63,13 +63,14 @@
 	            <div class="container tim-container">
 					<div id="buttons">
 	                    <div class="tim-title" style="text-align:center;">
-	                        <h3>판매 상세보기 <br>
+	                        <h3>판매 상세보기<br>
 	                            <!--  <small>판매 등록할 상품의 정보를 입력해주세요 </small> -->
 	                        </h3>
 	                    </div>
 	                    <div class="row">
 	                        <div class="col-md-8 col-md-offset-2">
 		                        	<div class="form-group">
+		                        		<span class="label label-primary" style="float:right;font-size:15px;">대기중</span>
 			                        	<div class="row" style="margin-bottom:20px;margin-top:20px;">
 				                        		<div class="col-md-2">
 				                        			<h4 style="margin:0px;padding-top:5px;">판매자</h4>
