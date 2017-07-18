@@ -24,4 +24,14 @@
     <servlet-name>MemberController</servlet-name>
     <url-pattern>/member</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SellingController</display-name>
+    <servlet-name>SellingController</servlet-name>
+    <servlet-class>zigbo.controller.SellingController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SellingController</servlet-name>
+    <url-pattern>/selling</url-pattern>
+  </servlet-mapping>
 </web-app>
