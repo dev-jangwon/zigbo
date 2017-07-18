@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import zigbo.model.dto.ApplyDTO;
-import zigbo.model.dto.PaymentDTO;
 import zigbo.model.util.DBUtil;
 
 public class ApplyDAO {
