@@ -20,6 +20,8 @@ public class MemberController extends HttpServlet {
 		try{
 			if(command.equals("addMember")){
 				addMember(request, response);
+			}else if(command.equals("getMember")){//모든 재능 기부자 검색
+				getMember(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -54,6 +56,22 @@ public class MemberController extends HttpServlet {
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
+	
+	public void getMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		  //public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		      String url = "showError.jsp";
+		      try {
+		         request.setAttribute("getMember", ZigboService.getMember());
+		         url = "probonoProjectList.jsp";
+		      }catch(Exception s){
+		         request.setAttribute("errorMsg", s.getMessage());
+		      }
+		      request.getRequestDispatcher(url).forward(request, response);
+		   }
 
 
+	
+	
+	
+	
 }
