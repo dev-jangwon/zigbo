@@ -3,13 +3,12 @@ package zigbo.model.util;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
+import javax.naming.Context;
 import javax.naming.InitialContext;
-
-import org.apache.catalina.Context;
-import org.apache.tomcat.jdbc.pool.DataSource;
-import org.eclipse.jdt.internal.compiler.ast.Statement;
+import javax.sql.DataSource;
 
 public class DBUtil {
 	

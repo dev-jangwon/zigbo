@@ -1,3 +1,5 @@
+/.settings
+.classpath
 .DS_Store
 
 # Compiled class file
