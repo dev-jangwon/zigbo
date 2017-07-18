@@ -109,42 +109,42 @@
 				                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">상품명</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        			<input type="text" value="상품" disabled class="form-control">		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">제품 설명</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        			<textarea class="form-control" rows="4" cols="50" disabled>상세설명</textarea>		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">판매 가격</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        			<input type="text" value="20000" class="form-control" disabled>
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">이미지</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        			
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">위치</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        		</div>
 			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
