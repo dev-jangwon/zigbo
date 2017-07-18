@@ -73,7 +73,7 @@
             <div class="container tim-container">
             		<div class="row">
             			<div class="class=col-lg-12 text-center sale-list-text">
-            				<h2>판매 목록</h2>
+            				<h2>추천 상품</h2>
             				<hr class="custom-hr-dark">
             			</div>
             		</div>
@@ -143,7 +143,7 @@
             <div class="container tim-container">
             		<div class="row">
             			<div class="class=col-lg-12 text-center sale-list-text">
-            				<h2>구매 목록</h2>
+            				<h2>최신 요청</h2>
             				<hr class="custom-hr-dark">
             			</div>
             		</div>

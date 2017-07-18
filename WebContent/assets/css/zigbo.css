@@ -46,3 +46,9 @@
         margin-bottom: 0px;
     }
 }
+.login-background .container {
+	margin-top: 11%;
+	position: relative;
+	z-index: 3;
+}
+
