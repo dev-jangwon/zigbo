@@ -33,7 +33,7 @@
 				<div class="row">
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
-                                <h3 class="title">Welcome</h3>
+                                <h3 class="title">Welcome to ZigBBo!</h3>
                                 <form class="register-form">
                                     <label>Email</label>
                                     <input type="text" class="form-control" placeholder="Email">
@@ -44,30 +44,29 @@
                                     <label>Phone</label>
                                     <input type="text" class="form-control" placeholder="Phone">
                                     
-                                    
-
-								<div class="dropdown">
-								<label>Account</label>
-									<button class="btn dropdown-toggle" type="button"
-										id="dropdownMenu1" data-toggle="dropdown">
-										Bank <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" role="menu"
-										aria-labelledby="dropdownMenu1">
-										<li role="presentation"><a role="menuitem" tabindex="-1"
-											h>국민</a></li>
-										<li role="presentation"><a role="menuitem" tabindex="-1"
-											>신한</a></li>
-										<li role="presentation"><a role="menuitem" tabindex="-1"
-											>하나</a></li>
-									</ul>
-									<input type="text" class="form-control" placeholder="Account">
-								</div>
-								
+                                 <div>
+                                 	<label style="float:left;">Account</label>
+                                 	<div class="dropdown" style="text-align:right;">
+										<button class="btn dropdown-toggle" type="button"
+											id="dropdownMenu1" data-toggle="dropdown">
+											Bank <span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu dropdown-menu-right" role="menu"
+											aria-labelledby="dropdownMenu1">
+											<li role="presentation"><a role="menuitem" tabindex="-1"
+												h>국민</a></li>
+											<li role="presentation"><a role="menuitem" tabindex="-1"
+												>신한</a></li>
+											<li role="presentation"><a role="menuitem" tabindex="-1"
+												>하나</a></li>
+										</ul>
+										<input type="text" class="form-control" placeholder="Account">
+									</div>
+                                 </div>   
                                     <label>Address</label>
                                     <input type="text" class="form-control" placeholder="Address">
                                     
-                                    <button class="btn btn-danger btn-block">Register</button>
+                                    <button class="btn btn-success btn-block">Register</button>
                                 </form>
                                
                             </div>

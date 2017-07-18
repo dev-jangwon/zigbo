@@ -45,14 +45,12 @@
 
                                     <label>Password</label>
                                     <input type="password" class="form-control" placeholder="Password">
-                                    <button class="btn btn-danger btn-block">Login</button>
+                                    <button class="btn btn-success btn-block">Login</button>
                                 </form>
                                 <div class="option">
-                                    <a href="#" class="btn btn-simple btn-danger">Forgot password?</a>
-                                    <a href="register.jsp" class="btn btn-simple btn-danger">Register</a>
+                                    <a href="#" class="zigbbo-forgot-password btn btn-simple btn-success">Forgot password?</a>
+                                    <a href="register.jsp" class="btn btn-simple btn-success">Register</a>
                                 </div>
-                               
-                                
                             </div>
                         </div>
                     </div>

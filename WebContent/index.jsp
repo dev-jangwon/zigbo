@@ -86,7 +86,7 @@
 									정렬
 									<span class="caret"></span>
 								</button>
-								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuSale">
+								<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenuSale">
 									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">최신</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">조회수</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">찜</a></li>
