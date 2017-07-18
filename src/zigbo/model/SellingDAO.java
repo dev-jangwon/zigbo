@@ -41,7 +41,7 @@ public class SellingDAO {
 			pstmt = con.prepareStatement(sql.getString("addSelling"));
 			pstmt.setInt(1, selling.getMemberCode());
 			pstmt.setInt(2, selling.getItemCode());
-			pstmt.setInt(3, selling.getViews());
+			pstmt.setInt(3, selling.getViews()); //?
 			pstmt.setString(4, selling.getLocation());
 			int result = pstmt.executeUpdate();
 			if(result == 1){
@@ -115,23 +115,6 @@ public class SellingDAO {
 		try{
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("updateSellingProgress"));
-			pstmt.setInt(1, sellingCode);
-			int result = pstmt.executeUpdate();
-			if(result == 1){
-				return true;
-			}
-		}finally{
-			DBUtil.close(con, pstmt);
-		}
-		return false;
-	}
-	
-	public static boolean deleteSelling(int sellingCode) throws SQLException{
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		try{
-			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getString("deleteSelling"));
 			pstmt.setInt(1, sellingCode);
 			int result = pstmt.executeUpdate();
 			if(result == 1){
