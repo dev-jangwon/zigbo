@@ -71,37 +71,45 @@
 	                        <div class="col-md-8 col-md-offset-2">
 		                        	<div class="form-group">
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">상품명</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        			<input type="text" value="" placeholder="상품명 또는 판매 제목을 입력하세요" class="form-control">		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">제품 설명</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        			<textarea class="form-control" rows="4" cols="50" placeholder="상품에 대한 상세 설명을 해주세요"></textarea>		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">판매 가격</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        			<input type="text" value="" placeholder="판매 가격을 입력해주세요" class="form-control">
 			                        		</div>
 			                        	</div>
+			                        		<div class="row" style="margin-bottom:20px;">
+			                        		<div class="col-md-3">
+			                        			<h4 style="margin:0px;padding-top:5px;">판매 지역</h4>
+			                        		</div>
+			                        		<div class="col-md-9">
+			                        			<input type="text" value="" placeholder="판매 지역을 입력해주세요" class="form-control">
+			                        		</div>
+			                        	</div>	
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">이미지</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
-			                        			
+			                        		<div class="col-md-9">
 			                        		</div>
 			                        	</div>
+			                        
 			                        <div class="row text-center" style="margin-bottom:20px;">
 			                        		<button href="#" class="btn btn-fill btn-primary">등록</button>
 			                        	</div>

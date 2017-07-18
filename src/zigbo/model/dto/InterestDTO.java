@@ -3,7 +3,15 @@ package zigbo.model.dto;
 public class InterestDTO {
 
    private int memberCode; //NUMBER(3) NOT NULL ,
-   private int sellingCode; //NUMBER(3) NOT NULL 
+   private int sellingCode; //NUMBER(3) NOT NULL
+   
+   public InterestDTO() {}
+
+   public InterestDTO(int memberCode, int sellingCode) {
+	      super();
+	      this.memberCode = memberCode;
+	      this.sellingCode = sellingCode;
+   }
    
    public int getMemberCode() {
       return memberCode;
@@ -21,14 +29,4 @@ public class InterestDTO {
       this.sellingCode = sellingCode;
    }
 
-   public InterestDTO() {
-      super();
-   }
-
-   public InterestDTO(int memberCode, int sellingCode) {
-      super();
-      this.memberCode = memberCode;
-      this.sellingCode = sellingCode;
-   }
-      
 }

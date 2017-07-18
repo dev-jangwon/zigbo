@@ -37,20 +37,20 @@ public class PaymentDAO {
 		return false;
 	}
 	
-	public static ArrayList<PaymentDTO> getAllPayment(int paymentCode) throws SQLException{
+	public static ArrayList<PaymentDTO> getPayment(int paymentCode) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<PaymentDTO> list = null;
 		try{
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getString("getAllPayment"));
+			pstmt = con.prepareStatement(sql.getString("getPayment"));
 			pstmt.setInt(1, paymentCode);
 			rset = pstmt.executeQuery();
-			list = new ArrayList<PaymentDTO>();
-			while(rset.next()){
+			/*수정하기!!!
+			 * if(rset.next()){
 				list.add(new PaymentDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getString(4)));
-			}
+			}*/
 		}finally{
 			DBUtil.close(con, pstmt, rset);
 		}

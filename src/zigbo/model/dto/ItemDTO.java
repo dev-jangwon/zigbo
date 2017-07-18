@@ -9,10 +9,15 @@ public class ItemDTO {
 	private String picture1; //BLOB NULL ,
 	private String picture2; //BLOB NULL 
 	
-	public ItemDTO() {
+	public ItemDTO() {	}
+	public ItemDTO(String price, String detail, String location, String picture1, String picture2) {
 		super();
+		this.price = price;
+		this.detail = detail;
+		this.location = location;
+		this.picture1 = picture1;
+		this.picture2 = picture2;
 	}
-
 	public ItemDTO(int itemCode, String price, String detail, String location, String picture1, String picture2) {
 		super();
 		this.itemCode = itemCode;

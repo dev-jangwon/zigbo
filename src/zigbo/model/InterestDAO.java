@@ -44,7 +44,7 @@ public class InterestDAO {
          return false;
       }
 
-      public static InterestDTO getInterest(InterestDTO Interest) throws SQLException{
+      public static InterestDTO getInterest(int memberCode, int sellingCode) throws SQLException{
          Connection con = null;
          PreparedStatement pstmt = null;
          ResultSet rset = null;
@@ -52,8 +52,8 @@ public class InterestDAO {
          try{
             con = DBUtil.getConnection();
             pstmt = con.prepareStatement(sql.getString("getInterest"));
-            pstmt.setInt(1, Interest.getMemberCode());
-            pstmt.setInt(2, Interest.getSellingCode());
+            pstmt.setInt(1, memberCode);
+            pstmt.setInt(2, sellingCode);
             rset = pstmt.executeQuery();
             if(rset.next()){
             	interest = new InterestDTO(rset.getInt(1), rset.getInt(2));
@@ -64,7 +64,7 @@ public class InterestDAO {
          return interest;
       }
          
-      public static int getInterestOfSelling(InterestDTO Interest) throws SQLException{
+      public static int getInterestOfSelling(int sellingCode) throws SQLException{
             Connection con = null;
             PreparedStatement pstmt = null;
             ResultSet rset = null;
@@ -72,7 +72,7 @@ public class InterestDAO {
             try{
                con = DBUtil.getConnection();
                pstmt = con.prepareStatement(sql.getString("getInterestOfSelling"));
-               pstmt.setInt(1, Interest.getSellingCode());
+               pstmt.setInt(1, sellingCode);
                rset = pstmt.executeQuery();
                if(rset.next()){
             	   interestCnt = rset.getInt(1);
@@ -83,14 +83,14 @@ public class InterestDAO {
             return interestCnt;
          }
       
-      public static boolean deleteInterest(InterestDTO Interest) throws SQLException{
+      public static boolean deleteInterest(int memberCode, int sellingCode) throws SQLException{
          Connection con = null;
          PreparedStatement pstmt = null;
          try{
             con = DBUtil.getConnection();
             pstmt = con.prepareStatement(sql.getString("deleteInterest"));
-            pstmt.setInt(1, Interest.getMemberCode());
-            pstmt.setInt(2, Interest.getSellingCode());
+            pstmt.setInt(1, memberCode);
+            pstmt.setInt(2, sellingCode);
             int result = pstmt.executeUpdate();
             if(result == 1){
                return true;

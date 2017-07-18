@@ -63,47 +63,92 @@
 	            <div class="container tim-container">
 					<div id="buttons">
 	                    <div class="tim-title" style="text-align:center;">
-	                        <h3>판매 등록 <br>
-	                            <small>판매 등록할 상품의 정보를 입력해주세요 </small>
+	                        <h3>판매 상세보기<br>
+	                            <!--  <small>판매 등록할 상품의 정보를 입력해주세요 </small> -->
 	                        </h3>
 	                    </div>
 	                    <div class="row">
 	                        <div class="col-md-8 col-md-offset-2">
 		                        	<div class="form-group">
+		                        		<span class="label label-primary" style="float:right;font-size:15px;">대기중</span>
+			                        	<div class="row" style="margin-bottom:20px;margin-top:20px;">
+				                        		<div class="col-md-2">
+				                        			<h4 style="margin:0px;padding-top:5px;">판매자</h4>
+				                        		</div>
+				                        		<div class="col-md-10">
+				                        			<div class="row" style="margin-bottom:0px;">
+				                        				<div class="col-md-4">
+				                        					<img src="../img/profile.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+				                        				</div>
+				                        				<div class="col-md-8">
+				                        					<div style="margin:20px;">이메일
+				                        						<span style="padding-left:40px;">
+				                        						bigdata@bigdata.com
+				                        						</span>
+				                        					</div>
+				                        					<div style="margin:20px;">등&nbsp;록
+				                        						<span style="padding-left:50px;">
+				                        							<span class="label label-default">5</span>
+				                        						</span>
+				                        					</div>
+				                        					<div style="margin:20px;">완&nbsp;료
+				                        						<span style="padding-left:50px;">
+				                        							<span class="label label-success">0</span>
+				                        						</span>
+				                        					</div>
+				                        					<div style="margin:20px;">별&nbsp;점
+				                        						<span style="padding-left:50px;">
+				                        							<i class="fa fa-star" aria-hidden="true"></i>
+				                        							<i class="fa fa-star" aria-hidden="true"></i>
+				                        							<i class="fa fa-star" aria-hidden="true"></i>
+				                        							<i class="fa fa-star" aria-hidden="true"></i>
+				                        						</span>
+				                        					</div>
+				                        				</div>
+				                        			</div>
+				                        		</div>
+			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">상품명</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
-			                        			<input type="text" value="" placeholder="상품명 또는 판매 제목을 입력하세요" class="form-control">		
+			                        		<div class="col-md-9">
+			                        			<input type="text" value="상품" disabled class="form-control">		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">제품 설명</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
-			                        			<textarea class="form-control" rows="4" cols="50" placeholder="상품에 대한 상세 설명을 해주세요"></textarea>		
+			                        		<div class="col-md-9">
+			                        			<textarea class="form-control" rows="4" cols="50" disabled>상세설명</textarea>		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">판매 가격</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
-			                        			<input type="text" value="" placeholder="판매 가격을 입력해주세요" class="form-control">
+			                        		<div class="col-md-9">
+			                        			<input type="text" value="20000" class="form-control" disabled>
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-2">
+			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">이미지</h4>
 			                        		</div>
-			                        		<div class="col-md-10">
+			                        		<div class="col-md-9">
 			                        			
 			                        		</div>
 			                        	</div>
+			                        	<div class="row" style="margin-bottom:20px;">
+			                        		<div class="col-md-3">
+			                        			<h4 style="margin:0px;padding-top:5px;">위치</h4>
+			                        		</div>
+			                        		<div class="col-md-9">
+			                        		</div>
+			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
-			                        		<button href="#" class="btn btn-fill btn-primary">등록</button>
+			                        		<button href="#" class="btn btn-fill btn-primary">구매</button>
 			                        	</div>
 			                    	</div> 
 	                        </div>
