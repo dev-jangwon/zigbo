@@ -34,4 +34,14 @@
     <servlet-name>SellingController</servlet-name>
     <url-pattern>/selling</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RequestController</display-name>
+    <servlet-name>RequestController</servlet-name>
+    <servlet-class>zigbo.controller.RequestController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestController</servlet-name>
+    <url-pattern>/request</url-pattern>
+  </servlet-mapping>
 </web-app>

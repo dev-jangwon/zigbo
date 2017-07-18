@@ -20,9 +20,16 @@ public class MemberController extends HttpServlet {
 		try{
 			if(command.equals("addMember")){
 				addMember(request, response);
-			}else if(command.equals("getMember")){//모든 재능 기부자 검색
+			}else if(command.equals("getMember")){
+				getMember(request, response);
+			}else if(command.equals("MemberUpdate")){
+				MemberUpdate(request, response);
+			}else if(command.equals("MemberDelete")){
+				MemberDelete(request, response);
+			}else if(command.equals("getSellingofMember")){
 				getMember(request, response);
 			}
+			
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 			request.getRequestDispatcher("showError.jsp").forward(request, response);
@@ -58,18 +65,50 @@ public class MemberController extends HttpServlet {
 	public void getMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  //public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		      String url = "showError.jsp";
+		      
+		      
 		      try {
-		         request.setAttribute("getMember", ZigboService.getMember());
-		         url = "probonoProjectList.jsp";
+		         request.setAttribute("getMember", ZigboService.getMember(Integer.parseInt(request.getParameter("MemberCode")));
+		         //url = "getMember.jsp";
 		      }catch(Exception s){
 		         request.setAttribute("errorMsg", s.getMessage());
 		      }
 		      request.getRequestDispatcher(url).forward(request, response);
 		   }
-
-
 	
+	public void MemberUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	      String url = "showError.jsp";
+	      try {
+	         request.setAttribute("successMsg",ZigboService.MemberUpdate(Integer.pdarseInt(request.getParameter("MemberCode")));
+	         url = "activistDetail.jsp";
+	      }catch(Exception s){
+	         request.setAttribute("errorMsg", s.getMessage());
+	      }
+	      request.getRequestDispatcher(url).forward(request, response);
+	   }
+	   
+	public void MemberDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	      String url = "showError.jsp";
+	      try {
+	    	  ZigboService.MemberDelete(Integer.parseInt(request.getParameter("MemberCode")));
+	         url = "main.jsp";
+	      }catch(Exception s){
+	         request.setAttribute("errorMsg", s.getMessage());
+	      }
+	      request.getRequestDispatcher(url).forward(request, response);
+	   }
 	
+	public void getSellingofMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		  //public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		      String url = "showError.jsp";
+		      try {
+		         request.setAttribute("getSellingofMember", ZigboService.getSellingofMember(Integer.parseInt(request.getParameter("MemberCode")));
+		         //url = "getMember.jsp";
+		      }catch(Exception s){
+		         request.setAttribute("errorMsg", s.getMessage());
+		      }
+		      request.getRequestDispatcher(url).forward(request, response);
+		   }
 	
 	
 }
