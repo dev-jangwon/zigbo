@@ -144,7 +144,6 @@
 			                        			<h4 style="margin:0px;padding-top:5px;">위치</h4>
 			                        		</div>
 			                        		<div class="col-md-10">
-			                        			
 			                        		</div>
 			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
