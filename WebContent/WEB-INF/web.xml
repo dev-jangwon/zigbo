@@ -14,4 +14,14 @@
     <servlet-name>ZigboController</servlet-name>
     <url-pattern>/zigbo</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MemberController</display-name>
+    <servlet-name>MemberController</servlet-name>
+    <servlet-class>zigbo.controller.MemberController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberController</servlet-name>
+    <url-pattern>/member</url-pattern>
+  </servlet-mapping>
 </web-app>
