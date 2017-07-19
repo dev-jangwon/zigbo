@@ -28,7 +28,7 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">ZigBBo</a>
+				<a class="navbar-brand" href="index.jsp">ZigBBo</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
@@ -137,7 +137,11 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center about-text">
                         <h2>About Zigbbo</h2>
-                        <p>The kit comes with three pre-built pages to help you get started faster. You can change the text and images and you're good to go. More importantly, looking at them will give you a picture of what you can built with this powerful kit.</p>
+                        <p>
+                        	판매: 해외에서 싸고 좋은 물건을 발견하면 직뽀에서 직접 판매자가 되어보세요.<br>
+                        	요청: 해외에서 필요한 물건이 있으면 무엇이든 요청해보세요. 비싸고 오래걸리는 해외배송의 문제점을 해결했습니다.<br>
+                        	수입: 오늘도 평화로운 중고OO에서 많이 당해보셨나요? 직뽀가 중간에서 안전한 거래를 보장하겠습니다.마음 놓고 거래를 통해 수수료를 받아가세요.<br>
+                        </p>
                     </div>
                 </div>
                 <div class="row example-pages">
