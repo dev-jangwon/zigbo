@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -38,6 +39,12 @@
 				<div class="row">
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
+                            <c:if test="${errorMsg!=null}">
+                            	<script type="text/javascript">
+                            		var errMsg = "<%=request.getAttribute("errorMsg").toString()%>";
+                            		alert(errMsg);
+                            	</script>
+							</c:if>
                                 <h3 class="title">Log in</h3>
                                 <form class="register-form" action="member" method="post">
                                     <label>Email</label>

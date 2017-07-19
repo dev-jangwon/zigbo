@@ -27,6 +27,12 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
+			<c:if test="${successMsg!=null}">
+				<script type="text/javascript">
+                	var successMsg = "<%=request.getAttribute("successMsg").toString()%>";
+                    alert(successMsg);
+                </script>
+			</c:if>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="index.jsp">ZigBBo</a>
 			</div>

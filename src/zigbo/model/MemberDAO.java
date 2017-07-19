@@ -21,7 +21,27 @@ public class MemberDAO {
 	 * deleteMember //회원 삭제
 	 * 
 	 */
-
+	
+	public static int getMemberByEmail(String email) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int count = 0;
+		
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getMemberByEmail"));
+			pstmt.setString(1, email);
+			rset = pstmt.executeQuery();
+			if(rset.next()){
+				count = rset.getInt(1);
+			}
+		}finally{
+			DBUtil.close(con, pstmt, rset);
+		}
+		return count;
+	}
+	
 	public static boolean addMember(MemberDTO member) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
