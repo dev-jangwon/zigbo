@@ -6,14 +6,16 @@ public class RequestDTO {
 	private int itemCode; 
 	private int memberCode;
 	private int views;
+	private String uploadDate;
 	private String progress; 
 	private String location;
 	
-	public RequestDTO(int requestCode, int itemCode, int memberCode, int views, String progress, String location) {
+	public RequestDTO(int requestCode, int itemCode, int memberCode, int views, String uploadDate,  String progress, String location) {
 		this.requestCode = requestCode;
 		this.itemCode = itemCode;
 		this.memberCode = memberCode;
 		this.views = views;
+		this.uploadDate = uploadDate;
 		this.progress = progress;
 		this.location = location;
 	}
@@ -69,6 +71,14 @@ public class RequestDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
+	public String getUploadDate() {
+		return uploadDate;
+	}
+
+	public void setUploadDate(String uploadDate) {
+		this.uploadDate = uploadDate;
+	}
 
 	@Override
 	public String toString() {
@@ -83,6 +93,8 @@ public class RequestDTO {
 		builder.append(views);
 		builder.append(", progress=");
 		builder.append(progress);
+		builder.append(", uploadDate=");
+		builder.append(uploadDate);
 		builder.append(", location=");
 		builder.append(location);
 		builder.append("]");

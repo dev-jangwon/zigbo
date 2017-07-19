@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -32,27 +33,41 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active">
-						<a href="#">로그인</a>
-					</li>
+					<c:choose>
+						<c:when test="${sessionScope.login!=null}">
+						<li class="active">
+							<a href="index.jsp" onclick="logoutFtn()">로그아웃</a>
+						</li>
+						</c:when>
+						<c:otherwise>
+						<li class="active">
+							<a href="login.jsp">로그인</a>
+						</li>
+						</c:otherwise>
+					</c:choose>
 					<li>
 						<a href="#">판매</a>
 					</li>
 					<li>
 						<a href="#">구매</a>
 					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul>
-					 </li>
+					<c:if test="${sessionScope.login!=null}">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"	data-toggle="dropdown" aria-expanded="false">
+							Dropdown 
+							<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul>
+						</li>
+					</c:if>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -78,134 +93,10 @@
 						<div class="col-md-2">
 						</div>
 					</div>
-							<ul class="zigbbo-list-content">
-								<li>
-									<div class="row item-row">
-										<div class="zigbbo-list-image-row col-md-4">
-											<a class="thumb" href="">
-												<img src="../img/profile.png" alt="not found image" onerror="">
-											</a>
-										</div>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-8">
-													<div>
-														<div class="zigbbo-list-title">item</div>
-														<div class="zigbbo-list-loc">location</div>
-														<div class="zigbbo-list-desc">
-															Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-														</div>
-														<span class="label label-primary">대기</span>
-														<span class="label label-info">진행</span>
-														<span class="label label-success">완료</span>
-													</div>
-													<div>
-													</div>	
-												</div>
-												<div class="col-md-4">
-													<div class="zigbbo-list-member">member</div>
-													<div class="zigbbo-list-price">20000<i class="fa fa-krw"></i></div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="row item-row">
-										<div class="zigbbo-list-image-row col-md-4">
-											<a class="thumb" href="">
-												<img src="../img/profile.png" alt="not found image" onerror="">
-											</a>
-										</div>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-8">
-													<div>
-														<div class="zigbbo-list-title">item</div>
-														<div class="zigbbo-list-loc">location</div>
-														<div class="zigbbo-list-desc">
-															Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-														</div>
-														<span class="label label-primary">대기</span>
-														<span class="label label-info">진행</span>
-														<span class="label label-success">완료</span>
-													</div>
-													<div>
-													</div>	
-												</div>
-												<div class="col-md-4">
-													<div class="zigbbo-list-member">member</div>
-													<div class="zigbbo-list-price">20000<i class="fa fa-krw"></i></div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="row item-row">
-										<div class="zigbbo-list-image-row col-md-4">
-											<a class="thumb" href="">
-												<img src="../img/profile.png" alt="not found image" onerror="">
-											</a>
-										</div>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-8">
-													<div>
-														<div class="zigbbo-list-title">item</div>
-														<div class="zigbbo-list-loc">location</div>
-														<div class="zigbbo-list-desc">
-															Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-														</div>
-														<span class="label label-primary">대기</span>
-														<span class="label label-info">진행</span>
-														<span class="label label-success">완료</span>
-													</div>
-													<div>
-													</div>	
-												</div>
-												<div class="col-md-4">
-													<div class="zigbbo-list-member">member</div>
-													<div class="zigbbo-list-price">20000<i class="fa fa-krw"></i></div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="row item-row">
-										<div class="zigbbo-list-image-row col-md-4">
-											<a class="thumb" href="">
-												<img src="../img/profile.png" alt="not found image" onerror="">
-											</a>
-										</div>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-8">
-													<div>
-														<div class="zigbbo-list-title">item</div>
-														<div class="zigbbo-list-loc">location</div>
-														<div class="zigbbo-list-desc">
-															Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-														</div>
-														<span class="label label-primary">대기</span>
-														<span class="label label-info">진행</span>
-														<span class="label label-success">완료</span>
-													</div>
-													<div>
-													</div>	
-												</div>
-												<div class="col-md-4">
-													<div class="zigbbo-list-member">member</div>
-													<div class="zigbbo-list-price">20000<i class="fa fa-krw"></i></div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
+							<ul class="zigbbo-list-content zigbbo-sales-list">
 							</ul>
 							<div class="zigbbo-list-paging">
-								<nav>
+								<!-- <nav>
 									<ul class="pagination pagination-primary">
                           				<li><a href="javascript:void(0);">«</a></li>
                           					<li><a href="javascript:void(0);">1</a></li>
@@ -215,7 +106,7 @@
                           					<li><a href="javascript:void(0);">5</a></li>
                           					<li><a href="javascript:void(0);">»</a></li>
                         				</ul>
-								</nav>
+								</nav> -->
 							</div>
 	            </div>
         </div>
@@ -240,5 +131,6 @@
 	<script src="../assets/js/bootstrap-select.js"></script>
 	<script src="../assets/js/bootstrap-datepicker.js"></script>
 	<script src="../assets/js/ct-paper.js"></script>
+	<script src="../assets/js/sales_list.js"></script>
 </body>
 </html>

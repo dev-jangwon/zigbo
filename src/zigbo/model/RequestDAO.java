@@ -56,7 +56,7 @@ public class RequestDAO {
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				request = new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6));
+						rset.getString(5), rset.getString(6), rset.getString(7));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -76,7 +76,7 @@ public class RequestDAO {
 			list = new ArrayList<RequestDTO>();
 			while (rset.next()) {
 				list.add(new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6)));
+						rset.getString(5), rset.getString(6), rset.getString(7)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -148,7 +148,7 @@ public class RequestDAO {
 			list = new ArrayList<RequestDTO>();
 			while (rset.next()) {
 				list.add(new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6)));
+						rset.getString(5), rset.getString(6), rset.getString(7)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -169,7 +169,7 @@ public class RequestDAO {
 			list = new ArrayList<RequestDTO>();
 			while (rset.next()) {
 				list.add(new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6)));
+						rset.getString(5), rset.getString(6), rset.getString(7)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);

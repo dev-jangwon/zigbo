@@ -2,6 +2,7 @@ package zigbo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,6 @@ import zigbo.model.ZigboService;
 import zigbo.model.dto.ApplyDTO;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.RequestDTO;
-import zigbo.model.dto.SellingDTO;
 
 public class RequestController extends HttpServlet {
 	
@@ -61,7 +61,7 @@ public class RequestController extends HttpServlet {
 	      int memberCode = Integer.parseInt(request.getParameter("MemberCode"));
 	      int itemCode = Integer.parseInt(request.getParameter("ItemCode"));
 	      String location = request.getParameter("Location");
-	      RequestDTO myrequest = new RequestDTO(0, itemCode, memberCode, 0, "W", location);
+	      RequestDTO myrequest = new RequestDTO(0, itemCode, memberCode, 0,"", "W", location);
 	      
 	      try{
 	         boolean result = ZigboService.addRequest(myrequest);
@@ -90,14 +90,34 @@ public class RequestController extends HttpServlet {
 	   }
 	   
 	   public void getAllRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	      String url = "showError.jsp";
-	      try {
-	         request.setAttribute("myrequestAll", ZigboService.getAllRequest());
-	         url = "activistList.jsp";
-	      }catch(Exception s){
-	         request.setAttribute("errorMsg", s.getMessage());
-	      }
-	      request.getRequestDispatcher(url).forward(request, response);
+		   String url = "showError.jsp";
+			ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
+//			int pageIndex = Integer.parseInt(request.getParameter("index"));
+			
+			try {
+				ArrayList<RequestDTO> list = ZigboService.getAllRequest();
+				
+				for (int i = 0; i < list.size(); i++) {
+					int itemCode = list.get(i).getItemCode();
+					ret.add(ZigboService.getItem(itemCode));
+				}
+				
+				//1 -> 0, 1, 2, 3
+				// 2 -> 4, 5, 6, 7
+				
+//				for (int i = pageIndex * 4; i < pageIndex * 4 + 3; i++) {
+//					int itemCode = list.get(i).getItemCode();
+//					ret.add(ZigboService.getItem(itemCode));
+//				}
+
+				request.setAttribute("requestList", list);
+				request.setAttribute("requestItems", ret);
+				url = "./request/request_list_item.jsp";
+			}catch(Exception s){
+				s.printStackTrace();
+				request.setAttribute("errorMsg", s.getMessage());
+			}
+			request.getRequestDispatcher(url).forward(request, response);
 	   }
 	   
 	   public void updateRequestViews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
