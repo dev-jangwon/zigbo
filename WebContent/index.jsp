@@ -90,7 +90,7 @@
             				<hr class="custom-hr-dark">
             			</div>
             		</div>
-            		<div class="jb-extra-row row">
+            		<div class="row" style="margin-bottom: 15px;">
             			<div class="col-lg-9">
             			</div>
             			<div class="col-lg-3">
@@ -109,7 +109,6 @@
             			</div>
             		</div>
                 <div class="row" id="index_selling_list">
-  					
 				</div>
             </div>
         </div>
@@ -121,7 +120,7 @@
             				<hr class="custom-hr-dark">
             			</div>
             		</div>
-            		<div class="jb-extra-row row">
+            		<div class="row" style="margin-bottom: 15px;">
             			<div class="col-lg-11">
             			</div>
             			<div class="col-lg-1">
@@ -137,31 +136,30 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center about-text">
                         <h2>About Zigbbo</h2>
-                        <p>
-                        	판매: 해외에서 싸고 좋은 물건을 발견하면 직뽀에서 직접 판매자가 되어보세요.<br>
-                        	요청: 해외에서 필요한 물건이 있으면 무엇이든 요청해보세요. 비싸고 오래걸리는 해외배송의 문제점을 해결했습니다.<br>
-                        	수입: 오늘도 평화로운 중고OO에서 많이 당해보셨나요? 직뽀가 중간에서 안전한 거래를 보장하겠습니다. 마음 놓고 거래를 통해 수수료를 받아가세요.<br>
-                        </p>
+                        <br>
                     </div>
                 </div>
                 <div class="row example-pages">
                     <div class="col-md-4">
                         <a href="examples/landing.html" target="_blank">
                             <img src="assets/paper_img/examples/landing.jpg" alt="Rounded Image" class="img-rounded img-responsive">
-                            <h5>판매</h5>
+                            <h5 style="font-size:2em;color:#2c3e50;">판매</h5>
                         </a>
+                        <p style="font-size:1.4em;text-align:left;">해외에서 싸고 좋은 물건을 발견하면 직뽀에서 직접 판매자가 되어보세요.</p>
                     </div>
                     <div class="col-md-4">
                         <a href="examples/register.html" target="_blank">
                             <img src="assets/paper_img/examples/register.jpg" alt="Rounded Image" class="img-rounded img-responsive">
-                            <h5>구매</h5>
+                            <h5 style="font-size:2em;color:#2c3e50;">구매</h5>
                         </a>
+                        <p style="font-size:1.4em;text-align:left;">해외에서 필요한 물건이 있으면 무엇이든 요청해보세요. 비싸고 오래걸리는 해외배송의 문제점을 해결했습니다.</p>
                     </div>
                     <div class="col-md-4">
                         <a href="examples/profile.html" target="_blank">
                             <img src="assets/paper_img/examples/profile.jpg" alt="Rounded Image" class="img-rounded img-responsive">
-                            <h5>지원</h5>
+                            <h5 style="font-size:2em;color:#2c3e50;">지원</h5>
                         </a>
+                        <p style="font-size:1.4em;text-align:left;">오늘도 평화로운 중고OO에서 <br>많이 당해보셨나요? 직뽀가 중간에서 안전한 거래를 보장하겠습니다. 마음 놓고 거래를 통해 수수료를 받아가세요.</p>
                     </div>
                 </div>
             </div>
