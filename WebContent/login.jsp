@@ -39,13 +39,14 @@
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
                                 <h3 class="title">Log in</h3>
-                                <form class="register-form">
+                                <form class="register-form" action="member" method="post">
                                     <label>Email</label>
-                                    <input type="text" class="form-control" placeholder="Email">
+                                    <input type="text" class="form-control" placeholder="Email" name="Email">
 
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password">
-                                    <button class="btn btn-success btn-block">Login</button>
+                                    <input type="password" class="form-control" placeholder="Password" name="Password">
+                                    <button class="btn btn-success btn-block" type="submit">Login</button>
+                                    <input type="hidden" name="command" value="getMember">
                                 </form>
                                 <div class="option">
                                     <a href="#" class="zigbbo-forgot-password btn btn-simple btn-success">Forgot password?</a>

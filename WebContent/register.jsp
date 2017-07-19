@@ -34,15 +34,15 @@
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
                                 <h3 class="title">Welcome to ZigBBo!</h3>
-                                <form class="register-form">
+                                <form class="register-form" action="member" method="post">
                                     <label>Email</label>
-                                    <input type="text" class="form-control" placeholder="Email">
+                                    <input type="text" class="form-control" placeholder="Email" name="Email">
 
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input type="password" class="form-control" placeholder="Password" name="Password">
                                     
                                     <label>Phone</label>
-                                    <input type="text" class="form-control" placeholder="Phone">
+                                    <input type="text" class="form-control" placeholder="Phone" name="Phone">
                                     
                                  <div>
                                  	<label style="float:left;">Account</label>
@@ -60,13 +60,13 @@
 											<li role="presentation"><a role="menuitem" tabindex="-1"
 												>ÇÏ³ª</a></li>
 										</ul>
-										<input type="text" class="form-control" placeholder="Account">
+										<input type="text" class="form-control" placeholder="Account" name="Account">
 									</div>
                                  </div>   
                                     <label>Address</label>
-                                    <input type="text" class="form-control" placeholder="Address">
-                                    
-                                    <button class="btn btn-success btn-block">Register</button>
+                                    <input type="text" class="form-control" placeholder="Address" name="Address">
+                                    <button class="btn btn-success btn-block" type="submit">Register</button>
+                                    <input type="hidden" name="command" value="addMember">
                                 </form>
                                
                             </div>

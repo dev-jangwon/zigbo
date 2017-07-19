@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -32,27 +33,39 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active">
-						<a href="#">로그인</a>
+					<c:choose>
+						<c:when test="${sessionScope.login!=null}">
+						<li class="active">
+							<a href="index.jsp" onclick="logoutFtn()">로그아웃</a>
+						</li>
+						</c:when>
+						<c:otherwise>
+						<li class="active">
+							<a href="login.jsp">로그인</a>
+						</li>
+						</c:otherwise>
+					</c:choose>
+					<li><a href="#">판매</a>
 					</li>
-					<li>
-						<a href="#">판매</a>
+					<li><a href="#">구매</a>
 					</li>
-					<li>
-						<a href="#">구매</a>
-					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul>
-					 </li>
+					<c:if test="${sessionScope.login!=null}">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"	data-toggle="dropdown" aria-expanded="false">
+							Dropdown 
+							<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul>
+						</li>
+					</c:if>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -240,6 +253,14 @@
     </div>
 </footer>
 </div>
+
+	<script type="text/javascript">
+		function logoutFtn() {
+	<%session.invalidate();
+			session = null;%>
+		}
+	</script>
+
 </body>
 
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
