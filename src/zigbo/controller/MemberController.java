@@ -93,7 +93,7 @@ public class MemberController extends HttpServlet {
 				request.setAttribute("getMember",member);
 				HttpSession session = request.getSession(); // 세션 생성
 				session.setAttribute("login", member.getMemberCode());
-				System.out.println("login이라는 session이 있니? "+session.getAttribute("login"));
+
 				url = "index.jsp";
 			}else{
 				request.setAttribute("errorMsg", "존재하지 않는 회원 정보입니다.");
@@ -101,7 +101,7 @@ public class MemberController extends HttpServlet {
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		response.sendRedirect(url);
 	}
 	
 	public void updateMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -146,6 +146,6 @@ public class MemberController extends HttpServlet {
 			HttpSession session = request.getSession(false);
 	        session.invalidate();
 	        session = null;
-	      response.sendRedirect("index.jsp");
+	        response.sendRedirect("index.jsp");
 	   }
 }

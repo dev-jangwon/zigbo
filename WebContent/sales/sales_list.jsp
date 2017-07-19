@@ -36,12 +36,12 @@
 					<c:choose>
 						<c:when test="${sessionScope.login!=null}">
 						<li class="active">
-							<a href="index.jsp" onclick="logoutFtn()">로그아웃</a>
+							<a href="/zigbo/index.jsp" onclick="logoutFtn()">로그아웃</a>
 						</li>
 						</c:when>
 						<c:otherwise>
 						<li class="active">
-							<a href="login.jsp">로그인</a>
+							<a href="/zigbo/login.jsp">로그인</a>
 						</li>
 						</c:otherwise>
 					</c:choose>
@@ -120,6 +120,20 @@
 	        </div>
 	    </div>
 	</footer>
+	<script type="text/javascript">
+		function logoutFtn() {
+				$.ajax({
+					url: "/zigbo/member",
+					data: {
+						command: "logout",
+					},
+					method: "post",
+					dataType: "html",
+					success: function(result) {
+					}
+				});
+		}
+	</script>
 	<script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="../assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 
