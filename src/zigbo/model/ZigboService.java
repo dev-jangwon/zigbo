@@ -113,7 +113,11 @@ public class ZigboService {
    }
    
    ////MEMBER SERVICE ////
-   public static int getMemberByEmail(String email) throws SQLException{
+   public static int getCountByEmail(String email) throws SQLException{
+	   return MemberDAO.getCountByEmail(email);
+   }
+   
+   public static MemberDTO getMemberByEmail(String email) throws SQLException{
 	   return MemberDAO.getMemberByEmail(email);
    }
    
