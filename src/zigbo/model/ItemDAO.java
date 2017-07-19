@@ -36,10 +36,11 @@ public class ItemDAO {
 	      try{
 	         con = DBUtil.getConnection();
 	         pstmt = con.prepareStatement(sql.getString("addItem"));
-	         pstmt.setInt(1, Item.getItemCode());
+	         pstmt.setString(1, Item.getTitle());
 	         pstmt.setString(2, Item.getPrice());
 	         pstmt.setString(3, Item.getDetail());
 	         pstmt.setString(4, Item.getLocation());
+	         pstmt.setString(5, Item.getPicture());
 	         int result = pstmt.executeUpdate();
 	         if(result == 1){
 	            return true;
