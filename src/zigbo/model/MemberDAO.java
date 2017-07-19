@@ -22,6 +22,26 @@ public class MemberDAO {
 	 * 
 	 */
 	
+	public static String getEmailByMemberCode(int memberCode) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String email = null;
+		
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getEmailByMemberCode"));
+			pstmt.setInt(1, memberCode);
+			rset = pstmt.executeQuery();
+			if(rset.next()){
+				email = rset.getString(1);
+			}
+		}finally{
+			DBUtil.close(con, pstmt, rset);
+		}
+		return email;
+	}
+	
 	public static int getCountByEmail(String email) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
