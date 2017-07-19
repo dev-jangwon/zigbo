@@ -108,47 +108,8 @@
 							</div>
             			</div>
             		</div>
-                <div class="row">
-  					<div class="col-sm-4 col-md-3">
-    						<div class="thumbnail">
-      						<img src="img/profile.png" alt="">
-      							<div class="caption">
-        								<h3>Thumbnail label</h3>
-        									<p>...</p>
-        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  					</div>
-  					<div class="col-sm-4 col-md-3">
-    						<div class="thumbnail">
-      						<img src="img/profile.png" alt="">
-      							<div class="caption">
-        								<h3>Thumbnail label</h3>
-        									<p>...</p>
-        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  					</div>
-  					<div class="col-sm-4 col-md-3">
-    						<div class="thumbnail">
-      						<img src="img/profile.png" alt="">
-      							<div class="caption">
-        								<h3>Thumbnail label</h3>
-        									<p>...</p>
-        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  					</div>
-  					<div class="col-sm-4 col-md-3">
-    						<div class="thumbnail">
-      						<img src="img/profile.png" alt="">
-      							<div class="caption">
-        								<h3>Thumbnail label</h3>
-        									<p>...</p>
-        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  					</div>
+                <div class="row" id="index_selling_list">
+  					
 				</div>
             </div>
         </div>
@@ -167,47 +128,7 @@
 						<button class="btn btn-primary pull-right">더보기</button>
             			</div>
             		</div>
-                <div class="row">
-  					<div class="col-sm-4 col-md-3">
-    						<div class="thumbnail">
-      						<img src="img/profile.png" alt="">
-      							<div class="caption">
-        								<h3>Thumbnail label</h3>
-        									<p>...</p>
-        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  					</div>
-  					<div class="col-sm-4 col-md-3">
-    						<div class="thumbnail">
-      						<img src="img/profile.png" alt="">
-      							<div class="caption">
-        								<h3>Thumbnail label</h3>
-        									<p>...</p>
-        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  					</div>
-  					<div class="col-sm-4 col-md-3">
-    						<div class="thumbnail">
-      						<img src="img/profile.png" alt="">
-      							<div class="caption">
-        								<h3>Thumbnail label</h3>
-        									<p>...</p>
-        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  					</div>
-  					<div class="col-sm-4 col-md-3">
-    						<div class="thumbnail">
-      						<img src="img/profile.png" alt="">
-      							<div class="caption">
-        								<h3>Thumbnail label</h3>
-        									<p>...</p>
-        									<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      							</div>
-    						</div>
-  					</div>
+                <div class="row" id="index_request_list">
 				</div>
             </div>
         </div>
@@ -273,5 +194,6 @@
 	<script src="assets/js/ct-paper-radio.js"></script>
 	<script src="assets/js/bootstrap-select.js"></script>
 	<script src="assets/js/bootstrap-datepicker.js"></script>
-	<script src="assets/js/ct-paper.js"></script>    
+	<script src="assets/js/ct-paper.js"></script> 
+	<script src="assets/js/index.js"></script>   
 </html>

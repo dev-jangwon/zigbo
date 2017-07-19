@@ -161,6 +161,10 @@ public class ZigboService {
 		return RequestDAO.getRequestofMember(memberCode);
 	}
 	
+	public static ArrayList<RequestDTO> getMostRecentRequest() throws SQLException {
+		return RequestDAO.getMostRecentRequest();
+	}
+	
 	////APPLY SERVICE ////
 	 public static boolean addApply(ApplyDTO apply) throws SQLException {
 		 return ApplyDAO.addApply(apply);
