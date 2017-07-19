@@ -2,6 +2,7 @@ package zigbo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import zigbo.model.ZigboService;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.PaymentDTO;
+import zigbo.model.dto.RequestDTO;
 import zigbo.model.dto.SellingDTO;
 
 public class SellingController extends HttpServlet {
@@ -85,10 +87,21 @@ public class SellingController extends HttpServlet {
 	
 	public void getAllSelling(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
+		ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
+		
 		try {
-			request.setAttribute("sellingAll", ZigboService.getAllSelling());
-			url = "activistList.jsp";
+			ArrayList<SellingDTO> list = ZigboService.getAllSelling();
+			
+			for (int i = 0; i < list.size(); i++) {
+				int itemCode = list.get(i).getItemCode();
+				ret.add(ZigboService.getItem(itemCode));
+			}
+
+			request.setAttribute("sellingList", list);
+			request.setAttribute("sellingItems", ret);
+			url = "./sales/sales_list_item.jsp";
 		}catch(Exception s){
+			s.printStackTrace();
 			request.setAttribute("errorMsg", s.getMessage());
 		}
 		request.getRequestDispatcher(url).forward(request, response);

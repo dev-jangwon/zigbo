@@ -67,7 +67,7 @@
 										<ul class="dropdown-menu dropdown-menu-right" role="menu"
 											aria-labelledby="dropdownMenu1">
 											<li role="presentation"><a role="menuitem" tabindex="-1"
-												h>±¹¹Î</a></li>
+												>±¹¹Î</a></li>
 											<li role="presentation"><a role="menuitem" tabindex="-1"
 												>½ÅÇÑ</a></li>
 											<li role="presentation"><a role="menuitem" tabindex="-1"

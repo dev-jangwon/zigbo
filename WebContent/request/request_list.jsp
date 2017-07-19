@@ -78,131 +78,7 @@
 						<div class="col-md-2">
 						</div>
 					</div>
-							<ul class="zigbbo-list-content">
-								<li>
-									<div class="row item-row">
-										<div class="zigbbo-list-image-row col-md-4">
-											<a class="thumb" href="">
-												<img src="../img/profile.png" alt="not found image" onerror="">
-											</a>
-										</div>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-8">
-													<div>
-														<div class="zigbbo-list-title">item</div>
-														<div class="zigbbo-list-loc">location</div>
-														<div class="zigbbo-list-desc">
-															Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-														</div>
-														<span class="label label-primary">대기</span>
-														<span class="label label-info">진행</span>
-														<span class="label label-success">완료</span>
-													</div>
-													<div>
-													</div>	
-												</div>
-												<div class="col-md-4">
-													<div class="zigbbo-list-member">member</div>
-													<div class="zigbbo-list-price">20000<i class="fa fa-krw"></i></div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="row item-row">
-										<div class="zigbbo-list-image-row col-md-4">
-											<a class="thumb" href="">
-												<img src="../img/profile.png" alt="not found image" onerror="">
-											</a>
-										</div>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-8">
-													<div>
-														<div class="zigbbo-list-title">item</div>
-														<div class="zigbbo-list-loc">location</div>
-														<div class="zigbbo-list-desc">
-															Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-														</div>
-														<span class="label label-primary">대기</span>
-														<span class="label label-info">진행</span>
-														<span class="label label-success">완료</span>
-													</div>
-													<div>
-													</div>	
-												</div>
-												<div class="col-md-4">
-													<div class="zigbbo-list-member">member</div>
-													<div class="zigbbo-list-price">20000<i class="fa fa-krw"></i></div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="row item-row">
-										<div class="zigbbo-list-image-row col-md-4">
-											<a class="thumb" href="">
-												<img src="../img/profile.png" alt="not found image" onerror="">
-											</a>
-										</div>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-8">
-													<div>
-														<div class="zigbbo-list-title">item</div>
-														<div class="zigbbo-list-loc">location</div>
-														<div class="zigbbo-list-desc">
-															Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-														</div>
-														<span class="label label-primary">대기</span>
-														<span class="label label-info">진행</span>
-														<span class="label label-success">완료</span>
-													</div>
-													<div>
-													</div>	
-												</div>
-												<div class="col-md-4">
-													<div class="zigbbo-list-member">member</div>
-													<div class="zigbbo-list-price">20000<i class="fa fa-krw"></i></div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="row item-row">
-										<div class="zigbbo-list-image-row col-md-4">
-											<a class="thumb" href="">
-												<img src="../img/profile.png" alt="not found image" onerror="">
-											</a>
-										</div>
-										<div class="col-md-8">
-											<div class="row">
-												<div class="col-md-8">
-													<div>
-														<div class="zigbbo-list-title">item</div>
-														<div class="zigbbo-list-loc">location</div>
-														<div class="zigbbo-list-desc">
-															Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-														</div>
-														<span class="label label-primary">대기</span>
-														<span class="label label-info">진행</span>
-														<span class="label label-success">완료</span>
-													</div>
-													<div>
-													</div>	
-												</div>
-												<div class="col-md-4">
-													<div class="zigbbo-list-member">member</div>
-													<div class="zigbbo-list-price">20000<i class="fa fa-krw"></i></div>	
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
+							<ul class="zigbbo-list-content zigbbo-request-list">
 							</ul>
 							<div class="zigbbo-list-paging">
 								<nav>
@@ -240,5 +116,6 @@
 	<script src="../assets/js/bootstrap-select.js"></script>
 	<script src="../assets/js/bootstrap-datepicker.js"></script>
 	<script src="../assets/js/ct-paper.js"></script> 
+	<script src="../assets/js/request_list.js"></script>
 </body>
 </html>
