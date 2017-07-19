@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -32,27 +33,41 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active">
-						<a href="#">로그인</a>
-					</li>
+					<c:choose>
+						<c:when test="${sessionScope.login!=null}">
+						<li class="active">
+							<a href="index.jsp" onclick="logoutFtn()">로그아웃</a>
+						</li>
+						</c:when>
+						<c:otherwise>
+						<li class="active">
+							<a href="login.jsp">로그인</a>
+						</li>
+						</c:otherwise>
+					</c:choose>
 					<li>
 						<a href="#">판매</a>
 					</li>
 					<li>
 						<a href="#">구매</a>
 					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul>
-					 </li>
+					<c:if test="${sessionScope.login!=null}">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"	data-toggle="dropdown" aria-expanded="false">
+							Dropdown 
+							<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+								<li class="divider"></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul>
+						</li>
+					</c:if>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -81,17 +96,17 @@
 							<ul class="zigbbo-list-content zigbbo-request-list">
 							</ul>
 							<div class="zigbbo-list-paging">
-								<nav>
+								<!-- <nav>
 									<ul class="pagination pagination-primary">
-                          				<li><a href="javascript:void(0);">«</a></li>
-                          					<li><a href="javascript:void(0);">1</a></li>
-                          					<li><a href="javascript:void(0);">2</a></li>
-                          					<li class="active"><a href="javascript:void(0);">3</a></li>
-                          					<li><a href="javascript:void(0);">4</a></li>
-                          					<li><a href="javascript:void(0);">5</a></li>
+                          				<li><a href="javascript:getRequestList(0);">«</a></li>
+                          					<li><a href="javascript:getRequestList(1);">1</a></li>
+                          					<li><a href="javascript:getRequestList(2);">2</a></li>
+                          					<li><a href="javascript:getRequestList(3);">3</a></li>
+                          					<li><a href="javascript:getRequestList(4);">4</a></li>
+                          					<li><a href="javascript:getRequestList(5);">3</a></li>
                           					<li><a href="javascript:void(0);">»</a></li>
                         				</ul>
-								</nav>
+								</nav> -->
 							</div>
 	            </div>
         </div>

@@ -1,7 +1,10 @@
-function getRequestList() {
+function getRequestList(index) {
 	$.ajax({
 		url: "/zigbo/request",
-		data: {command: "getAllRequest"},
+		data: {
+			command: "getAllRequest",
+			index: index
+		},
 		method: "post",
 		dataType: "html",
 		success: function(result) {
@@ -9,4 +12,4 @@ function getRequestList() {
 		}
 	});
 }
-getRequestList();
+getRequestList(0);

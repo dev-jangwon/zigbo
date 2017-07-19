@@ -92,6 +92,7 @@ public class RequestController extends HttpServlet {
 	   public void getAllRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   String url = "showError.jsp";
 			ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
+//			int pageIndex = Integer.parseInt(request.getParameter("index"));
 			
 			try {
 				ArrayList<RequestDTO> list = ZigboService.getAllRequest();
@@ -100,6 +101,14 @@ public class RequestController extends HttpServlet {
 					int itemCode = list.get(i).getItemCode();
 					ret.add(ZigboService.getItem(itemCode));
 				}
+				
+				//1 -> 0, 1, 2, 3
+				// 2 -> 4, 5, 6, 7
+				
+//				for (int i = pageIndex * 4; i < pageIndex * 4 + 3; i++) {
+//					int itemCode = list.get(i).getItemCode();
+//					ret.add(ZigboService.getItem(itemCode));
+//				}
 
 				request.setAttribute("requestList", list);
 				request.setAttribute("requestItems", ret);
