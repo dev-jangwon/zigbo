@@ -12,7 +12,7 @@ function getRecentSelling() {
 
 function getViewSelling() {
 	$.ajax({
-		url: "request",
+		url: "selling",
 		data: {command: "getMostViews"},
 		method: "post",
 		dataType: "html",
@@ -24,7 +24,7 @@ function getViewSelling() {
 
 function getZZimSelling() {
 	$.ajax({
-		url: "request",
+		url: "selling",
 		data: {command: "getMostInterest"},
 		method: "post",
 		dataType: "html",
@@ -34,3 +34,16 @@ function getZZimSelling() {
 	});
 }
 getRecentSelling();
+
+function getRecentRequest() {
+	$.ajax({
+		url: "request",
+		data: {command: "getMostRecentRequest"},
+		method: "post",
+		dataType: "html",
+		success: function(result) {
+			$("#index_request_list").html(result);
+		}
+	});
+}
+getRecentRequest();
