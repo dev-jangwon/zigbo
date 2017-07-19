@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.RequestDTO;
 import zigbo.model.util.DBUtil;
 
@@ -22,16 +23,16 @@ public class RequestDAO {
 
 	static ResourceBundle sql = DBUtil.getResourceBundle();
 
-	public static boolean addRequest(RequestDTO Request) throws SQLException {
+	public static boolean addRequest(RequestDTO request) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("addRequest"));
-			pstmt.setInt(1, Request.getMemberCode());
-			pstmt.setInt(2, Request.getItemCode());
-			pstmt.setInt(3, Request.getViews());
-			pstmt.setString(4, Request.getLocation());
+			pstmt.setInt(1, request.getMemberCode());
+			pstmt.setInt(2, request.getItemCode());
+			pstmt.setInt(3, request.getViews());
+			pstmt.setString(4, request.getLocation());
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;
@@ -42,25 +43,25 @@ public class RequestDAO {
 		return false;
 	}
 
-	public static RequestDTO getRequest(int RequestCode) throws SQLException {
+	public static RequestDTO getRequest(int requestCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		RequestDTO Request = null;
+		RequestDTO request = null;
 
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("getRequest"));
-			pstmt.setInt(1, RequestCode);
+			pstmt.setInt(1, requestCode);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
-				Request = new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
+				request = new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
 						rset.getString(5), rset.getString(6));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
 		}
-		return Request;
+		return request;
 	}
 
 	public static ArrayList<RequestDTO> getAllRequest() throws SQLException {
@@ -83,13 +84,13 @@ public class RequestDAO {
 		return list;
 	}
 
-	public static boolean updateRequestViews(int RequestCode) throws SQLException {
+	public static boolean updateRequestViews(int requestCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("updateRequestViews"));
-			pstmt.setInt(1, RequestCode);
+			pstmt.setInt(1, requestCode);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;
@@ -100,13 +101,13 @@ public class RequestDAO {
 		return false;
 	}
 
-	public static boolean updateRequestProgress(int RequestCode) throws SQLException {
+	public static boolean updateRequestProgress(int requestCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("updateRequestProgress"));
-			pstmt.setInt(1, RequestCode);
+			pstmt.setInt(1, requestCode);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;
@@ -117,13 +118,13 @@ public class RequestDAO {
 		return false;
 	}
 
-	public static boolean deleteRequest(int RequestCode) throws SQLException {
+	public static boolean deleteRequest(int requestCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("deleteRequest"));
-			pstmt.setInt(1, RequestCode);
+			pstmt.setInt(1, requestCode);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;
@@ -153,26 +154,6 @@ public class RequestDAO {
 			DBUtil.close(con, pstmt, rset);
 		}
 		return list;
-	}
-
-	public static RequestDTO getItemByRequestCode(RequestDTO Request) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-
-		try {
-			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getString("getItemByRequestCode"));
-			pstmt.setInt(1, Request.getItemCode()); //Request글의 itemCode로 ITEM상세보기
-			rset = pstmt.executeQuery();
-			if (rset.next()) {
-				Request = new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6));
-			}
-		} finally {
-			DBUtil.close(con, pstmt, rset);
-		}
-		return Request;
 	}
 
 }

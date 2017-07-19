@@ -27,7 +27,6 @@ public class CommentDAO {
 		try{
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("addComment"));
-			//addComment=insert into COMMENT values(?, ?, ?, ?, ?)
 			pstmt.setInt(1, comment.getDivisionCode());
 			pstmt.setInt(2, comment.getTextCode());
 			pstmt.setInt(3, comment.getMemberCode());

@@ -70,46 +70,6 @@ public class ItemDAO {
 	      return Item;
 	   }
 	   
-	   public static ItemDTO getItemByPrice(String price) throws SQLException{
-		      Connection con = null;
-		      PreparedStatement pstmt = null;
-		      ResultSet rset = null;
-		      ItemDTO Item = null;
-		      
-		      try{
-		         con = DBUtil.getConnection();
-		         pstmt = con.prepareStatement(sql.getString("getItemByPrice"));
-		         pstmt.setString(1, price);
-		         rset = pstmt.executeQuery();
-		         if(rset.next()){
-		            Item = new ItemDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6));
-		         }
-		      }finally{
-		         DBUtil.close(con, pstmt, rset);
-		      }
-		      return Item;
-		   }
-	   
-	   public static ItemDTO getItemByLocation(String location) throws SQLException{
-		      Connection con = null;
-		      PreparedStatement pstmt = null;
-		      ResultSet rset = null;
-		      ItemDTO Item = null;
-		      
-		      try{
-		         con = DBUtil.getConnection();
-		         pstmt = con.prepareStatement(sql.getString("getItemByLocation"));
-		         pstmt.setString(1, location);
-		         rset = pstmt.executeQuery();
-		         if(rset.next()){
-		            Item = new ItemDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6));
-		         }
-		      }finally{
-		         DBUtil.close(con, pstmt, rset);
-		      }
-		      return Item;
-		   }
-	   
 	   public static ArrayList<ItemDTO> getAllItem() throws SQLException{
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
@@ -127,40 +87,6 @@ public class ItemDAO {
 	         DBUtil.close(con, pstmt, rset);
 	      }
 	      return list;
-	   }
-	   
-	   public static boolean updateItemPrice(int ItemCode) throws SQLException{      
-	      Connection con = null;
-	      PreparedStatement pstmt = null;
-	      try{
-	         con = DBUtil.getConnection();
-	         pstmt = con.prepareStatement(sql.getString("updateItemPrice"));
-	         pstmt.setInt(1, ItemCode);
-	         int result = pstmt.executeUpdate();
-	         if(result == 1){
-	            return true;
-	         }
-	      }finally{
-	         DBUtil.close(con, pstmt);
-	      }
-	      return false;
-	   }
-	   
-	   public static boolean updateItemLocation(int ItemCode) throws SQLException{      
-	      Connection con = null;
-	      PreparedStatement pstmt = null;
-	      try{
-	         con = DBUtil.getConnection();
-	         pstmt = con.prepareStatement(sql.getString("updateItemLocation"));
-	         pstmt.setInt(1, ItemCode);
-	         int result = pstmt.executeUpdate();
-	         if(result == 1){
-	            return true;
-	         }
-	      }finally{
-	         DBUtil.close(con, pstmt);
-	      }
-	      return false;
 	   }
 	   
 	   public static boolean deleteItem(int ItemCode) throws SQLException{

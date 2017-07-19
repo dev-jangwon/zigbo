@@ -37,8 +37,6 @@ public class SellingController extends HttpServlet {
 				getMostViews(request, response);
 			}else if(command.equals("addPayment")){
 				addPayment(request, response);
-			}else if(command.equals("getAllPayment")){
-				getAllPayment(request, response);
 			}else if(command.equals("getPaymentofMember")){
 				getPaymentofMember(request, response);
 			}
@@ -166,17 +164,6 @@ public class SellingController extends HttpServlet {
 			}else{
 				request.setAttribute("errorMsg", "다시 시도하세요");
 			}
-		}catch(Exception s){
-			request.setAttribute("errorMsg", s.getMessage());
-		}
-		request.getRequestDispatcher(url).forward(request, response);
-	}
-	
-	public void getAllPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "showError.jsp";
-		try {
-			request.setAttribute("paymentAll", ZigboService.getAllPayment(Integer.parseInt(request.getParameter("PaymentCode"))));
-			//url = "activistList.jsp";
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 		}

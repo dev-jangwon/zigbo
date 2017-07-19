@@ -2,15 +2,14 @@ package zigbo.model.dto;
 
 public class RequestDTO {
 
-	private int requestCode; // NUMBER(3) NOT NULL ,
-	private int itemCode; // NUMBER(3) NOT NULL ,
-	private int memberCode; // NUMBER(3) NOT NULL ,
-	private int views; // NUMBER(4) NULL ,
+	private int requestCode;
+	private int itemCode; 
+	private int memberCode;
+	private int views;
 	private String progress; 
-	private String location; // 
+	private String location;
 	
 	public RequestDTO(int requestCode, int itemCode, int memberCode, int views, String progress, String location) {
-		super();
 		this.requestCode = requestCode;
 		this.itemCode = itemCode;
 		this.memberCode = memberCode;
@@ -71,7 +70,23 @@ public class RequestDTO {
 		this.location = location;
 	}
 
-	
-	
-	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("RequestDTO [requestCode=");
+		builder.append(requestCode);
+		builder.append(", itemCode=");
+		builder.append(itemCode);
+		builder.append(", memberCode=");
+		builder.append(memberCode);
+		builder.append(", views=");
+		builder.append(views);
+		builder.append(", progress=");
+		builder.append(progress);
+		builder.append(", location=");
+		builder.append(location);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

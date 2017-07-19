@@ -29,4 +29,12 @@ public class InterestDTO {
       this.sellingCode = sellingCode;
    }
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("InterestDTO [memberCode=").append(memberCode).append(", sellingCode=").append(sellingCode)
+				.append("]");
+		return builder.toString();
+	}
+
 }

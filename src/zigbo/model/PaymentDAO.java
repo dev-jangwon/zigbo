@@ -28,6 +28,7 @@ public class PaymentDAO {
 			pstmt.setInt(2, payment.getMemberCode());
 			pstmt.setString(3, payment.getAddress());
 			int result = pstmt.executeUpdate();
+			
 			if(result == 1){
 				return true;
 			}
@@ -37,24 +38,25 @@ public class PaymentDAO {
 		return false;
 	}
 	
-	public static ArrayList<PaymentDTO> getPayment(int paymentCode) throws SQLException{
+	public static PaymentDTO getPayment(int paymentCode) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		ArrayList<PaymentDTO> list = null;
+		PaymentDTO payment = null;
+		
 		try{
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("getPayment"));
 			pstmt.setInt(1, paymentCode);
 			rset = pstmt.executeQuery();
-			/*수정하기!!!
-			 * if(rset.next()){
-				list.add(new PaymentDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getString(4)));
-			}*/
-		}finally{
+			
+			 if (rset.next()) {
+				 payment = new PaymentDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getString(4));
+			}
+		} finally {
 			DBUtil.close(con, pstmt, rset);
 		}
-		return list;
+		return payment;
 	}
 	
 	public static ArrayList<PaymentDTO> getPaymentofMember(int memberCode) throws SQLException{

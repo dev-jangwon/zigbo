@@ -1,24 +1,15 @@
 -- 요청에 "지원하기"
 DROP TABLE APPLY cascade constraint;
-
--- "코멘트"
-DROP TABLE COMMENTS cascade constraint;
-
 -- "찜"
 DROP TABLE INTEREST cascade constraint;
-
 -- "상품"정보
 DROP TABLE ITEM cascade constraint;
-
 -- "회원"정보
 DROP TABLE MEMBER cascade constraint;
-
 -- "결제"정보
 DROP TABLE PAYMENT cascade constraint;
-
 -- "요청" : 사다주세요
 DROP TABLE REQUEST cascade constraint;
-
 -- "판매" : 이거 팔거다
 DROP TABLE SELLING cascade constraint;
 
@@ -37,16 +28,6 @@ CREATE TABLE APPLY
 	request_code         NUMBER(3) NOT NULL ,
 	member_code          NUMBER(3) NOT NULL ,
 	detail               VARCHAR2(200) NULL 
-);
-
-CREATE TABLE COMMENTS
-(
-	division_code        NUMBER(3) NOT NULL, 
-	text_code			 NUMBER(3) NOT NULL,
-	member_code          NUMBER(3) NOT NULL,
-	comments              VARCHAR2(200) NOT NULL,
-	reply                VARCHAR2(200) NULL,
-	PRIMARY KEY(division_code,text_code)
 );
 
 CREATE SEQUENCE interest_seq;
@@ -114,9 +95,6 @@ CREATE TABLE SELLING
 
 ALTER TABLE APPLY ADD (CONSTRAINT R_1 FOREIGN KEY (request_code) REFERENCES REQUEST (request_code));
 ALTER TABLE APPLY ADD (CONSTRAINT R_2 FOREIGN KEY (member_code) REFERENCES MEMBER (member_code));
-ALTER TABLE COMMENTS ADD (CONSTRAINT R_3 FOREIGN KEY (member_code) REFERENCES MEMBER (member_code));
-ALTER TABLE COMMENTS ADD (CONSTRAINT R_4 FOREIGN KEY (text_code) REFERENCES REQUEST(request_code)); --가?
-ALTER TABLE COMMENTS ADD (CONSTRAINT R_5 FOREIGN KEY (text_code) REFERENCES SELLING (selling_code)); --능?
 ALTER TABLE INTEREST ADD (CONSTRAINT R_6 FOREIGN KEY (member_code) REFERENCES MEMBER (member_code));
 ALTER TABLE INTEREST ADD (CONSTRAINT R_7 FOREIGN KEY (selling_code) REFERENCES SELLING (selling_code));
 ALTER TABLE PAYMENT ADD (CONSTRAINT R_8 FOREIGN KEY (selling_code) REFERENCES SELLING (selling_code));

@@ -1,12 +1,15 @@
 package zigbo.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import zigbo.model.ZigboService;
+import zigbo.model.dto.ApplyDTO;
+import zigbo.model.dto.RequestDTO;
 
 public class RequestController extends HttpServlet {
 	
@@ -21,8 +24,6 @@ public class RequestController extends HttpServlet {
 				addRequest(request, response);
 			}else if(command.equals("getRequest")){
 				getRequest(request, response);
-			}else if(command.equals("getItemByRequestCode")){
-				getItemByRequestCode(request, response);
 			}else if(command.equals("getAllRequest")){
 				getAllRequest(request, response);
 			}else if(command.equals("updateRequestViews")){
@@ -31,22 +32,17 @@ public class RequestController extends HttpServlet {
 				updateRequestProgress(request, response);
 			}else if(command.equals("getRequestofMember")){
 				getRequestofMember(request, response);
-				
-				
 			}else if(command.equals("addApply")){
 				addApply(request, response);
 			}else if(command.equals("getApply")){
 				getApply(request, response);
 			}else if(command.equals("getAllApply")){
 				getAllApply(request, response);
-			}else if(command.equals("updateApplyDetail")){
-				updateApplyDetail(request, response);
 			}else if(command.equals("deleteApply")){
 				deleteApply(request, response);
 			}else if(command.equals("getApplyofMember")){
 				getApplyofMember(request, response);
 			}
-			
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 			request.getRequestDispatcher("showError.jsp").forward(request, response);
@@ -60,13 +56,13 @@ public class RequestController extends HttpServlet {
 	      int memberCode = Integer.parseInt(request.getParameter("MemberCode"));
 	      int itemCode = Integer.parseInt(request.getParameter("ItemCode"));
 	      String location = request.getParameter("Location");
-	      RequestDTO myrequest = new RequestDTO(memberCode, itemCode, location);
+	      RequestDTO myrequest = new RequestDTO(0, itemCode, memberCode, 0, "W", location);
 	      
 	      try{
 	         boolean result = ZigboService.addRequest(myrequest);
 	         if(result){
 	            request.setAttribute("myrequest", myrequest);
-	            request.setAttribute("successMsg", "가입 완료");
+	            request.setAttribute("successMsg", "요청 성공");
 	            //url = "activistDetail.jsp";
 	         }else{
 	            request.setAttribute("errorMsg", "다시 시도하세요");
@@ -87,17 +83,6 @@ public class RequestController extends HttpServlet {
 	      }
 	      request.getRequestDispatcher(url).forward(request, response);
 	   }
-	   
-	   public void getItemByRequestCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		      String url = "showError.jsp";
-		      try {
-		         request.setAttribute("myrequest", ZigboService.getItemByRequestCode(Integer.parseInt(request.getParameter("ItemCode"))));
-		         //url = "activistDetail.jsp";
-		      }catch(Exception s){
-		         request.setAttribute("errorMsg", s.getMessage());
-		      }
-		      request.getRequestDispatcher(url).forward(request, response);
-		   }
 	   
 	   public void getAllRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	      String url = "showError.jsp";
@@ -141,11 +126,7 @@ public class RequestController extends HttpServlet {
 		         request.setAttribute("errorMsg", s.getMessage());
 		      }
 		      request.getRequestDispatcher(url).forward(request, response);
-		   }
-	   
-	   
-	   
-	   
+	   }
 	   
 	   public void addApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		      String url = "showError.jsp";
@@ -153,7 +134,7 @@ public class RequestController extends HttpServlet {
 		      int memberCode = Integer.parseInt(request.getParameter("MemberCode"));
 		      int itemCode = Integer.parseInt(request.getParameter("ItemCode"));
 		      String location = request.getParameter("Location");
-		      ApplyDTO apply = new ApplyDTO(memberCode, itemCode, location);
+		      ApplyDTO apply = new ApplyDTO(0, memberCode, itemCode, location);
 		      
 		      try{
 		         boolean result = ZigboService.addApply(apply);
@@ -192,17 +173,6 @@ public class RequestController extends HttpServlet {
 		      request.getRequestDispatcher(url).forward(request, response);
 		   }
 		   
-		   public void updateApplyDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		      String url = "showError.jsp";
-		      try {
-		         request.setAttribute("apply", ZigboService.updateApplyDetail(Integer.parseInt(request.getParameter("ApplyCode"))));
-		         //url = "activistDetail.jsp";
-		      }catch(Exception s){
-		         request.setAttribute("errorMsg", s.getMessage());
-		      }
-		      request.getRequestDispatcher(url).forward(request, response);
-		   }
-		   
 			public void deleteApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			      String url = "showError.jsp";
 			      try {
@@ -224,6 +194,5 @@ public class RequestController extends HttpServlet {
 			      }
 			      request.getRequestDispatcher(url).forward(request, response);
 			   }
-
 
 }

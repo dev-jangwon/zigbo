@@ -24,7 +24,7 @@ public class InterestDAO {
        deleteInterest // Âò »èÁ¦
        */
 
-   static ResourceBundle sql = DBUtil.getResourceBundle();
+	static ResourceBundle sql = DBUtil.getResourceBundle();
    
       public static boolean addInterest(InterestDTO Interest) throws SQLException{
          Connection con = null;
@@ -101,5 +101,4 @@ public class InterestDAO {
          return false;
       }
       
-   
 }

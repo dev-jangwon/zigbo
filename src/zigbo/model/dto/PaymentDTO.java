@@ -8,40 +8,47 @@ public class PaymentDTO {
 	private String address; //주문지는 어디다
 	
 	public PaymentDTO() {}
+	
 	public PaymentDTO(int sellingCode, int memberCode, String address) {
-		super();
 		this.sellingCode = sellingCode;
 		this.memberCode = memberCode;
 		this.address = address;
 	}
 	public PaymentDTO(int paymentCode, int sellingCode, int memberCode, String address) {
-		super();
 		this.paymentCode = paymentCode;
 		this.sellingCode = sellingCode;
 		this.memberCode = memberCode;
 		this.address = address;
 	}
+	
 	public int getPaymentCode() {
 		return paymentCode;
 	}
+	
 	public void setPaymentCode(int paymentCode) {
 		this.paymentCode = paymentCode;
 	}
+	
 	public int getSellingCode() {
 		return sellingCode;
 	}
+	
 	public void setSellingCode(int sellingCode) {
 		this.sellingCode = sellingCode;
 	}
+	
 	public int getMemberCode() {
 		return memberCode;
 	}
+	
 	public void setMemberCode(int memberCode) {
 		this.memberCode = memberCode;
 	}
+	
 	public String getAddress() {
 		return address;
 	}
+	
 	public void setAddress(String address) {
 		this.address = address;
 	}

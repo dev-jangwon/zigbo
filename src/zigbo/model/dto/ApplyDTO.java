@@ -8,11 +8,9 @@ public class ApplyDTO {
 	private String detail;	//VARCHAR2(200) NULL 
 	
 	public ApplyDTO() {
-		super();
 	}
 
 	public ApplyDTO(int applyCode, int requestCode, int memberCode, String detail) {
-		super();
 		this.applyCode = applyCode;
 		this.requestCode = requestCode;
 		this.memberCode = memberCode;
@@ -49,6 +47,14 @@ public class ApplyDTO {
 
 	public void setDetail(String detail) {
 		this.detail = detail;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ApplyDTO [applyCode=").append(applyCode).append(", requestCode=").append(requestCode)
+				.append(", memberCode=").append(memberCode).append(", detail=").append(detail).append("]");
+		return builder.toString();
 	}
 
 }

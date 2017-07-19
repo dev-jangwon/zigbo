@@ -9,17 +9,17 @@ public class ItemDTO {
 	private String picture1; //BLOB NULL ,
 	private String picture2; //BLOB NULL 
 	
-	public ItemDTO() {	}
+	public ItemDTO() {}
+	
 	public ItemDTO(String price, String detail, String location, String picture1, String picture2) {
-		super();
 		this.price = price;
 		this.detail = detail;
 		this.location = location;
 		this.picture1 = picture1;
 		this.picture2 = picture2;
 	}
+	
 	public ItemDTO(int itemCode, String price, String detail, String location, String picture1, String picture2) {
-		super();
 		this.itemCode = itemCode;
 		this.price = price;
 		this.detail = detail;
@@ -75,7 +75,24 @@ public class ItemDTO {
 	public void setPicture2(String picture2) {
 		this.picture2 = picture2;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ItemDTO [itemCode=");
+		builder.append(itemCode);
+		builder.append(", price=");
+		builder.append(price);
+		builder.append(", detail=");
+		builder.append(detail);
+		builder.append(", location=");
+		builder.append(location);
+		builder.append(", picture1=");
+		builder.append(picture1);
+		builder.append(", picture2=");
+		builder.append(picture2);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 }

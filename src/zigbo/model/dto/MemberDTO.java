@@ -12,7 +12,6 @@ public class MemberDTO {
 	public MemberDTO() {}
 
 	public MemberDTO(String email, String password, String phone, String address, String account) {
-		super();
 		//입력받는거 기반
 		this.email = email;
 		this.password = password;

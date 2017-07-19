@@ -33,21 +33,24 @@ public class SellingDAO {
 	 */
 	
 	
-	public static boolean addSelling(SellingDTO selling) throws SQLException{
+	public static boolean addSelling(SellingDTO selling) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		try{
+		
+		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("addSelling"));
 			pstmt.setInt(1, selling.getMemberCode());
 			pstmt.setInt(2, selling.getItemCode());
-			pstmt.setInt(3, selling.getViews()); //?
+			pstmt.setInt(3, selling.getViews());
 			pstmt.setString(4, selling.getLocation());
+			
 			int result = pstmt.executeUpdate();
+			
 			if(result == 1){
 				return true;
 			}
-		}finally{
+		} finally {
 			DBUtil.close(con, pstmt);
 		}
 		return false;
@@ -64,10 +67,10 @@ public class SellingDAO {
 			pstmt = con.prepareStatement(sql.getString("getSelling"));
 			pstmt.setInt(1, sellingCode);
 			rset = pstmt.executeQuery();
-			if(rset.next()){
+			if (rset.next()) {
 				selling = new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6));
 			}
-		}finally{
+		} finally {
 			DBUtil.close(con, pstmt, rset);
 		}
 		return selling;
@@ -83,7 +86,7 @@ public class SellingDAO {
 			pstmt = con.prepareStatement(sql.getString("getAllSelling"));
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
-			while(rset.next()){
+			while(rset.next()) {
 				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6)));
 			}
 		}finally{

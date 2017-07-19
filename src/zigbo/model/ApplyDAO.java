@@ -26,16 +26,15 @@ public class ApplyDAO {
 	
 	static ResourceBundle sql = DBUtil.getResourceBundle();
 	   
-	   public static boolean addApply(ApplyDTO Apply) throws SQLException{
+	   public static boolean addApply(ApplyDTO apply) throws SQLException{
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
 	      try{
 	         con = DBUtil.getConnection();
 	         pstmt = con.prepareStatement(sql.getString("addApply"));
-	         pstmt.setInt(1, Apply.getApplyCode());
-	         pstmt.setInt(2, Apply.getMemberCode());
-	         pstmt.setInt(3, Apply.getRequestCode());
-	         pstmt.setString(4, Apply.getDetail());
+	         pstmt.setInt(1, apply.getMemberCode());
+	         pstmt.setInt(2, apply.getRequestCode());
+	         pstmt.setString(3, apply.getDetail());
 	         int result = pstmt.executeUpdate();
 	         if(result == 1){
 	            return true;
@@ -85,30 +84,13 @@ public class ApplyDAO {
 	      return list;
 	   }
 	   
-	   public static boolean updateApplyDetail(int ApplyCode) throws SQLException{      
-	      Connection con = null;
-	      PreparedStatement pstmt = null;
-	      try{
-	         con = DBUtil.getConnection();
-	         pstmt = con.prepareStatement(sql.getString("updateApplyDetail"));
-	         pstmt.setInt(1, ApplyCode);
-	         int result = pstmt.executeUpdate();
-	         if(result == 1){
-	            return true;
-	         }
-	      }finally{
-	         DBUtil.close(con, pstmt);
-	      }
-	      return false;
-	   }
-	   	   
-	   public static boolean deleteApply(int ApplyCode) throws SQLException{
+	   public static boolean deleteApply(int applyCode) throws SQLException{
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
 	      try{
 	         con = DBUtil.getConnection();
 	         pstmt = con.prepareStatement(sql.getString("deleteApply"));
-	         pstmt.setInt(1, ApplyCode);
+	         pstmt.setInt(1, applyCode);
 	         int result = pstmt.executeUpdate();
 	         if(result == 1){
 	            return true;
@@ -138,8 +120,5 @@ public class ApplyDAO {
 			}
 			return list;
 		}
-		
-		/*
-		 * getApplyofMember //회원이 사다주겠다고 apply한 정보 불러옴
-		 */
+	   
 }

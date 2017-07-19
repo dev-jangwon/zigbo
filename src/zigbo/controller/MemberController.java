@@ -22,10 +22,10 @@ public class MemberController extends HttpServlet {
 				addMember(request, response);
 			}else if(command.equals("getMember")){
 				getMember(request, response);
-			}else if(command.equals("MemberUpdate")){
-				MemberUpdate(request, response);
-			}else if(command.equals("MemberDelete")){
-				MemberDelete(request, response);
+			}else if(command.equals("updateMember")){
+				updateMember(request, response);
+			}else if(command.equals("deleteMember")){
+				deleteMember(request, response);
 			}else if(command.equals("getSellingofMember")){
 				getMember(request, response);
 			}
@@ -40,11 +40,11 @@ public class MemberController extends HttpServlet {
 	public void addMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		
-		String email = request.getParameter("Email");
-		String password = request.getParameter("Password");
-		String phone = request.getParameter("Phone");
-		String address = request.getParameter("Address");
-		String account = request.getParameter("Account");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String account = request.getParameter("account");
 		
 		MemberDTO member = new MemberDTO(email, password, phone, address, account);
 		try{
@@ -63,23 +63,27 @@ public class MemberController extends HttpServlet {
 	}
 	
 	public void getMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  //public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		      String url = "showError.jsp";
 		      
-		      
 		      try {
-		         request.setAttribute("getMember", ZigboService.getMember(Integer.parseInt(request.getParameter("MemberCode")));
+		         request.setAttribute("getMember", ZigboService.getMember(Integer.parseInt(request.getParameter("memberCode"))));
 		         //url = "getMember.jsp";
 		      }catch(Exception s){
 		         request.setAttribute("errorMsg", s.getMessage());
 		      }
 		      request.getRequestDispatcher(url).forward(request, response);
-		   }
+	}
 	
-	public void MemberUpdate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void updateMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	      String url = "showError.jsp";
+	      
+		  String password = request.getParameter("password");
+		  String phone = request.getParameter("phone");
+		  String address = request.getParameter("address");
+		  String account = request.getParameter("account");
+	      
 	      try {
-	         request.setAttribute("successMsg",ZigboService.MemberUpdate(Integer.pdarseInt(request.getParameter("MemberCode")));
+	         request.setAttribute("successMsg", ZigboService.updateMember(Integer.parseInt(request.getParameter("MemberCode")), password, phone, address, account));
 	         url = "activistDetail.jsp";
 	      }catch(Exception s){
 	         request.setAttribute("errorMsg", s.getMessage());
@@ -87,10 +91,10 @@ public class MemberController extends HttpServlet {
 	      request.getRequestDispatcher(url).forward(request, response);
 	   }
 	   
-	public void MemberDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void deleteMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	      String url = "showError.jsp";
 	      try {
-	    	  ZigboService.MemberDelete(Integer.parseInt(request.getParameter("MemberCode")));
+	    	  ZigboService.deleteMember(Integer.parseInt(request.getParameter("MemberCode")));
 	         url = "main.jsp";
 	      }catch(Exception s){
 	         request.setAttribute("errorMsg", s.getMessage());
@@ -99,16 +103,14 @@ public class MemberController extends HttpServlet {
 	   }
 	
 	public void getSellingofMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  //public void probonoProjectAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		      String url = "showError.jsp";
 		      try {
-		         request.setAttribute("getSellingofMember", ZigboService.getSellingofMember(Integer.parseInt(request.getParameter("MemberCode")));
+		         request.setAttribute("getSellingofMember", ZigboService.getSellingofMember(Integer.parseInt(request.getParameter("MemberCode"))));
 		         //url = "getMember.jsp";
 		      }catch(Exception s){
 		         request.setAttribute("errorMsg", s.getMessage());
 		      }
 		      request.getRequestDispatcher(url).forward(request, response);
 		   }
-	
 	
 }
