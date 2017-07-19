@@ -1,6 +1,7 @@
 package zigbo.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import zigbo.model.ZigboService;
 import zigbo.model.dto.ApplyDTO;
+import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.RequestDTO;
+import zigbo.model.dto.SellingDTO;
 
 public class RequestController extends HttpServlet {
 	
@@ -42,6 +45,8 @@ public class RequestController extends HttpServlet {
 				deleteApply(request, response);
 			}else if(command.equals("getApplyofMember")){
 				getApplyofMember(request, response);
+			} else if(command.equals("getMostRecentRequest")) {
+				getMostRecentRequest(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -194,5 +199,26 @@ public class RequestController extends HttpServlet {
 			      }
 			      request.getRequestDispatcher(url).forward(request, response);
 			   }
+		   
+		   public void getMostRecentRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			   String url = "showError.jsp";
+				ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
+				try {
+					ArrayList<RequestDTO> list = ZigboService.getMostRecentRequest();
+					
+					for (int i = 0; i < list.size(); i++) {
+						int itemCode = list.get(i).getItemCode();
+						ret.add(ZigboService.getItem(itemCode));
+					}
+
+					request.setAttribute("requestList", list);
+					request.setAttribute("recentRequestItems", ret);
+					url = "request_index_item.jsp";
+				}catch(Exception s){
+					s.printStackTrace();
+					request.setAttribute("errorMsg", s.getMessage());
+				}
+				request.getRequestDispatcher(url).forward(request, response);
+		   }
 
 }
