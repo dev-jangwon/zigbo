@@ -11,6 +11,14 @@ public class ItemDTO {
 	
 	public ItemDTO() {}
 	
+	public ItemDTO(String title, String price, String detail, String location, String picture) {
+		this.title = title;
+		this.price = price;
+		this.detail = detail;
+		this.location = location;
+		this.picture = picture;
+	}
+	
 	public ItemDTO(int itemCode, String title, String price, String detail, String location, String picture) {
 		this.itemCode = itemCode;
 		this.title = title;

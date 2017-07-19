@@ -53,10 +53,28 @@ public class SellingController extends HttpServlet {
 	
 	public void addSelling(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
+		String title = request.getParameter("title");
+		String detail = request.getParameter("detail");
+		String price = request.getParameter("price");
+		String location = request.getParameter("location");
+		String picture = request.getParameter("picture");
 		
+		ItemDTO item = new ItemDTO(title, price, detail, location, picture);
+		if(!ZigboService.addItem(item)){
+			//item 추가가 되지 않음
+			return;
+		}
+		
+		MemberDTO member = ZigboService.getMemberByEmail(item)
+		
+		Member
+		addItem
 		int memberCode = Integer.parseInt(request.getParameter("MemberCode"));
 		int itemCode = Integer.parseInt(request.getParameter("ItemCode"));
 		String location = request.getParameter("Location");
+		
+		System.out.println(memberCode+" "+itemCode+" "+ location);
+		
 		SellingDTO selling = new SellingDTO(memberCode, itemCode, location);
 		
 		try{
@@ -64,7 +82,7 @@ public class SellingController extends HttpServlet {
 			if(result){
 				request.setAttribute("selling", selling);
 				request.setAttribute("successMsg", "가입 완료");
-				//url = "activistDetail.jsp";
+				url = "sales_write.jsp";
 			}else{
 				request.setAttribute("errorMsg", "다시 시도하세요");
 			}

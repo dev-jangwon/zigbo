@@ -22,7 +22,27 @@ public class MemberDAO {
 	 * 
 	 */
 	
-	public static int getMemberByEmail(String email) throws SQLException{
+	public static String getEmailByMemberCode(int memberCode) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String email = null;
+		
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getEmailByMemberCode"));
+			pstmt.setInt(1, memberCode);
+			rset = pstmt.executeQuery();
+			if(rset.next()){
+				email = rset.getString(1);
+			}
+		}finally{
+			DBUtil.close(con, pstmt, rset);
+		}
+		return email;
+	}
+	
+	public static int getCountByEmail(String email) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -30,7 +50,7 @@ public class MemberDAO {
 		
 		try{
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getString("getMemberByEmail"));
+			pstmt = con.prepareStatement(sql.getString("getCountByEmail"));
 			pstmt.setString(1, email);
 			rset = pstmt.executeQuery();
 			if(rset.next()){
@@ -40,6 +60,26 @@ public class MemberDAO {
 			DBUtil.close(con, pstmt, rset);
 		}
 		return count;
+	}
+	
+	public static MemberDTO getMemberByEmail(String email) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		MemberDTO member = null;
+		
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getMemberByEmail"));
+			pstmt.setString(1, email);
+			rset = pstmt.executeQuery();
+			if(rset.next()){
+				member = new MemberDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6));
+			}
+		}finally{
+			DBUtil.close(con, pstmt, rset);
+		}
+		return member;
 	}
 	
 	public static boolean addMember(MemberDTO member) throws SQLException{
