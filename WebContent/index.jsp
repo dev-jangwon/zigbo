@@ -100,9 +100,9 @@
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenuSale">
-									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">최신</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">조회수</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1" href="#">찜</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1" onclick="getRecentSelling()">최신</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1" onclick="getViewSelling()">조회수</a></li>
+									<li role="presentation"><a role="menuitem" tabindex="-1" onclick="getZZimSelling()">찜</a></li>
 			    					</ul>
 								<button class="btn btn-primary">더보기</button>
 							</div>

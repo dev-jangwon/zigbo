@@ -38,12 +38,13 @@ public class ItemController extends HttpServlet {
 	public void addItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
 		
+		String title = request.getParameter("title");
 		String price = request.getParameter("price");
 		String detail = request.getParameter("detail");
 		String location = request.getParameter("location");
-		String picture1 = request.getParameter("picture1");
-		String picture2 = request.getParameter("picture2");
-		ItemDTO item = new ItemDTO(price, detail, location, picture1, picture2);
+		String picture = request.getParameter("picture");
+		
+		ItemDTO item = new ItemDTO(0, title, price, detail, location, picture);
 		
 		try{
 			boolean result = ZigboService.addItem(item);

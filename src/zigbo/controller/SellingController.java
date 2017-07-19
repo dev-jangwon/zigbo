@@ -118,10 +118,19 @@ public class SellingController extends HttpServlet {
 
 	public void getMostViews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
+		ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
 		try {
-			request.setAttribute("sellings", ZigboService.getMostViews());
-			//url = "probonoProjectList.jsp";
+			ArrayList<SellingDTO> list = ZigboService.getMostViews();
+			request.setAttribute("sellingList", list);
+			for (int i = 0; i < list.size(); i++) {
+				int itemCode = list.get(i).getItemCode();
+				ret.add(ZigboService.getItem(itemCode));
+			}
+
+			request.setAttribute("recentSellingItems", ret);
+			url = "index_item.jsp";
 		}catch(Exception s){
+			s.printStackTrace();
 			request.setAttribute("errorMsg", s.getMessage());
 		}
 		request.getRequestDispatcher(url).forward(request, response);
@@ -131,13 +140,13 @@ public class SellingController extends HttpServlet {
 		String url = "showError.jsp";
 		ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
 		try {
-//			ArrayList<SellingDTO> list = ZigboService.getMostRecent();
-//			request.setAttribute("sellingList", list);
-//			for (int i = 0; i < list.size(); i++) {
-//				int itemCode = list.get(i).getItemCode();
-//				ret.add(ZigboService.getItem(itemCode));
-//			}
-			ret.add(new ItemDTO(1, "20000원", "상세 설명입니다", "w", "W", "W"));
+			ArrayList<SellingDTO> list = ZigboService.getMostRecent();
+			request.setAttribute("sellingList", list);
+			for (int i = 0; i < list.size(); i++) {
+				int itemCode = list.get(i).getItemCode();
+				ret.add(ZigboService.getItem(itemCode));
+			}
+//			ret.add(new ItemDTO(1, "이름1","1000원","상세정보1","서울","사진1"));
 			request.setAttribute("recentSellingItems", ret);
 			url = "index_item.jsp";
 		}catch(Exception s){
@@ -149,10 +158,19 @@ public class SellingController extends HttpServlet {
 	
 	public void getMostInterest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "showError.jsp";
+		ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
 		try {
-			request.setAttribute("sellings", ZigboService.getMostInterest());
-			//url = "probonoProjectList.jsp";
+			ArrayList<SellingDTO> list = ZigboService.getMostInterest();
+			request.setAttribute("sellingList", list);
+			for (int i = 0; i < list.size(); i++) {
+				int itemCode = list.get(i).getItemCode();
+				ret.add(ZigboService.getItem(itemCode));
+			}
+
+			request.setAttribute("recentSellingItems", ret);
+			url = "index_item.jsp";
 		}catch(Exception s){
+			s.printStackTrace();
 			request.setAttribute("errorMsg", s.getMessage());
 		}
 		request.getRequestDispatcher(url).forward(request, response);

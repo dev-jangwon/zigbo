@@ -10,10 +10,10 @@ function getRecentSelling() {
 	});
 }
 
-function getRecentRequest() {
+function getViewSelling() {
 	$.ajax({
 		url: "request",
-		data: {command: "getRequest"},
+		data: {command: "getMostViews"},
 		method: "post",
 		dataType: "html",
 		success: function(result) {
@@ -21,7 +21,16 @@ function getRecentRequest() {
 		}
 	});
 }
-getRecentSelling();
 
-
+function getZZimSelling() {
+	$.ajax({
+		url: "request",
+		data: {command: "getMostInterest"},
+		method: "post",
+		dataType: "html",
+		success: function(result) {
+			$("#index_selling_list").html(result);
+		}
+	});
+}
 getRecentSelling();

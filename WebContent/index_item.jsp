@@ -8,8 +8,8 @@
 			<div class="thumbnail">
 				<img src="img/profile.png" alt="" style="width:252.5px;height:252.5px;">
 					<div class="caption">
-						<h3></h3>
-							<p>${item.detail}</p>
+						<h3>${item.title}</h3>
+							<p>${item.detail }</p>
 							<p>
 								<a href='<%=url%>selling?command=sellingDetail&itemCode=${item.itemCode}' class="btn btn-primary" role="button">${item.price}</a>
 								<a href='<%=url%>selling?command=sellingDetail&itemCode=${item.itemCode}' class="btn btn-default" role="button">상세보기</a>
