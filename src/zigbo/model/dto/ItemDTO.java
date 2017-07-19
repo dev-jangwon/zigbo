@@ -3,29 +3,21 @@ package zigbo.model.dto;
 public class ItemDTO {
 
 	private int itemCode; //NUMBER(3) NOT NULL ,
+	private String title;
 	private String price; //VARCHAR2(20) NULL ,
 	private String detail; //VARCHAR2(200) NULL ,
 	private String location; //VARCHAR2(100) NULL ,
-	private String picture1; //BLOB NULL ,
-	private String picture2; //BLOB NULL 
+	private String picture; //BLOB NULL ,
 	
 	public ItemDTO() {}
 	
-	public ItemDTO(String price, String detail, String location, String picture1, String picture2) {
-		this.price = price;
-		this.detail = detail;
-		this.location = location;
-		this.picture1 = picture1;
-		this.picture2 = picture2;
-	}
-	
-	public ItemDTO(int itemCode, String price, String detail, String location, String picture1, String picture2) {
+	public ItemDTO(int itemCode, String title, String price, String detail, String location, String picture) {
 		this.itemCode = itemCode;
+		this.title = title;
 		this.price = price;
 		this.detail = detail;
 		this.location = location;
-		this.picture1 = picture1;
-		this.picture2 = picture2;
+		this.picture = picture;
 	}
 
 	public int getItemCode() {
@@ -36,6 +28,14 @@ public class ItemDTO {
 		this.itemCode = itemCode;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 	public String getPrice() {
 		return price;
 	}
@@ -60,20 +60,12 @@ public class ItemDTO {
 		this.location = location;
 	}
 
-	public String getPicture1() {
-		return picture1;
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setPicture1(String picture1) {
-		this.picture1 = picture1;
-	}
-
-	public String getPicture2() {
-		return picture2;
-	}
-
-	public void setPicture2(String picture2) {
-		this.picture2 = picture2;
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	@Override
@@ -81,16 +73,16 @@ public class ItemDTO {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ItemDTO [itemCode=");
 		builder.append(itemCode);
+		builder.append(", title=");
+		builder.append(title);
 		builder.append(", price=");
 		builder.append(price);
 		builder.append(", detail=");
 		builder.append(detail);
 		builder.append(", location=");
 		builder.append(location);
-		builder.append(", picture1=");
-		builder.append(picture1);
-		builder.append(", picture2=");
-		builder.append(picture2);
+		builder.append(", picture=");
+		builder.append(picture);
 		builder.append("]");
 		return builder.toString();
 	}

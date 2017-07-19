@@ -42,11 +42,11 @@ CREATE SEQUENCE item_code_seq;
 CREATE TABLE ITEM
 (
 	item_code            NUMBER(3) NOT NULL PRIMARY KEY,
+	title				 VARCHAR2(20) NULL ,
 	price                VARCHAR2(20) NULL ,
 	detail               VARCHAR2(200) NULL ,
 	location             VARCHAR2(100) NULL ,
-	picture1             BLOB NULL ,
-	picture2             BLOB NULL 
+	picture              VARCHAR2(200) NULL
 );
 
 CREATE SEQUENCE member_code_seq;

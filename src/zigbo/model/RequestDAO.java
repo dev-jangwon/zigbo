@@ -155,5 +155,26 @@ public class RequestDAO {
 		}
 		return list;
 	}
+	
+	public static ArrayList<RequestDTO> getMostRecentRequest() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<RequestDTO> list = null;
+		
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getMostRecentRequest"));
+			rset = pstmt.executeQuery();
+			list = new ArrayList<RequestDTO>();
+			while (rset.next()) {
+				list.add(new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
+						rset.getString(5), rset.getString(6)));
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return list;
+	}
 
 }
