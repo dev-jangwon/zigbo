@@ -72,22 +72,18 @@ public class MemberController extends HttpServlet {
 	}
 	
 	public void getMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			System.out.println("getMember");
-			//String url = "showError.jsp";
-		      String email=request.getParameter("Email").trim();
-		      HttpSession session = request.getSession(); //技记 积己
-		      session.setAttribute("login", email);
-		      System.out.println(email+" "+request.getParameter("Password"));
-		      /*try { //荐沥 鞘夸!!!
-		         request.setAttribute("getMember", ZigboService.getMember(Integer.parseInt(request.getParameter("memberCode"))));
-		         url = "index.jsp";
-		      }catch(Exception s){
-		         request.setAttribute("errorMsg", s.getMessage());
-		      }
-		      request.getRequestDispatcher(url).forward(request, response);*/
-		      String url = "index.jsp";
-		      System.out.print("技记俊 淬败乐绰  蔼 : " + session.getAttribute("login")); 
-		      request.getRequestDispatcher(url).forward(request, response);
+		String url = "showError.jsp";
+		String email = request.getParameter("Email").trim();
+		String password = request.getParameter("Password").trim();
+		try {
+			request.setAttribute("getMember", ZigboService.getMember(email, password));
+			HttpSession session = request.getSession(); // 技记 积己
+			session.setAttribute("login", email);
+			url = "index.jsp";
+		}catch(Exception s){
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
 	}
 	
 	public void updateMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

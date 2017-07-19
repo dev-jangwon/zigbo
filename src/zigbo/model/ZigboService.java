@@ -118,8 +118,8 @@ public class ZigboService {
 		return MemberDAO.addMember(member);
 	}
 
-	public static MemberDTO getMember(int memberCode) throws NotExistException, SQLException {
-		return MemberDAO.getMember(memberCode);
+	public static MemberDTO getMember(String email, String password) throws NotExistException, SQLException {
+		return MemberDAO.getMember(email,password);
 	}
 
 	public static boolean updateMember(int memberCode, String password, String phone, String address, String account) throws SQLException, NotExistException {

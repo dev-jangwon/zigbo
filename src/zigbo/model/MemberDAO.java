@@ -43,7 +43,7 @@ public class MemberDAO {
 		return false;
 	}
 	
-	public static MemberDTO getMember(int memberCode) throws SQLException{
+	public static MemberDTO getMember(String email,String password) throws SQLException{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -52,7 +52,8 @@ public class MemberDAO {
 		try{
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("getMember"));
-			pstmt.setInt(1, memberCode);
+			pstmt.setString(1, email);
+			pstmt.setString(2, password);
 			rset = pstmt.executeQuery();
 			if(rset.next()){
 				member = new MemberDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6));

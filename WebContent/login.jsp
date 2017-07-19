@@ -27,7 +27,7 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#" style="height:75px;">ZigBBo</a>
+				<a class="navbar-brand" href="index.jsp" style="height:75px;">ZigBBo</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 		</div><!-- /.container-fluid -->
