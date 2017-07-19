@@ -33,10 +33,13 @@
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
 					<li class="active">
-						<a href="#">로그인</a>
+						<a href="#">로그아웃</a>
 					</li>
 					<li>
 						<a href="#">판매</a>
+					</li>
+					<li>
+						session: ${session.getAttribute("login")}
 					</li>
 					<li>
 						<a href="#">구매</a>

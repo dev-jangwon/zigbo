@@ -7,7 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import zigbo.model.ItemDAO;
 import zigbo.model.ZigboService;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.PaymentDTO;
@@ -56,31 +58,35 @@ public class SellingController extends HttpServlet {
 		String price = request.getParameter("price");
 		String location = request.getParameter("location");
 		String picture = request.getParameter("picture");
-		
+		//itemCode가져옴
 		ItemDTO item = new ItemDTO(title, price, detail, location, picture);
-		if(!ZigboService.addItem(item)){
-			//item 추가가 되지 않음
-			return;
+		int itemCode = 0;
+		try{
+			if(!ZigboService.addItem(item)){
+				//item 추가가 되지 않음
+				System.out.println("혹시...일로왔냐");
+				return;
+			}
+			itemCode = ItemDAO.getItemCode(title,detail,location);
+		}catch(Exception s){
+			request.setAttribute("errorMsg", s.getMessage());
 		}
-		
-		MemberDTO member = ZigboService.getMemberByEmail(item)
-		
-		Member
-		addItem
-		int memberCode = Integer.parseInt(request.getParameter("MemberCode"));
-		int itemCode = Integer.parseInt(request.getParameter("ItemCode"));
-		String location = request.getParameter("Location");
-		
-		System.out.println(memberCode+" "+itemCode+" "+ location);
+		System.out.println("itemCode: "+itemCode);
+		//memberCode가져옴
+		HttpSession session = request.getSession();
+		System.out.println(session.getId());
+		System.out.println("memberCode: "+ session.getAttribute("login"));
+		int memberCode = (int)session.getAttribute("login");
+		//System.out.println("memberCode: "+ memberCode);
 		
 		SellingDTO selling = new SellingDTO(memberCode, itemCode, location);
 		
 		try{
 			boolean result = ZigboService.addSelling(selling);
 			if(result){
-				request.setAttribute("selling", selling);
+				System.out.println("addSelling됨");
 				request.setAttribute("successMsg", "가입 완료");
-				url = "sales_write.jsp";
+				url = "./sales/sales_list.jsp";
 			}else{
 				request.setAttribute("errorMsg", "다시 시도하세요");
 			}

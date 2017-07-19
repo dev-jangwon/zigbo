@@ -51,7 +51,7 @@
 						</li>
 						</c:otherwise>
 					</c:choose>
-					<li><a href="#">판매</a>
+					<li><a href="./sales/sales_write.jsp">판매</a>
 					</li>
 					<li><a href="#">구매</a>
 					</li>

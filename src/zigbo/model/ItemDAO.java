@@ -33,6 +33,8 @@ public class ItemDAO {
 	   public static boolean addItem(ItemDTO Item) throws SQLException{
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      ItemDTO item = null;
 	      try{
 	         con = DBUtil.getConnection();
 	         pstmt = con.prepareStatement(sql.getString("addItem"));
@@ -50,6 +52,27 @@ public class ItemDAO {
 	      }
 	      return false;
 	   }
+	   
+	   //
+	   public static int getItemCode(String title,String detail,String location) throws SQLException{
+		      Connection con = null;
+		      PreparedStatement pstmt = null;
+		      ResultSet rset = null;
+		      ArrayList<ItemDTO> all = null;
+		      int itemCode = 0;
+		      try{
+		    	 all = ItemDAO.getAllItem();
+		    	 for(ItemDTO i:all){
+		    		 if(i.getTitle().equals(title) && i.getDetail().equals(detail) && i.getLocation().equals(location)){
+		    			 itemCode = i.getItemCode();
+		    			 break;
+		    		 }
+		    	 }
+		      }finally{
+		         DBUtil.close(con, pstmt);
+		      }
+		      return itemCode;
+		   }
 
 	   public static ItemDTO getItem(int ItemCode) throws SQLException{
 	      Connection con = null;
