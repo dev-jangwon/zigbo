@@ -129,7 +129,7 @@ public class SellingController extends HttpServlet {
 			}
 
 			request.setAttribute("recentSellingItems", ret);
-			url = "index_item.jsp";
+			url = "selling_index_item.jsp";
 		}catch(Exception s){
 			s.printStackTrace();
 			request.setAttribute("errorMsg", s.getMessage());
