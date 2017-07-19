@@ -38,7 +38,20 @@
 					</div>	
 				</div>
 				<div class="col-md-4">
-					<div class="zigbbo-list-member">${requestScope.requestList[status.index].memberCode}</div>
+					<div class="zigbbo-list-member">
+					${requestScope.requestList[status.index].memberCode}
+					<c:forEach items="${requestScope.memberEmail}" var="map">
+					${map.key}
+						<c:choose>
+							 
+							<c:when test="${map.key} = ${requestScope.requestList[status.index].memberCode}">
+								${map.value}
+							</c:when>
+							<c:otherwise>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					</div>
 					<div class="zigbbo-list-price"><i class="fa fa-krw"></i>&nbsp;${item.price}</div>	
 				</div>
 			</div>

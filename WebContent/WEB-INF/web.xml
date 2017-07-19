@@ -54,4 +54,7 @@
     <servlet-name>ItemController</servlet-name>
     <url-pattern>/item</url-pattern>
   </servlet-mapping>
+  <session-config>
+  <session-timeout>15</session-timeout>
+ </session-config>
 </web-app>

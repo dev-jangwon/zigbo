@@ -185,11 +185,18 @@
 
 	<script type="text/javascript">
 		function logoutFtn() {
-	<%session.invalidate();
-			session = null;%>
+				$.ajax({
+					url: "member",
+					data: {
+						command: "logout",
+					},
+					method: "post",
+					dataType: "html",
+					success: function(result) {
+					}
+				});
 		}
 	</script>
-
 </body>
 
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>

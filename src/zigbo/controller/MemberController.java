@@ -31,6 +31,8 @@ public class MemberController extends HttpServlet {
 				deleteMember(request, response);
 			}else if(command.equals("getSellingofMember")){
 				getMember(request, response);
+			} else if(command.equals("logout")) {
+				logout(request, response);
 			}
 			
 		}catch(Exception s){
@@ -89,7 +91,7 @@ public class MemberController extends HttpServlet {
 			MemberDTO member = ZigboService.getMember(email, password);
 			if(member!=null){
 				request.setAttribute("getMember",member);
-				HttpSession session = request.getSession(true); // 技记 积己
+				HttpSession session = request.getSession(); // 技记 积己
 				session.setAttribute("login", member.getMemberCode());
 				System.out.println("login捞扼绰 session捞 乐聪? "+session.getAttribute("login"));
 				url = "index.jsp";
@@ -140,5 +142,10 @@ public class MemberController extends HttpServlet {
 		      }
 		      request.getRequestDispatcher(url).forward(request, response);
 		   }
-	
+	public void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			HttpSession session = request.getSession(false);
+	        session.invalidate();
+	        session = null;
+	      response.sendRedirect("index.jsp");
+	   }
 }

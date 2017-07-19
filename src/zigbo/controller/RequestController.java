@@ -92,6 +92,7 @@ public class RequestController extends HttpServlet {
 	   public void getAllRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   String url = "showError.jsp";
 			ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
+			HashMap<Integer, String> memberEmail = new HashMap<Integer, String>();
 //			int pageIndex = Integer.parseInt(request.getParameter("index"));
 			
 			try {
@@ -100,6 +101,7 @@ public class RequestController extends HttpServlet {
 				for (int i = 0; i < list.size(); i++) {
 					int itemCode = list.get(i).getItemCode();
 					ret.add(ZigboService.getItem(itemCode));
+					memberEmail.put(list.get(i).getMemberCode(), ZigboService.getEmailByMemberCode(list.get(i).getMemberCode()));
 				}
 				
 				//1 -> 0, 1, 2, 3
@@ -109,7 +111,7 @@ public class RequestController extends HttpServlet {
 //					int itemCode = list.get(i).getItemCode();
 //					ret.add(ZigboService.getItem(itemCode));
 //				}
-
+				request.setAttribute("memberEmail", memberEmail);
 				request.setAttribute("requestList", list);
 				request.setAttribute("requestItems", ret);
 				url = "./request/request_list_item.jsp";
