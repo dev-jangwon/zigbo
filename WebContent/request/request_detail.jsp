@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html lang="ko">
@@ -7,7 +7,7 @@
 	<link rel="icon" type="image/png" href="/zigbo/assets/paper_img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
-	<title>¡˜±∏ª«∞≥±‚</title>
+	<title>ÏßÅÍµ¨ÎΩÄÍ∞úÍ∏∞</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -35,26 +35,25 @@
 					<c:choose>
 						<c:when test="${sessionScope.login!=null}">
 						<li class="active">
-							<a href="/zigbo/index.jsp" onclick="logoutFtn()">∑Œ±◊æ∆øÙ</a>
+							<a href="/zigbo/index.jsp" onclick="logoutFtn()">Î°úÍ∑∏ÏïÑÏõÉ</a>
 						</li>
 						</c:when>
 						<c:otherwise>
 						<li class="active">
-							<a href="/zigbo/login.jsp">∑Œ±◊¿Œ</a>
+							<a href="/zigbo/login.jsp">Î°úÍ∑∏Ïù∏</a>
 						</li>
 						</c:otherwise>
 					</c:choose>
 					<li>
-						<a href="/zigbo/sales/sales_list.jsp">∆«∏≈</a>
+						<a href="/zigbo/sales/sales_list.jsp">ÌåêÎß§</a>
 					</li>
 					<li>
-						<a href="/zigbo/request/request_list.jsp">ø‰√ª</a>
+						<a href="/zigbo/request/request_list.jsp">Íµ¨Îß§</a>
 					</li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">≥ª ¡§∫∏ <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ÎÇ¥ Ï†ïÎ≥¥ <b class="caret"></b></a>
 						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
-							<li><a href="/zigbo/mypage.jsp">≥ª ¡§∫∏ ºˆ¡§</a></li>
-							<li><a href="/zigbo/mypage.jsp">»∞µø ≥ªø™</a></li>
+							<li><a href="/zigbo/mypage.jsp">ÎÇ¥ Ï†ïÎ≥¥</a></li>
 						</ul>
 					 </li>
 				</ul>
@@ -67,8 +66,8 @@
 	            <div class="container tim-container">
 					<div id="buttons">
 	                    <div class="tim-title" style="text-align:center;">
-	                        <h3>ø‰√ª ªÛºº∫∏±‚<br>
-	                            <!--  <small>ø‰√ª µÓ∑œ«“ ªÛ«∞¿« ¡§∫∏∏¶ ¿‘∑¬«ÿ¡÷ººø‰ </small> -->
+	                        <h3>ÏöîÏ≤≠ ÏÉÅÏÑ∏Î≥¥Í∏∞<br>
+	                            <!--  <small>ÏöîÏ≤≠ Îì±Î°ùÌï† ÏÉÅÌíàÏùò Ï†ïÎ≥¥Î•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî </small> -->
 	                        </h3>
 	                    </div>
 	                    <div class="row">
@@ -76,18 +75,18 @@
 		                        	<div class="form-group">
 		                        		<c:choose>
 										<c:when test="${requestScope.request.progress=='W'}">
-											<span class="label label-primary" style="float:right;font-size:15px;">¥Î±‚¡ﬂ</span>
+											<span class="label label-primary" style="float:right;font-size:15px;">ÎåÄÍ∏∞Ï§ë</span>
 										</c:when>
 										<c:when test="${requestScope.request.progress=='D'}">
-											<span class="label label-success" style="float:right;font-size:15px;">øœ∑·</span>
+											<span class="label label-success" style="float:right;font-size:15px;">ÏôÑÎ£å</span>
 										</c:when>
 										<c:otherwise>
-											<span class="label label-info" style="float:right;font-size:15px;">¡¯«‡¡ﬂ</span>
+											<span class="label label-info" style="float:right;font-size:15px;">ÏßÑÌñâÏ§ë</span>
 										</c:otherwise>
 									</c:choose>
 			                        	<div class="row" style="margin-bottom:20px;margin-top:20px;">
 				                        		<div class="col-md-2">
-				                        			<h4 style="margin:0px;padding-top:5px;">ø‰√ª¿⁄</h4>
+				                        			<h4 style="margin:0px;padding-top:5px;">ÏöîÏ≤≠Ïûê</h4>
 				                        		</div>
 				                        		<div class="col-md-10">
 				                        			<div class="row" style="margin-bottom:0px;">
@@ -95,22 +94,22 @@
 				                        					<img src="/zigbo/img/profile.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
 				                        				</div>
 				                        				<div class="col-md-8">
-				                        					<div style="margin:20px;">¿Ã∏ﬁ¿œ
+				                        					<div style="margin:20px;">Ïù¥Î©îÏùº
 				                        						<span style="padding-left:40px;">
 				                        						${requestScope.member.email}
 				                        						</span>
 				                        					</div>
-				                        					<div style="margin:20px;">µÓ&nbsp;∑œ
+				                        					<div style="margin:20px;">Îì±&nbsp;Î°ù
 				                        						<span style="padding-left:50px;">
 				                        							<span class="label label-default">5</span>
 				                        						</span>
 				                        					</div>
-				                        					<div style="margin:20px;">øœ&nbsp;∑·
+				                        					<div style="margin:20px;">ÏôÑ&nbsp;Î£å
 				                        						<span style="padding-left:50px;">
 				                        							<span class="label label-success">0</span>
 				                        						</span>
 				                        					</div>
-				                        					<div style="margin:20px;">∫∞&nbsp;¡°
+				                        					<div style="margin:20px;">Î≥Ñ&nbsp;Ï†ê
 				                        						<span style="padding-left:50px;">
 				                        							<i class="fa fa-star" aria-hidden="true"></i>
 				                        							<i class="fa fa-star" aria-hidden="true"></i>
@@ -124,7 +123,7 @@
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">ªÛ«∞∏Ì</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">ÏÉÅÌíàÎ™Ö</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
 			                        			<input type="text" value="${requestScope.item.title}" disabled class="form-control">		
@@ -132,7 +131,7 @@
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">¡¶«∞ º≥∏Ì</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">Ï†úÌíà ÏÑ§Î™Ö</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
 			                        			<textarea class="form-control" rows="4" cols="50" disabled>${requestScope.item.detail}</textarea>		
@@ -140,7 +139,7 @@
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">±∏∏≈ ∞°∞›</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">Íµ¨Îß§ Í∞ÄÍ≤©</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
 			                        			<input type="text" value="${requestScope.item.price}" class="form-control" disabled>
@@ -148,7 +147,7 @@
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">¿ÃπÃ¡ˆ</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">Ïù¥ÎØ∏ÏßÄ</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
 			                        			
@@ -156,14 +155,14 @@
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">¿ßƒ°</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">ÏúÑÏπò</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
 			                        			${requestScope.item.location}
 			                        		</div>
 			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
-			                        		<button href="#" class="btn btn-fill btn-primary">¡ˆø¯</button>
+			                        		<button onclick="location.href='/zigbo/request?command=supportApply&memberCode=${requestScope.member.memberCode}&requestCode=${requestScope.request.requestCode}&itemCode=${requestScope.item.itemCode}'" class="btn btn-fill btn-primary">ÏßÄÏõê</button>
 			                        	</div>
 			                    	</div> 
 	                        </div>

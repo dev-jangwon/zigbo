@@ -40,6 +40,13 @@
                         <%session.setAttribute("sucRequest",null);%>
                 	</script>
 				</c:if>
+				<c:if test="${sucApply!=null}">
+					<script type="text/javascript">
+                    	var sucApply = "<%=session.getAttribute("sucApply").toString()%>";
+                        alert(sucApply);
+                        <%session.setAttribute("sucApply",null);%>
+                	</script>
+				</c:if>
 					<c:choose>
 						<c:when test="${sessionScope.login!=null}">
 						<li class="active">
@@ -62,8 +69,7 @@
 						<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">내 정보 <b class="caret"></b></a>
 						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
-							<li><a href="/zigbo/mypage.jsp">내 정보 수정</a></li>
-							<li><a href="/zigbo/mypage.jsp">활동 내역</a></li>
+							<li><a href="/zigbo/mypage.jsp">내 정보</a></li>
 						</ul>
 					 </li>
 					</c:if>
@@ -119,6 +125,10 @@
 	        </div>
 	    </div>
 	</footer>
+	<div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="location.href='../request/request_write.jsp'">
+	    <p class="plus">+</p>
+	    <img class="edit" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
+	  </div>
 	<script src="/zigbo/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 	<script src="/zigbo/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 

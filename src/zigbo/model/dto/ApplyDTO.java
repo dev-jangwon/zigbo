@@ -9,7 +9,13 @@ public class ApplyDTO {
 	
 	public ApplyDTO() {
 	}
-
+	
+	public ApplyDTO(int requestCode, int memberCode, String detail) {
+		this.requestCode = requestCode;
+		this.memberCode = memberCode;
+		this.detail = detail;
+	}
+	
 	public ApplyDTO(int applyCode, int requestCode, int memberCode, String detail) {
 		this.applyCode = applyCode;
 		this.requestCode = requestCode;

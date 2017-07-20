@@ -179,8 +179,12 @@ public class ZigboService {
 			return RequestDAO.updateRequestViews(requestCode);
 	}
 	
-	public static boolean updateRequestProgress(int requestCode) throws SQLException {
-		return RequestDAO.updateRequestProgress(requestCode);
+	public static boolean updateRequestProgressToP(int requestCode) throws SQLException {
+		return RequestDAO.updateRequestProgressToP(requestCode);
+	}
+	
+	public static boolean updateRequestProgressToD(int requestCode) throws SQLException {
+		return RequestDAO.updateRequestProgressToD(requestCode);
 	}
 	
 	public static ArrayList<RequestDTO> getRequestofMember(int memberCode) throws SQLException {

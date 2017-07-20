@@ -46,7 +46,7 @@ public class MemberController extends HttpServlet {
 		String url = "register.jsp";
 		HttpSession session = request.getSession();
 		String email = request.getParameter("Email").trim();
-		
+		System.out.println(email);
 		try {
 			if(ZigboService.getCountByEmail(email)>0){
 				session.setAttribute("duplicateEmail", "이미 존재하는 이메일입니다.");
