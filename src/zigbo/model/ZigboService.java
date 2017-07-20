@@ -131,6 +131,10 @@ public class ZigboService {
 	   return MemberDAO.getMemberByEmail(email);
    }
    
+   public static MemberDTO getMemberByMemberCode(int memberCode) throws SQLException {
+	   return MemberDAO.getMemberByMemberCode(memberCode);
+   }
+   
 	public static boolean addMember(MemberDTO member) throws SQLException {
 		return MemberDAO.addMember(member);
 	}
