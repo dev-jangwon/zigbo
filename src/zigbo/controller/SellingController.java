@@ -20,7 +20,6 @@ import zigbo.model.ZigboService;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.PaymentDTO;
-import zigbo.model.dto.RequestDTO;
 import zigbo.model.dto.SellingDTO;
 import zigbo.model.dto.SellingMemberDTO;
 
@@ -58,6 +57,8 @@ public class SellingController extends HttpServlet {
 				sellingPurchase(request, response);
 			} else if (command.equals("getMySelling")) {
 				getMySelling(request, response);
+			} else if (command.equals("getMyPurchase")) {
+				getMyPurchase(request, response);
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -329,4 +330,23 @@ public class SellingController extends HttpServlet {
 
 	    writer.print(jsonList);
    }
+	
+	public void getMyPurchase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter writer = response.getWriter();
+	   	int memberCode = (Integer)request.getSession().getAttribute("login");
+	   	
+	   	JSONArray jsonList = new JSONArray();
+
+	   	try {
+			ArrayList<PaymentDTO> paymentList = ZigboService.getPaymentofMember(1);
+			JSONObject jsonOb = new JSONObject();
+			String stringList = new Gson().toJson(paymentList);
+		    jsonOb.put("purchaseList", stringList);
+		    jsonList.add(jsonOb);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	    writer.print(jsonList);
+	}
 }

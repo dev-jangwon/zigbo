@@ -2,9 +2,7 @@ package zigbo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -62,6 +60,8 @@ public class RequestController extends HttpServlet {
 				requestDetail(request, response);
 			} else if (command.equals("getMyRequest")) {
 				getMyRequest(request, response);
+			} else if (command.equals("getMyApply")) {
+				getMyApply(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -303,6 +303,25 @@ public class RequestController extends HttpServlet {
 					JSONObject jsonOb = new JSONObject();
 					String stringList = new Gson().toJson(requestList);
 				    jsonOb.put("requestList", stringList);
+				    jsonList.add(jsonOb);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			    writer.print(jsonList);
+		   }
+		   
+		   public void getMyApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			   PrintWriter writer = response.getWriter();
+			   	int memberCode = (Integer)request.getSession().getAttribute("login");
+			   	
+			   	JSONArray jsonList = new JSONArray();
+
+			   	try {
+					ArrayList<ApplyDTO> applyList = ZigboService.getApplyofMember(1);
+					JSONObject jsonOb = new JSONObject();
+					String stringList = new Gson().toJson(applyList);
+				    jsonOb.put("applyList", stringList);
 				    jsonList.add(jsonOb);
 				} catch (Exception e) {
 					e.printStackTrace();

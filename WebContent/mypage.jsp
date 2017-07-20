@@ -81,7 +81,7 @@
 									<li class=""><a href="#selling" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">판매</a></li>
 									<li class="active"><a href="#request" data-toggle="tab" aria-expanded="true" style="font-size:1.7em;">요청</a></li>
 									<li class=""><a href="#purchase" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">결제</a></li>
-									<li class=""><a href="#support" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">지원</a></li>
+									<li class=""><a href="#apply" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">지원</a></li>
 								</ul>
 							</div>
 						</div>
@@ -95,11 +95,11 @@
 									</ul>
 	                            </div>
 	                            <div class="tab-pane" id="purchase">
-	                                <ul class="zigbbo-list-content zigbbo-request-list">
+	                                <ul class="purchase-ul" style="list-style:none;">
 									</ul>
 	                            </div>
-	                            <div class="tab-pane" id="support">
-	                                <ul class="zigbbo-list-content zigbbo-request-list">
+	                            <div class="tab-pane" id="apply">
+	                                <ul class="apply-ul" style="list-style:none;">
 									</ul>
 	                            </div>
 	                        </div>

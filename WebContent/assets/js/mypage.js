@@ -115,6 +115,116 @@ function getSellingList() {
 	});
 }
 
+function getPurchaseList() {
+	$.ajax({
+		url: "/zigbo/selling",
+		data: {
+			command: "getMyPurchase"
+		},
+		method: "get",
+		dataType: "json",
+		success: function(result) {
+			if (JSON.parse(result[0].purchaseList).length == 0) {
+				$(".purchase-ul").append("데이터가 없습니다");
+				return;
+			}
+			$(".purchase-ul").append(
+						"<li>"+
+							"<div class='row'>"+
+								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"결제코드"+
+								"</div>"+
+								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"판매자코드"+
+								"</div>"+
+								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"배송주소"+
+								"</div>"+
+								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"이동하기"+
+								"</div>"+
+							"</div>"+
+						"</li>");
+		
+			for (var i = 0; i < JSON.parse(result[0].purchaseList).length; i++) {
+				var obj = JSON.parse(result[0].purchaseList)[i];
+				
+				$(".purchase-ul").append(
+						"<li>" +
+							"<div class='col-md-3'>" + obj.paymentCode +
+							"</div>" +
+							"<div class='col-md-3'>" + obj.sellingCode +
+							"</div>" +
+							"<div class='col-md-3'>" + obj.address +
+							"</div>" +
+							"<div class='col-md-3'>" + 
+								"<a href='/zigbo/selling?command=sellingDetail&sellingCode=" + obj.sellingCode +"'>이동</a>" +
+							"</div>" +
+						"</li>");
+			}
+		}
+	});
+}
+
+function getApplyList() {
+	$.ajax({
+		url: "/zigbo/request",
+		data: {
+			command: "getMyApply"
+		},
+		method: "get",
+		dataType: "json",
+		success: function(result) {
+			if (JSON.parse(result[0].applyList).length == 0) {
+				$(".selling-ul").append("데이터가 없습니다");
+				return;
+			}
+			$(".apply-ul").append(
+						"<li>"+
+							"<div class='row'>"+
+								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"지원코드"+
+								"</div>"+
+								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"요청코드"+
+								"</div>"+
+								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"지원내용"+
+								"</div>"+
+								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"이동하기"+
+								"</div>"+
+							"</div>"+
+						"</li>");
+		
+			for (var i = 0; i < JSON.parse(result[0].applyList).length; i++) {
+				var obj = JSON.parse(result[0].applyList)[i];
+				
+				var progress = "<span class='label label-info'>진행중</span>";
+
+				if (obj.progress == 'W') {
+					progress = "<span class='label label-primary'>대기중</span>";
+				} else if (obj.progress='D') {
+					progress = "<span class='label label-success'>완료</span>";
+				}
+				
+				$(".apply-ul").append(
+						"<li>" +
+							"<div class='col-md-3'>" + obj.applyCode +
+							"</div>" +
+							"<div class='col-md-3'>" + obj.requestCode +
+							"</div>" +
+							"<div class='col-md-3'>" + obj.detail +
+							"</div>" +
+							"<div class='col-md-3'>" + 
+								"<a href='/zigbo/request?command=requestDetail&requestCode=" + obj.requestCode +"'>이동</a>" +
+							"</div>" +
+						"</li>");
+			}
+		}
+	});
+}
+
 getRequestList();
 
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -127,8 +237,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     		$('.request-ul').empty();
 	    	getRequestList();
     } else if ((target == '#purchase')) {
-    		
-    } else if ((target == '#support')) {
-    		
+    		$('.purchase-ul').empty();
+    		getPurchaseList();
+    } else if ((target == '#apply')) {
+    		$('.apply-ul').empty();
+    		getApplyList();
     }
 });
