@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import zigbo.model.ZigboService;
 import zigbo.model.dto.ApplyDTO;
 import zigbo.model.dto.ItemDTO;
+import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.RequestDTO;
 import zigbo.model.dto.RequestMemberDTO;
 
@@ -47,6 +48,8 @@ public class RequestController extends HttpServlet {
 				getApplyofMember(request, response);
 			} else if(command.equals("getMostRecentRequest")) {
 				getMostRecentRequest(request, response);
+			} else if (command.equals("requestDetail")) {
+				requestDetail(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -231,5 +234,30 @@ public class RequestController extends HttpServlet {
 				}
 				request.getRequestDispatcher(url).forward(request, response);
 		   }
+		   
+		   public void requestDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				String url = "showError.jsp";
+				
+				int requestCode = Integer.parseInt(request.getParameter("requestCode"));
+				
+				ItemDTO item = new ItemDTO();
+				MemberDTO member = new MemberDTO();
+				RequestDTO request1 = new RequestDTO();
+				
+				try {
+					request1 = ZigboService.getRequest(requestCode);
+					member = ZigboService.getMemberByMemberCode(request1.getMemberCode());
+					item = ZigboService.getItem(request1.getItemCode());
+					
+					request.setAttribute("request", request1);
+					request.setAttribute("member", member);
+					request.setAttribute("item", item);
+					url = "./request/request_detail.jsp";
+				}catch(Exception s){
+					s.printStackTrace();
+					request.setAttribute("errorMsg", s.getMessage());
+				}
+				request.getRequestDispatcher(url).forward(request, response);
+			}
 
 }
