@@ -48,7 +48,7 @@
 						<a href="/zigbo/sales/sales_list.jsp">판매</a>
 					</li>
 					<li>
-						<a href="/zigborequest/request_list.jsp">구매</a>
+						<a href="/zigbo/request/request_list.jsp">구매</a>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">내 정보 <b class="caret"></b></a>

@@ -253,7 +253,7 @@ public class SellingController extends HttpServlet {
 	
 	public void addPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String url = "/zigbo/sales/purchase.jsp";
+		String url = "/sales/purchase.jsp";
 		System.out.println("addPayment¿È");
 		int sellingCode = Integer.parseInt(request.getParameter("sellingCode"));
 		int memberCode = Integer.parseInt(request.getParameter("memberCode"));
