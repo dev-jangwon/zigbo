@@ -1,13 +1,21 @@
 package zigbo.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import com.google.gson.Gson;
 
 import zigbo.model.ItemDAO;
 import zigbo.model.ZigboService;
@@ -52,6 +60,8 @@ public class RequestController extends HttpServlet {
 				getMostRecentRequest(request, response);
 			} else if (command.equals("requestDetail")) {
 				requestDetail(request, response);
+			} else if (command.equals("getMyRequest")) {
+				getMyRequest(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -286,5 +296,24 @@ public class RequestController extends HttpServlet {
 				}
 				request.getRequestDispatcher(url).forward(request, response);
 			}
+		   
+		   public void getMyRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			   	PrintWriter writer = response.getWriter();
+			   	int memberCode = (Integer)request.getSession().getAttribute("login");
+			   	
+			   	JSONArray jsonList = new JSONArray();
+
+			   	try {
+					ArrayList<RequestDTO> requestList = ZigboService.getRequestofMember(1);
+					JSONObject jsonOb = new JSONObject();
+					String stringList = new Gson().toJson(requestList);
+				    jsonOb.put("requestList", stringList);
+				    jsonList.add(jsonOb);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			    writer.print(jsonList);
+		   }
 
 }

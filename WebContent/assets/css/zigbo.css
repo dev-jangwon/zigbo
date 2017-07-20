@@ -43,6 +43,12 @@
         margin-bottom: 0px;
     }
 }
+.mypage-backgroud {
+	margin-top: 3%;
+	position: relative;
+	margin-bottom:10%;
+	z-index: 2;
+}
 .login-background .container {
 	margin-top: 10%;
 	position: relative;

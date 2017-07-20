@@ -59,7 +59,7 @@
 						<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">내 정보 <b class="caret"></b></a>
 						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
-							<li><a href="#">내 정보 수정</a></li>
+							<li><a href="/zigbo/mypage.jsp">내 정보 수정</a></li>
 							<li><a href="#">활동 내역</a></li>
 						</ul>
 					 </li>
@@ -102,7 +102,7 @@
 									<li role="presentation"><a role="menuitem" tabindex="-1" onclick="getViewSelling()">조회수</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1" onclick="getZZimSelling()">찜</a></li>
 			    					</ul>
-								<button class="btn btn-primary">더보기</button>
+								<button class="btn btn-primary" onclick="location.href='./request/request_list.jsp'">더보기</button>
 							</div>
             			</div>
             		</div>
@@ -122,7 +122,7 @@
             			<div class="col-lg-11">
             			</div>
             			<div class="col-lg-1">
-						<button class="btn btn-primary pull-right">더보기</button>
+						<button class="btn btn-primary pull-right" onclick="location.href='./sales/sales_list.jsp'">더보기</button>
             			</div>
             		</div>
                 <div class="row" id="index_request_list">
@@ -139,21 +139,21 @@
                 </div>
                 <div class="row example-pages">
                     <div class="col-md-4">
-                        <a href="examples/landing.html" target="_blank">
+                        <a>
                             <img src="assets/paper_img/examples/landing.jpg" alt="Rounded Image" class="img-rounded img-responsive">
                             <h5 style="font-size:2em;color:#2c3e50;">판매</h5>
                         </a>
                         <p style="font-size:1.4em;text-align:left;">해외에서 싸고 좋은 물건을 발견하면 직뽀에서 직접 판매자가 되어보세요.</p>
                     </div>
                     <div class="col-md-4">
-                        <a href="examples/register.html" target="_blank">
+                        <a>
                             <img src="assets/paper_img/examples/register.jpg" alt="Rounded Image" class="img-rounded img-responsive">
                             <h5 style="font-size:2em;color:#2c3e50;">구매</h5>
                         </a>
                         <p style="font-size:1.4em;text-align:left;">해외에서 필요한 물건이 있으면 무엇이든 요청해보세요. 비싸고 오래걸리는 해외배송의 문제점을 해결했습니다.</p>
                     </div>
                     <div class="col-md-4">
-                        <a href="examples/profile.html" target="_blank">
+                        <a>
                             <img src="assets/paper_img/examples/profile.jpg" alt="Rounded Image" class="img-rounded img-responsive">
                             <h5 style="font-size:2em;color:#2c3e50;">지원</h5>
                         </a>
