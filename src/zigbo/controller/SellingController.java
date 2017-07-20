@@ -20,7 +20,6 @@ import zigbo.model.ZigboService;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.PaymentDTO;
-import zigbo.model.dto.RequestDTO;
 import zigbo.model.dto.SellingDTO;
 import zigbo.model.dto.SellingMemberDTO;
 
@@ -28,9 +27,9 @@ public class SellingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
-		System.out.println("controller에는 들어왔냐");
+		
 		try {
 			if(command.equals("addSelling")) {
 				addSelling(request, response);
@@ -58,6 +57,8 @@ public class SellingController extends HttpServlet {
 				sellingPurchase(request, response);
 			} else if (command.equals("getMySelling")) {
 				getMySelling(request, response);
+			} else if (command.equals("getMyPurchase")) {
+				getMyPurchase(request, response);
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -67,7 +68,6 @@ public class SellingController extends HttpServlet {
 	}
 	
 	public void sellingPurchase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("sellingPurchase왔다");
 		String url = "showError.jsp";
 		int sellingCode = Integer.parseInt(request.getParameter("sellingCode"));
 		HttpSession session = request.getSession();
@@ -331,4 +331,28 @@ public class SellingController extends HttpServlet {
 
 	    writer.print(jsonList);
    }
+	
+	public void getMyPurchase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter writer = response.getWriter();
+	   	int memberCode = (Integer)request.getSession().getAttribute("login");
+	   	
+	   	
+	   	JSONArray jsonList = new JSONArray();
+
+	   	try {
+	   		String email = ZigboService.getEmailByMemberCode(memberCode);
+			ArrayList<PaymentDTO> paymentList = ZigboService.getPaymentofMember(1);
+			JSONObject jsonOb = new JSONObject();
+			String stringList = new Gson().toJson(paymentList);
+		    jsonOb.put("purchaseList", stringList);
+		    jsonList.add(jsonOb);
+		    jsonOb = new JSONObject();
+		    jsonOb.put("email", email);
+		    jsonList.add(jsonOb);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	    writer.print(jsonList);
+	}
 }

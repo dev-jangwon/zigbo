@@ -53,14 +53,14 @@
 					</c:choose>
 					<li><a href="./sales/sales_list.jsp">판매</a>
 					</li>
-					<li><a href="./request/request_list.jsp">구매</a>
+					<li><a href="./request/request_list.jsp">요청</a>
 					</li>
 					<c:if test="${sessionScope.login!=null}">
 						<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">내 정보 <b class="caret"></b></a>
 						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
 							<li><a href="/zigbo/mypage.jsp">내 정보 수정</a></li>
-							<li><a href="#">활동 내역</a></li>
+							<li><a href="/zigbo/mypage.jsp">활동 내역</a></li>
 						</ul>
 					 </li>
 					</c:if>
@@ -78,28 +78,28 @@
             			 	<div class="nav-tabs-navigation">
 							<div class="nav-tabs-wrapper">
 								<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+									<li class=""><a href="#selling" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">판매</a></li>
 									<li class="active"><a href="#request" data-toggle="tab" aria-expanded="true" style="font-size:1.7em;">요청</a></li>
-									<li class=""><a href="#selling" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">구매</a></li>
 									<li class=""><a href="#purchase" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">결제</a></li>
-									<li class=""><a href="#support" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">지원</a></li>
+									<li class=""><a href="#apply" data-toggle="tab" aria-expanded="false" style="font-size:1.7em;">지원</a></li>
 								</ul>
 							</div>
 						</div>
 						<div id="my-tab-content" class="tab-content text-center">
+								<div class="tab-pane" id="selling">
+	                                <ul class="selling-ul" style="list-style:none;">
+									</ul>
+	                            </div>
 	                            <div class="tab-pane active" id="request">
 	                                <ul class="request-ul" style="list-style:none;">
 									</ul>
 	                            </div>
-	                            <div class="tab-pane" id="selling">
-	                                <ul class="selling-ul" style="list-style:none;">
-									</ul>
-	                            </div>
 	                            <div class="tab-pane" id="purchase">
-	                                <ul class="zigbbo-list-content zigbbo-request-list">
+	                                <ul class="purchase-ul" style="list-style:none;">
 									</ul>
 	                            </div>
-	                            <div class="tab-pane" id="support">
-	                                <ul class="zigbbo-list-content zigbbo-request-list">
+	                            <div class="tab-pane" id="apply">
+	                                <ul class="apply-ul" style="list-style:none;">
 									</ul>
 	                            </div>
 	                        </div>

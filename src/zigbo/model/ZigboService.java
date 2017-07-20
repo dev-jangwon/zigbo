@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import zigbo.exception.NotExistException;
 import zigbo.model.dto.ApplyDTO;
+import zigbo.model.dto.ApplyRequestDTO;
 import zigbo.model.dto.InterestDTO;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.MemberDTO;
@@ -213,5 +214,9 @@ public class ZigboService {
 	
 	 public static ArrayList<ApplyDTO> getApplyofMember(int memberCode) throws SQLException {
 		 return ApplyDAO.getApplyofMember(memberCode);
+	 }
+	 
+	 public static ArrayList<ApplyRequestDTO> getApplyMemberRequest(int memberCode) throws SQLException {
+		 return ApplyDAO.getApplyMemberRequest(memberCode);
 	 }
 }

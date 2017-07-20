@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import zigbo.model.ItemDAO;
 import zigbo.model.ZigboService;
 import zigbo.model.dto.ApplyDTO;
+import zigbo.model.dto.ApplyRequestDTO;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.RequestDTO;
@@ -28,7 +29,7 @@ public class RequestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
 		try{
 			if(command.equals("addRequest")){
@@ -63,6 +64,10 @@ public class RequestController extends HttpServlet {
 				getMyRequest(request, response);
 			} else if (command.equals("supportApply")){
 				supportApply(request, response);
+			} else if (command.equals("getMyApply")) {
+				getMyApply(request, response);
+			} else if (command.equals("getApplyMemberRequest")) {
+				getApplyMemberRequest(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -330,6 +335,44 @@ public class RequestController extends HttpServlet {
 					JSONObject jsonOb = new JSONObject();
 					String stringList = new Gson().toJson(requestList);
 				    jsonOb.put("requestList", stringList);
+				    jsonList.add(jsonOb);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			    writer.print(jsonList);
+		   }
+		   
+		   public void getMyApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			   PrintWriter writer = response.getWriter();
+			   	int memberCode = (Integer)request.getSession().getAttribute("login");
+			   	
+			   	JSONArray jsonList = new JSONArray();
+
+			   	try {
+					ArrayList<ApplyDTO> applyList = ZigboService.getApplyofMember(1);
+					JSONObject jsonOb = new JSONObject();
+					String stringList = new Gson().toJson(applyList);
+				    jsonOb.put("applyList", stringList);
+				    jsonList.add(jsonOb);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			    writer.print(jsonList);
+		   }
+		   
+		   public void getApplyMemberRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			   PrintWriter writer = response.getWriter();
+			   	int memberCode = (Integer)request.getSession().getAttribute("login");
+			   	
+			   	JSONArray jsonList = new JSONArray();
+
+			   	try {
+					ArrayList<ApplyRequestDTO> applyList = ZigboService.getApplyMemberRequest(1);
+					JSONObject jsonOb = new JSONObject();
+					String stringList = new Gson().toJson(applyList);
+				    jsonOb.put("applyList", stringList);
 				    jsonList.add(jsonOb);
 				} catch (Exception e) {
 					e.printStackTrace();

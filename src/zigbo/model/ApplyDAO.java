@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import zigbo.model.dto.ApplyDTO;
+import zigbo.model.dto.ApplyRequestDTO;
 import zigbo.model.util.DBUtil;
 
 public class ApplyDAO {
@@ -114,6 +115,26 @@ public class ApplyDAO {
 				list = new ArrayList<ApplyDTO>();
 				while(rset.next()){
 					list.add(new ApplyDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getString(4)));
+				}
+			}finally{
+				DBUtil.close(con, pstmt, rset);
+			}
+			return list;
+		}
+	   
+	   public static ArrayList<ApplyRequestDTO> getApplyMemberRequest(int memberCode) throws SQLException{
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			ArrayList<ApplyRequestDTO> list = null;
+			try{
+				con = DBUtil.getConnection();
+				pstmt = con.prepareStatement(sql.getString("getApplyMemberRequest"));
+				pstmt.setInt(1, memberCode);
+				rset = pstmt.executeQuery();
+				list = new ArrayList<ApplyRequestDTO>();
+				while(rset.next()){
+					list.add(new ApplyRequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getString(4), rset.getString(5)));
 				}
 			}finally{
 				DBUtil.close(con, pstmt, rset);
