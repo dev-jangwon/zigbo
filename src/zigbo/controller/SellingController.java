@@ -89,10 +89,8 @@ public class SellingController extends HttpServlet {
 		int memberCode = (int)session.getAttribute("login");
 		
 		SellingDTO selling = new SellingDTO(memberCode, itemCode, location);
-		System.out.println("selling 있니? "+selling);
 		try{
 			boolean result = ZigboService.addSelling(selling);
-			System.out.println("result? "+result);
 			if(result){
 				request.setAttribute("successMsg", "판매 등록 완료");
 				url = "./sales/sales_list.jsp";

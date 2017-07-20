@@ -38,11 +38,6 @@ public class SellingDAO {
 	public static boolean addSelling(SellingDTO selling) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		System.out.println(
-		selling.getMemberCode()+" "+
-		selling.getItemCode()+" "+
-		selling.getViews()+" "+
-		selling.getLocation());
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("addSelling"));
