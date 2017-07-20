@@ -131,17 +131,14 @@ function getPurchaseList() {
 			$(".purchase-ul").append(
 						"<li>"+
 							"<div class='row'>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"결제코드"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"판매자코드"+
+								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"구매 이메일"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"배송주소"+
-								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"이동하기"+
 								"</div>"+
 							"</div>"+
 						"</li>");
@@ -151,15 +148,12 @@ function getPurchaseList() {
 				
 				$(".purchase-ul").append(
 						"<li>" +
-							"<div class='col-md-3'>" + obj.paymentCode +
+							"<div class='col-md-4'>" + obj.paymentCode +
 							"</div>" +
-							"<div class='col-md-3'>" + obj.sellingCode +
+							"<div class='col-md-4'>" + result[1].email +
 							"</div>" +
-							"<div class='col-md-3'>" + obj.address +
-							"</div>" +
-							"<div class='col-md-3'>" + 
-								"<a href='/zigbo/selling?command=sellingDetail&sellingCode=" + obj.sellingCode +"'>이동</a>" +
-							"</div>" +
+							"<div class='col-md-4'>" + obj.address +
+							"</div>"+
 						"</li>");
 			}
 		}
@@ -170,7 +164,7 @@ function getApplyList() {
 	$.ajax({
 		url: "/zigbo/request",
 		data: {
-			command: "getMyApply"
+			command: "getApplyMemberRequest"
 		},
 		method: "get",
 		dataType: "json",
@@ -182,17 +176,14 @@ function getApplyList() {
 			$(".apply-ul").append(
 						"<li>"+
 							"<div class='row'>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"지원코드"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"요청코드"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"지원내용"+
-								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"이동하기"+
+								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"진행상태"+
 								"</div>"+
 							"</div>"+
 						"</li>");
@@ -210,14 +201,11 @@ function getApplyList() {
 				
 				$(".apply-ul").append(
 						"<li>" +
-							"<div class='col-md-3'>" + obj.applyCode +
+							"<div class='col-md-4'>" + obj.applyCode +
 							"</div>" +
-							"<div class='col-md-3'>" + obj.requestCode +
+							"<div class='col-md-4'>" + obj.requestCode +
 							"</div>" +
-							"<div class='col-md-3'>" + obj.detail +
-							"</div>" +
-							"<div class='col-md-3'>" + 
-								"<a href='/zigbo/request?command=requestDetail&requestCode=" + obj.requestCode +"'>이동</a>" +
+							"<div class='col-md-4'>" + obj.progress +
 							"</div>" +
 						"</li>");
 			}

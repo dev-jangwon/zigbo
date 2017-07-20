@@ -335,13 +335,18 @@ public class SellingController extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 	   	int memberCode = (Integer)request.getSession().getAttribute("login");
 	   	
+	   	
 	   	JSONArray jsonList = new JSONArray();
 
 	   	try {
+	   		String email = ZigboService.getEmailByMemberCode(memberCode);
 			ArrayList<PaymentDTO> paymentList = ZigboService.getPaymentofMember(1);
 			JSONObject jsonOb = new JSONObject();
 			String stringList = new Gson().toJson(paymentList);
 		    jsonOb.put("purchaseList", stringList);
+		    jsonList.add(jsonOb);
+		    jsonOb = new JSONObject();
+		    jsonOb.put("email", email);
 		    jsonList.add(jsonOb);
 		} catch (Exception e) {
 			e.printStackTrace();
