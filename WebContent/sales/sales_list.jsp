@@ -59,20 +59,12 @@
 					</li>
 					<c:if test="${sessionScope.login!=null}">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle"	data-toggle="dropdown" aria-expanded="false">
-							Dropdown 
-							<b class="caret"></b>
-							</a>
-							<ul class="dropdown-menu dropdown-menu-right">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-								<li class="divider"></li>
-								<li><a href="#">One more separated link</a></li>
-							</ul>
-						</li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">내 정보 <b class="caret"></b></a>
+						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
+							<li><a href="#">내 정보 수정</a></li>
+							<li><a href="#">활동 내역</a></li>
+						</ul>
+					 </li>
 					</c:if>
 				</ul>
 			</div><!-- /.navbar-collapse -->
