@@ -28,7 +28,7 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">ZigBBo</a>
+				<a class="navbar-brand" href="/zigbo/index.jsp">ZigBBo</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
@@ -40,13 +40,13 @@
                     </script>
                 </c:if>
 					<li class="active">
-						<a href="#">로그아웃</a>
+						<a href="/zigbo/index.jsp" onclick="logoutFtn()">로그아웃</a>
 					</li>
 					<li>
-						<a href="#">판매</a>
+						<a href="./sales_list.jsp">판매</a>
 					</li>
 					<li>
-						<a href="#">구매</a>
+						<a href="../request/request_list.jsp">구매</a>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown <b class="caret"></b></a>
@@ -149,6 +149,20 @@
 	<script src="/zigbo/assets/js/ct-paper-radio.js"></script>
 	<script src="/zigbo/assets/js/bootstrap-select.js"></script>
 	<script src="/zigbo/assets/js/bootstrap-datepicker.js"></script>
-	<script src="/zigbo/assets/js/ct-paper.js"></script>  
+	<script src="/zigbo/assets/js/ct-paper.js"></script>    
+	<script type="text/javascript">
+		function logoutFtn() {
+				$.ajax({
+					url: "/zigbo/member",
+					data: {
+						command: "logout",
+					},
+					method: "post",
+					dataType: "html",
+					success: function(result) {
+					}
+				});
+		}
+	</script>
 </body>
 </html>

@@ -8,9 +8,8 @@
 <li>
 	<div class="row item-row">
 		<div class="zigbbo-list-image-row col-md-4">
-			<a class="thumb" href="">
-				<img src="../img/profile.png" alt="not found image" onerror="" 
-				href='<%=url%>selling?command=sellingDetail&sellingCode=${requestScope.sellingList[status.index].sellingCode}'>
+			<a class="thumb" href='/zigbo/selling?command=sellingDetail&sellingCode=${requestScope.sellingList[status.index].sellingCode}'>
+				<img src="../img/profile.png" alt="not found image" onerror="" >
 			</a>
 		</div>
 		<div class="col-md-8">
@@ -38,7 +37,7 @@
 					</div>	
 				</div>
 				<div class="col-md-4">
-					<div class="zigbbo-list-member">${requestScope.sellingList[status.index].memberCode}</div>
+					<div class="zigbbo-list-member">${requestScope.sellingList[status.index].email}</div>
 					<div class="zigbbo-list-price"><i class="fa fa-krw"></i>&nbsp;${item.price}</div>	
 				</div>
 			</div>

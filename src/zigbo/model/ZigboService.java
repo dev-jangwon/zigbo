@@ -10,7 +10,9 @@ import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.PaymentDTO;
 import zigbo.model.dto.RequestDTO;
+import zigbo.model.dto.RequestMemberDTO;
 import zigbo.model.dto.SellingDTO;
+import zigbo.model.dto.SellingMemberDTO;
 
 public class ZigboService {
 
@@ -95,6 +97,10 @@ public class ZigboService {
       return SellingDAO.getMostInterest();
    }
    
+   public static ArrayList<SellingMemberDTO> getAllSellingMember() throws SQLException{ 
+	   return SellingDAO.getAllSellingMember();
+   }
+   
    ////PAYMENT SERVICE ////
    
    // 결제 추가
@@ -123,6 +129,10 @@ public class ZigboService {
    
    public static MemberDTO getMemberByEmail(String email) throws SQLException{
 	   return MemberDAO.getMemberByEmail(email);
+   }
+   
+   public static MemberDTO getMemberByMemberCode(int memberCode) throws SQLException {
+	   return MemberDAO.getMemberByMemberCode(memberCode);
    }
    
 	public static boolean addMember(MemberDTO member) throws SQLException {
@@ -158,6 +168,10 @@ public class ZigboService {
 	// getAllRequest()
 	public static ArrayList<RequestDTO> getAllRequest() throws SQLException {
 		return RequestDAO.getAllRequest();
+	}
+	
+	public static ArrayList<RequestMemberDTO> getAllRequestMember() throws SQLException {
+		return RequestDAO.getAllRequestMember();
 	}
 
 	public static boolean updateRequestViews(int requestCode) throws SQLException {

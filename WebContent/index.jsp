@@ -51,9 +51,9 @@
 						</li>
 						</c:otherwise>
 					</c:choose>
-					<li><a href="./sales/sales_write.jsp">판매</a>
+					<li><a href="./sales/sales_list.jsp">판매</a>
 					</li>
-					<li><a href="#">구매</a>
+					<li><a href="./request/request_list.jsp">구매</a>
 					</li>
 					<c:if test="${sessionScope.login!=null}">
 						<li class="dropdown">

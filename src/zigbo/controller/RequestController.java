@@ -2,7 +2,6 @@ package zigbo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,9 @@ import zigbo.model.ItemDAO;
 import zigbo.model.ZigboService;
 import zigbo.model.dto.ApplyDTO;
 import zigbo.model.dto.ItemDTO;
+import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.RequestDTO;
+import zigbo.model.dto.RequestMemberDTO;
 
 public class RequestController extends HttpServlet {
 	
@@ -49,6 +50,8 @@ public class RequestController extends HttpServlet {
 				getApplyofMember(request, response);
 			} else if(command.equals("getMostRecentRequest")) {
 				getMostRecentRequest(request, response);
+			} else if (command.equals("requestDetail")) {
+				requestDetail(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -119,26 +122,15 @@ public class RequestController extends HttpServlet {
 	   public void getAllRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		   String url = "showError.jsp";
 			ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
-			HashMap<Integer, String> memberEmail = new HashMap<Integer, String>();
-//			int pageIndex = Integer.parseInt(request.getParameter("index"));
 			
 			try {
-				ArrayList<RequestDTO> list = ZigboService.getAllRequest();
+				ArrayList<RequestMemberDTO> list = ZigboService.getAllRequestMember();
 				
 				for (int i = 0; i < list.size(); i++) {
 					int itemCode = list.get(i).getItemCode();
 					ret.add(ZigboService.getItem(itemCode));
-					memberEmail.put(list.get(i).getMemberCode(), ZigboService.getEmailByMemberCode(list.get(i).getMemberCode()));
 				}
 				
-				//1 -> 0, 1, 2, 3
-				// 2 -> 4, 5, 6, 7
-				
-//				for (int i = pageIndex * 4; i < pageIndex * 4 + 3; i++) {
-//					int itemCode = list.get(i).getItemCode();
-//					ret.add(ZigboService.getItem(itemCode));
-//				}
-				request.setAttribute("memberEmail", memberEmail);
 				request.setAttribute("requestList", list);
 				request.setAttribute("requestItems", ret);
 				url = "./request/request_list_item.jsp";
@@ -269,5 +261,30 @@ public class RequestController extends HttpServlet {
 				}
 				request.getRequestDispatcher(url).forward(request, response);
 		   }
+		   
+		   public void requestDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				String url = "showError.jsp";
+				
+				int requestCode = Integer.parseInt(request.getParameter("requestCode"));
+				
+				ItemDTO item = new ItemDTO();
+				MemberDTO member = new MemberDTO();
+				RequestDTO request1 = new RequestDTO();
+				
+				try {
+					request1 = ZigboService.getRequest(requestCode);
+					member = ZigboService.getMemberByMemberCode(request1.getMemberCode());
+					item = ZigboService.getItem(request1.getItemCode());
+					
+					request.setAttribute("request", request1);
+					request.setAttribute("member", member);
+					request.setAttribute("item", item);
+					url = "./request/request_detail.jsp";
+				}catch(Exception s){
+					s.printStackTrace();
+					request.setAttribute("errorMsg", s.getMessage());
+				}
+				request.getRequestDispatcher(url).forward(request, response);
+			}
 
 }

@@ -181,4 +181,24 @@ public class MemberDAO {
 		return false;
 	}
 	
+	public static MemberDTO getMemberByMemberCode(int memberCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		MemberDTO member = null;
+		
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getMemberByMemberCode"));
+			pstmt.setInt(1, memberCode);
+			rset = pstmt.executeQuery();
+			if(rset.next()){
+				member = new MemberDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getString(4), rset.getString(5), rset.getString(6));
+			}
+		}finally{
+			DBUtil.close(con, pstmt, rset);
+		}
+		return member;
+	}
+	
 }
