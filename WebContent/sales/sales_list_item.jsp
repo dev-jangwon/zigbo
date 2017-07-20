@@ -22,10 +22,10 @@
 							${item.detail}
 						</div>
 						<c:choose>
-							<c:when test="${requestScope.requestList[status.index].progress=='W'}">
+							<c:when test="${requestScope.sellingList[status.index].progress=='W'}">
 								<span class="label label-primary">대기</span>
 							</c:when>
-							<c:when test="${requestScope.requestList[status.index].progress=='D'}">
+							<c:when test="${requestScope.sellingList[status.index].progress=='D'}">
 								<span class="label label-success">완료</span>
 							</c:when>
 							<c:otherwise>

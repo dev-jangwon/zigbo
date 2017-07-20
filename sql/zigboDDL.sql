@@ -1,16 +1,16 @@
--- ¿äÃ»¿¡ "Áö¿øÇÏ±â"
+-- ï¿½ï¿½Ã»ï¿½ï¿½ "ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½"
 DROP TABLE APPLY cascade constraint;
--- "Âò"
+-- "ï¿½ï¿½"
 DROP TABLE INTEREST cascade constraint;
--- "»óÇ°"Á¤º¸
+-- "ï¿½ï¿½Ç°"ï¿½ï¿½ï¿½ï¿½
 DROP TABLE ITEM cascade constraint;
--- "È¸¿ø"Á¤º¸
+-- "È¸ï¿½ï¿½"ï¿½ï¿½ï¿½ï¿½
 DROP TABLE MEMBER cascade constraint;
--- "°áÁ¦"Á¤º¸
+-- "ï¿½ï¿½ï¿½ï¿½"ï¿½ï¿½ï¿½ï¿½
 DROP TABLE PAYMENT cascade constraint;
--- "¿äÃ»" : »ç´ÙÁÖ¼¼¿ä
+-- "ï¿½ï¿½Ã»" : ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½
 DROP TABLE REQUEST cascade constraint;
--- "ÆÇ¸Å" : ÀÌ°Å ÆÈ°Å´Ù
+-- "ï¿½Ç¸ï¿½" : ï¿½Ì°ï¿½ ï¿½È°Å´ï¿½
 DROP TABLE SELLING cascade constraint;
 
 DROP SEQUENCE apply_code_seq;
@@ -22,6 +22,7 @@ DROP SEQUENCE request_code_seq;
 DROP SEQUENCE selling_code_seq;
 
 CREATE SEQUENCE apply_code_seq;
+ALTER SEQUENCE apply_code_seq nocache;
 CREATE TABLE APPLY
 (
 	apply_code           NUMBER(3) PRIMARY KEY,
@@ -31,6 +32,7 @@ CREATE TABLE APPLY
 );
 
 CREATE SEQUENCE interest_seq;
+ALTER SEQUENCE interest_seq nocache;
 CREATE TABLE INTEREST
 (
 	member_code          NUMBER(3) NOT NULL,
@@ -39,6 +41,7 @@ CREATE TABLE INTEREST
 );
 
 CREATE SEQUENCE item_code_seq;
+ALTER SEQUENCE item_code_seq nocache;
 CREATE TABLE ITEM
 (
 	item_code            NUMBER(3) NOT NULL PRIMARY KEY,
@@ -50,6 +53,7 @@ CREATE TABLE ITEM
 );
 
 CREATE SEQUENCE member_code_seq;
+ALTER SEQUENCE member_code_seq nocache;
 CREATE TABLE MEMBER
 (
 	member_code          NUMBER(3) NOT NULL PRIMARY KEY,
@@ -61,6 +65,7 @@ CREATE TABLE MEMBER
 );
 
 CREATE SEQUENCE payment_code_seq;
+ALTER SEQUENCE payment_code_seq nocache;
 CREATE TABLE PAYMENT
 (
 	payment_code         NUMBER(3) NOT NULL PRIMARY KEY,
@@ -70,6 +75,7 @@ CREATE TABLE PAYMENT
 );
 
 CREATE SEQUENCE request_code_seq;
+ALTER SEQUENCE request_code_seq nocache;
 CREATE TABLE REQUEST
 (
 	request_code         NUMBER(3) PRIMARY KEY,
@@ -82,6 +88,7 @@ CREATE TABLE REQUEST
 );
 
 CREATE SEQUENCE selling_code_seq;
+ALTER SEQUENCE selling_code_seq nocache;
 CREATE TABLE SELLING
 (
 	selling_code         NUMBER(3) NOT NULL PRIMARY KEY,

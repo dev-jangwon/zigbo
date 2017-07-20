@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
@@ -8,7 +8,7 @@
 	<link rel="icon" type="image/png" href="../assets/paper_img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
-	<title>¡˜±∏ª«∞≥±‚</title>
+	<title>ÏßÅÍµ¨ÎΩÄÍ∞úÍ∏∞</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -48,19 +48,28 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active">
-						<a href="/zigbo/login.jsp">∑Œ±◊¿Œ</a>
+					<c:choose>
+						<c:when test="${sessionScope.login!=null}">
+						<li class="active">
+							<a href="/zigbo/index.jsp" onclick="logoutFtn()">Î°úÍ∑∏ÏïÑÏõÉ</a>
+						</li>
+						</c:when>
+						<c:otherwise>
+						<li class="active">
+							<a href="/zigbo/login.jsp">Î°úÍ∑∏Ïù∏</a>
+						</li>
+						</c:otherwise>
+					</c:choose>
+					<li>
+						<a href="../sales/sales_list.jsp">ÌåêÎß§</a>
 					</li>
 					<li>
-						<a href="../sales/sales_list.jsp">∆«∏≈</a>
-					</li>
-					<li>
-						<a href="./request_list.jsp">ø‰√ª</a>
+						<a href="./request_list.jsp">ÏöîÏ≤≠</a>
 					</li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">≥ª ¡§∫∏ <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ÎÇ¥ Ï†ïÎ≥¥ <b class="caret"></b></a>
 						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
-							<li><a href="/zigbo/mypage.jsp">≥ª ¡§∫∏</a></li>
+							<li><a href="/zigbo/mypage.jsp">ÎÇ¥ Ï†ïÎ≥¥</a></li>
 						</ul>
 					 </li>
 				</ul>
@@ -73,8 +82,8 @@
 	            <div class="container tim-container">
 					<div id="buttons">
 	                    <div class="tim-title" style="text-align:center;">
-	                        <h3>ø‰√ª µÓ∑œ <br>
-	                            <small>ø‰√ª µÓ∑œ«“ ªÛ«∞¿« ¡§∫∏∏¶ ¿‘∑¬«ÿ¡÷ººø‰ </small>
+	                        <h3>ÏöîÏ≤≠ Îì±Î°ù <br>
+	                            <small>ÏöîÏ≤≠ Îì±Î°ùÌï† ÏÉÅÌíàÏùò Ï†ïÎ≥¥Î•º ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî </small>
 	                        </h3>
 	                    </div>
 	                    <div class="row">
@@ -84,39 +93,39 @@
 		                        	<input type="hidden" name="command" value="addRequest">
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">ªÛ«∞∏Ì</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">ÏÉÅÌíàÎ™Ö</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			<input type="text" value="" placeholder="ªÛ«∞∏Ì ∂«¥¬ ø‰√ª ¡¶∏Ò¿ª ¿‘∑¬«œººø‰" class="form-control" name="title">		
+			                        			<input type="text" value="" placeholder="ÏÉÅÌíàÎ™Ö ÎòêÎäî ÏöîÏ≤≠ Ï†úÎ™©ÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî" class="form-control" name="title">		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">¡¶«∞ º≥∏Ì</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">Ï†úÌíà ÏÑ§Î™Ö</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			<textarea class="form-control" rows="4" cols="50" placeholder="ªÛ«∞ø° ¥Î«— ªÛºº º≥∏Ì¿ª «ÿ¡÷ººø‰" name="detail"></textarea>		
+			                        			<textarea class="form-control" rows="4" cols="50" placeholder="ÏÉÅÌíàÏóê ÎåÄÌïú ÏÉÅÏÑ∏ ÏÑ§Î™ÖÏùÑ Ìï¥Ï£ºÏÑ∏Ïöî" name="detail"></textarea>		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">±∏∏≈ ∞°∞›</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">Íµ¨Îß§ Í∞ÄÍ≤©</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			<input type="text" value="" placeholder="±∏∏≈ ∞°∞›¿ª ¿‘∑¬«ÿ¡÷ººø‰" class="form-control" name="price">
+			                        			<input type="text" value="" placeholder="Íµ¨Îß§ Í∞ÄÍ≤©ÏùÑ ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî" class="form-control" name="price">
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">±∏∏≈ ¡ˆø™</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">Íµ¨Îß§ ÏßÄÏó≠</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			<input type="text" value="" placeholder="±∏∏≈ ¡ˆø™¿ª ¿‘∑¬«ÿ¡÷ººø‰" class="form-control" name="location">
+			                        			<input type="text" value="" placeholder="Íµ¨Îß§ ÏßÄÏó≠ÏùÑ ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî" class="form-control" name="location">
 			                        		</div>
 			                        	</div>	
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">¿ÃπÃ¡ˆ</h4>
+			                        			<h4 style="margin:0px;padding-top:5px;">Ïù¥ÎØ∏ÏßÄ</h4>
 			                        			<input type="hidden" value="img.jpeg" name="picture">
 			                        		</div>
 			                        		<div class="col-md-9">
@@ -124,7 +133,7 @@
 			                        		</div>
 			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
-			                        		<button href="./request/request_list.jsp" class="btn btn-fill btn-primary" type="submit">µÓ∑œ</button>
+			                        		<button href="./request/request_list.jsp" class="btn btn-fill btn-primary" type="submit">Îì±Î°ù</button>
 			                        	</div>
 			                    	</div> 
 	                        </div>

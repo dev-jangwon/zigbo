@@ -31,16 +31,17 @@ function getRequestList() {
 		
 			for (var i = 0; i < JSON.parse(result[0].requestList).length; i++) {
 				var obj = JSON.parse(result[0].requestList)[i];
-				var progress = "<span class='label label-info'>진행중</span>";
+				var progress = "<span class='label label-info>완료</span>";
 
 				if (obj.progress == 'W') {
 					progress = "<span class='label label-primary'>대기중</span>";
-				} else if (obj.progress='D') {
-					progress = "<span class='label label-success'>완료</span>";
+				} else if (obj.progress=='P') {
+					progress = "<span class='label label-success'>진행중</span>";
 				}
 				
 				$(".request-ul").append(
 						"<li>" +
+						"<div class='row'>"+
 							"<div class='col-md-3'>" + obj.requestCode +
 							"</div>" +
 							"<div class='col-md-3'>" + obj.uploadDate +
@@ -50,6 +51,7 @@ function getRequestList() {
 							"<div class='col-md-3'>" + 
 								"<a href='/zigbo/request?command=requestDetail&requestCode=" + obj.requestCode +"'>이동</a>" +
 							"</div>" +
+							"</div>"+
 						"</li>");
 			}
 		}
@@ -94,12 +96,13 @@ function getSellingList() {
 
 				if (obj.progress == 'W') {
 					progress = "<span class='label label-primary'>대기중</span>";
-				} else if (obj.progress='D') {
+				} else if (obj.progress=='D') {
 					progress = "<span class='label label-success'>완료</span>";
 				}
 				
 				$(".selling-ul").append(
 						"<li>" +
+						"<div class='row'>"+
 							"<div class='col-md-3'>" + obj.sellingCode +
 							"</div>" +
 							"<div class='col-md-3'>" + obj.uploadDate +
@@ -109,6 +112,7 @@ function getSellingList() {
 							"<div class='col-md-3'>" + 
 								"<a href='/zigbo/selling?command=sellingDetail&sellingCode=" + obj.sellingCode +"'>이동</a>" +
 							"</div>" +
+							"</div>"+
 						"</li>");
 			}
 		}
@@ -148,11 +152,13 @@ function getPurchaseList() {
 				
 				$(".purchase-ul").append(
 						"<li>" +
+						"<div class='row'>"+
 							"<div class='col-md-4'>" + obj.paymentCode +
 							"</div>" +
 							"<div class='col-md-4'>" + result[1].email +
 							"</div>" +
 							"<div class='col-md-4'>" + obj.address +
+							"</div>"+
 							"</div>"+
 						"</li>");
 			}
@@ -191,22 +197,24 @@ function getApplyList() {
 			for (var i = 0; i < JSON.parse(result[0].applyList).length; i++) {
 				var obj = JSON.parse(result[0].applyList)[i];
 				
-				var progress = "<span class='label label-info'>진행중</span>";
+				var progress = "<span class='label label-info'>완료</span>";
 
 				if (obj.progress == 'W') {
 					progress = "<span class='label label-primary'>대기중</span>";
-				} else if (obj.progress='D') {
-					progress = "<span class='label label-success'>완료</span>";
+				} else if (obj.progress=='P') {
+					progress = "<span class='label label-success'>진행중</span>";
 				}
 				
 				$(".apply-ul").append(
 						"<li>" +
+						"<div class='row'>"+
 							"<div class='col-md-4'>" + obj.applyCode +
 							"</div>" +
 							"<div class='col-md-4'>" + obj.requestCode +
 							"</div>" +
-							"<div class='col-md-4'>" + obj.progress +
+							"<div class='col-md-4'>" + progress  +
 							"</div>" +
+							"</div>"+
 						"</li>");
 			}
 		}

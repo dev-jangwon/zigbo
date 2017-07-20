@@ -1,45 +1,45 @@
 
 -- member insert
 -- int memberCode, String email, String password, String phone, String address, String account
-insert into member values(1,'ktsvvv@naver.com','1234','01027532415','¼­¿ï','±¹¹Î');
-insert into member values(2,'abcdef@naver.com','1234','01011111111','°æ±â','½ÅÇÑ');
-insert into member values(3,'ghijkl@naver.com','1234','01022222222','ºÎ»ê','¿ì¸®');
-insert into member values(4,'mnopqr@naver.com','1234','01033333333','´ëÀü','ÇÏ³ª');
+insert into member values(MEMBER_CODE_SEQ.nextval,'ktsvvv@naver.com','1234','01027532415','ì„œìš¸','êµ­ë¯¼');
+insert into member values(MEMBER_CODE_SEQ.nextval,'abcdef@naver.com','1234','01011111111','ê²½ê¸°','ì‹ í•œ');
+insert into member values(MEMBER_CODE_SEQ.nextval,'ghijkl@naver.com','1234','01022222222','ë¶€ì‚°','ìš°ë¦¬');
+insert into member values(MEMBER_CODE_SEQ.nextval,'mnopqr@naver.com','1234','01033333333','ëŒ€ì „','í•˜ë‚˜');
 
 -- item insert
 -- int itemCode, String price, String detail, String location, String picture1, String picture2
-insert into item values(1, 'ÀÌ¸§1','1000','»ó¼¼Á¤º¸1','¼­¿ï','»çÁø1');
-insert into item values(2, 'ÀÌ¸§2','2000','»ó¼¼Á¤º¸2','°æ±â','»çÁø1');
-insert into item values(3, 'ÀÌ¸§3','3000','»ó¼¼Á¤º¸3','ºÎ»ê','»çÁø1');
-insert into item values(4, 'ÀÌ¸§4','4000','»ó¼¼Á¤º¸4','´ëÀü','»çÁø1');
+insert into item values(ITEM_CODE_SEQ.nextval, 'ì´ë¦„1','1000','ìƒì„¸ì •ë³´1','ì„œìš¸','ì‚¬ì§„1');
+insert into item values(ITEM_CODE_SEQ.nextval, 'ì´ë¦„2','2000','ìƒì„¸ì •ë³´2','ê²½ê¸°','ì‚¬ì§„1');
+insert into item values(ITEM_CODE_SEQ.nextval, 'ì´ë¦„3','3000','ìƒì„¸ì •ë³´3','ë¶€ì‚°','ì‚¬ì§„1');
+insert into item values(ITEM_CODE_SEQ.nextval, 'ì´ë¦„4','4000','ìƒì„¸ì •ë³´4','ëŒ€ì „','ì‚¬ì§„1');
 
 -- selling insert
 -- int sellingCode, int memberCode, int itemCode, int views, Date upload, String progress, String location
-insert into selling values(1,1,1,100,sysdate,'W','¼­¿ï');
-insert into selling values(2,2,2,200,sysdate,'W','°æ±â');
-insert into selling values(3,3,3,300,sysdate,'W','ºÎ»ê');
-insert into selling values(4,4,4,400,sysdate,'W','´ëÀü');
+insert into selling values(SELLING_CODE_SEQ.nextval,1,1,100,sysdate,'W','ì„œìš¸');
+insert into selling values(SELLING_CODE_SEQ.nextval,2,2,200,sysdate,'W','ê²½ê¸°');
+insert into selling values(SELLING_CODE_SEQ.nextval,3,3,300,sysdate,'W','ë¶€ì‚°');
+insert into selling values(SELLING_CODE_SEQ.nextval,4,4,400,sysdate,'W','ëŒ€ì „');
 
 -- payment insert
 -- int paymentCode, int sellingCode, int memberCode, String address
-insert into payment values(1,1,1,'¼­¿ï1');
-insert into payment values(2,2,2,'°æ±â1');
-insert into payment values(3,3,3,'ºÎ»ê1');
-insert into payment values(4,4,4,'´ëÀü1');
+insert into payment values(PAYMENT_CODE_SEQ.nextval,1,1,'ì„œìš¸1');
+insert into payment values(PAYMENT_CODE_SEQ.nextval,2,2,'ê²½ê¸°1');
+insert into payment values(PAYMENT_CODE_SEQ.nextval,3,3,'ë¶€ì‚°1');
+insert into payment values(PAYMENT_CODE_SEQ.nextval,4,4,'ëŒ€ì „1');
 
 -- request insert
 -- int requestCode, int itemCode, int memberCode, int views, Date upload, String progress, String location
-insert into request values(1,1,1,100,sysdate,'W','¼­¿ï');
-insert into request values(2,2,2,200,sysdate,'W','°æ±â');
-insert into request values(3,3,3,300,sysdate,'W','ºÎ»ê');
-insert into request values(4,4,4,400,sysdate,'W','´ëÀü');
+insert into request values(REQUEST_CODE_SEQ.nextval,1,1,100,sysdate,'W','ì„œìš¸');
+insert into request values(REQUEST_CODE_SEQ.nextval,2,2,200,sysdate,'W','ê²½ê¸°');
+insert into request values(REQUEST_CODE_SEQ.nextval,3,3,300,sysdate,'W','ë¶€ì‚°');
+insert into request values(REQUEST_CODE_SEQ.nextval,4,4,400,sysdate,'W','ëŒ€ì „');
 
 -- apply insert
 -- int applyCode, int requestCode, int memberCode, String detail
-insert into apply values(1,1,1,'»ó¼¼Á¤º¸1');
-insert into apply values(2,2,2,'»ó¼¼Á¤º¸1');
-insert into apply values(3,3,3,'»ó¼¼Á¤º¸1');
-insert into apply values(4,4,4,'»ó¼¼Á¤º¸1');
+insert into apply values(APPLY_CODE_SEQ.nextval,1,1,'ìƒì„¸ì •ë³´1');
+insert into apply values(APPLY_CODE_SEQ.nextval,2,2,'ìƒì„¸ì •ë³´1');
+insert into apply values(APPLY_CODE_SEQ.nextval,3,3,'ìƒì„¸ì •ë³´1');
+insert into apply values(APPLY_CODE_SEQ.nextval,4,4,'ìƒì„¸ì •ë³´1');
 
 -- interest insert
 -- int memberCode, int sellingCode

@@ -195,12 +195,13 @@ public class RequestController extends HttpServlet {
 	   
 	   public void addApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		      String url = "/zigbo/request/request_list.jsp";
-		      
-		      int memberCode = Integer.parseInt(request.getParameter("memberCode"));
+		      HttpSession session = request.getSession();
+		      int memberCode = (int)session.getAttribute("login");
+//		      int memberCode = Integer.parseInt(request.getParameter("memberCode"));
 		      int requestCode = Integer.parseInt(request.getParameter("requestCode"));
 		      String detail = request.getParameter("detail");
 		      ApplyDTO apply = new ApplyDTO(requestCode, memberCode, detail);
-		      HttpSession session = request.getSession();
+
 		      try{
 		    	  
 		         boolean result = ZigboService.addApply(apply);
@@ -330,7 +331,7 @@ public class RequestController extends HttpServlet {
 			   	JSONArray jsonList = new JSONArray();
 
 			   	try {
-					ArrayList<RequestDTO> requestList = ZigboService.getRequestofMember(1);
+					ArrayList<RequestDTO> requestList = ZigboService.getRequestofMember(memberCode);
 					JSONObject jsonOb = new JSONObject();
 					String stringList = new Gson().toJson(requestList);
 				    jsonOb.put("requestList", stringList);
@@ -349,7 +350,7 @@ public class RequestController extends HttpServlet {
 			   	JSONArray jsonList = new JSONArray();
 
 			   	try {
-					ArrayList<ApplyDTO> applyList = ZigboService.getApplyofMember(1);
+					ArrayList<ApplyDTO> applyList = ZigboService.getApplyofMember(memberCode);
 					JSONObject jsonOb = new JSONObject();
 					String stringList = new Gson().toJson(applyList);
 				    jsonOb.put("applyList", stringList);
@@ -364,11 +365,12 @@ public class RequestController extends HttpServlet {
 		   public void getApplyMemberRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			   PrintWriter writer = response.getWriter();
 			   	int memberCode = (Integer)request.getSession().getAttribute("login");
-			   	
+			   	System.out.println(memberCode);
 			   	JSONArray jsonList = new JSONArray();
 
 			   	try {
-					ArrayList<ApplyRequestDTO> applyList = ZigboService.getApplyMemberRequest(1);
+					ArrayList<ApplyRequestDTO> applyList = ZigboService.getApplyMemberRequest(memberCode);
+					
 					JSONObject jsonOb = new JSONObject();
 					String stringList = new Gson().toJson(applyList);
 				    jsonOb.put("applyList", stringList);

@@ -325,7 +325,7 @@ public class SellingController extends HttpServlet {
 	   	JSONArray jsonList = new JSONArray();
 
 	   	try {
-			ArrayList<SellingDTO> sellingList = ZigboService.getSellingofMember(1);
+			ArrayList<SellingDTO> sellingList = ZigboService.getSellingofMember(memberCode);
 			JSONObject jsonOb = new JSONObject();
 			String stringList = new Gson().toJson(sellingList);
 		    jsonOb.put("sellingList", stringList);
@@ -346,7 +346,7 @@ public class SellingController extends HttpServlet {
 
 	   	try {
 	   		String email = ZigboService.getEmailByMemberCode(memberCode);
-			ArrayList<PaymentDTO> paymentList = ZigboService.getPaymentofMember(1);
+			ArrayList<PaymentDTO> paymentList = ZigboService.getPaymentofMember(memberCode);
 			JSONObject jsonOb = new JSONObject();
 			String stringList = new Gson().toJson(paymentList);
 		    jsonOb.put("purchaseList", stringList);
