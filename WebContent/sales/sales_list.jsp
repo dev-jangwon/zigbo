@@ -28,7 +28,7 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">ZigBBo</a>
+				<a class="navbar-brand" href="/zigbo/index.jsp">ZigBBo</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
@@ -46,10 +46,10 @@
 						</c:otherwise>
 					</c:choose>
 					<li>
-						<a href="#">판매</a>
+						<a href="./sales_list.jsp">판매</a>
 					</li>
 					<li>
-						<a href="#">구매</a>
+						<a href="../request/request_list.jsp">구매</a>
 					</li>
 					<c:if test="${sessionScope.login!=null}">
 						<li class="dropdown">

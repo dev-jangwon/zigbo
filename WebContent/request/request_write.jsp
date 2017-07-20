@@ -28,19 +28,19 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">ZigBBo</a>
+				<a class="navbar-brand" href="/zigbo/index.jsp">ZigBBo</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
 					<li class="active">
-						<a href="#">로그인</a>
+						<a href="/zigbo/login.jsp">로그인</a>
 					</li>
 					<li>
-						<a href="#">판매</a>
+						<a href="../sales/sales_list.jsp">판매</a>
 					</li>
 					<li>
-						<a href="#">구매</a>
+						<a href="./request_list.jsp">구매</a>
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown <b class="caret"></b></a>

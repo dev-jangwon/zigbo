@@ -65,20 +65,16 @@ public class SellingController extends HttpServlet {
 		try{
 			if(!ZigboService.addItem(item)){
 				//item 추가가 되지 않음
-				System.out.println("혹시...일로왔냐");
 				return;
 			}
 			itemCode = ItemDAO.getItemCode(title,detail,location);
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 		}
-		System.out.println("itemCode: "+itemCode);
+		
 		//memberCode가져옴
 		HttpSession session = request.getSession();
-		System.out.println(session.getId());
-		System.out.println("memberCode: "+ session.getAttribute("login"));
 		int memberCode = (int)session.getAttribute("login");
-		//System.out.println("memberCode: "+ memberCode);
 		
 		SellingDTO selling = new SellingDTO(memberCode, itemCode, location);
 		
@@ -118,7 +114,6 @@ public class SellingController extends HttpServlet {
 			for (int i = 0; i < list.size(); i++) {
 				int itemCode = list.get(i).getItemCode();
 				ret.add(ZigboService.getItem(itemCode));
-				System.out.println(list.get(i));
 			}
 
 			request.setAttribute("sellingList", list);
