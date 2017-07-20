@@ -254,7 +254,6 @@ public class SellingController extends HttpServlet {
 	public void addPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String url = "/sales/purchase.jsp";
-		System.out.println("addPayment옴");
 		int sellingCode = Integer.parseInt(request.getParameter("sellingCode"));
 		int memberCode = Integer.parseInt(request.getParameter("memberCode"));
 		String address = (String)request.getParameter("Address");
@@ -264,9 +263,11 @@ public class SellingController extends HttpServlet {
 		try{
 			boolean result = ZigboService.addPayment(payment);
 			if(result){
-				session.setAttribute("sucPurchase", "결제 완료");
-				response.sendRedirect("/zigbo/sales/sales_list.jsp");
-				return;
+				if(ZigboService.updateSellingProgress(sellingCode)){
+					session.setAttribute("sucPurchase", "결제 완료");
+					response.sendRedirect("/zigbo/sales/sales_list.jsp");
+					return;
+				}
 			}else{
 				session.setAttribute("errRetry", "다시 시도하세요");
 			}

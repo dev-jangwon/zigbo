@@ -32,8 +32,8 @@ public class ApplyDAO {
 	      try{
 	         con = DBUtil.getConnection();
 	         pstmt = con.prepareStatement(sql.getString("addApply"));
-	         pstmt.setInt(1, apply.getMemberCode());
-	         pstmt.setInt(2, apply.getRequestCode());
+	         pstmt.setInt(1, apply.getRequestCode());
+	         pstmt.setInt(2, apply.getMemberCode());
 	         pstmt.setString(3, apply.getDetail());
 	         int result = pstmt.executeUpdate();
 	         if(result == 1){

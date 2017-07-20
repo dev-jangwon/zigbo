@@ -2,9 +2,7 @@ package zigbo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +30,6 @@ public class RequestController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		String command = request.getParameter("command");
-		
 		try{
 			if(command.equals("addRequest")){
 				addRequest(request, response);
@@ -43,7 +40,9 @@ public class RequestController extends HttpServlet {
 			}else if(command.equals("updateRequestViews")){
 				updateRequestViews(request, response);
 			}else if(command.equals("updateRequestProgress")){
-				updateRequestProgress(request, response);
+				updateRequestProgressToP(request, response);
+			}else if(command.equals("updateRequestProgress")){
+				updateRequestProgressToD(request, response);
 			}else if(command.equals("getRequestofMember")){
 				getRequestofMember(request, response);
 			}else if(command.equals("addApply")){
@@ -62,6 +61,8 @@ public class RequestController extends HttpServlet {
 				requestDetail(request, response);
 			} else if (command.equals("getMyRequest")) {
 				getMyRequest(request, response);
+			} else if (command.equals("supportApply")){
+				supportApply(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -157,16 +158,25 @@ public class RequestController extends HttpServlet {
 	      request.getRequestDispatcher(url).forward(request, response);
 	   }
 	   
-	   public void updateRequestProgress(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   public void updateRequestProgressToP(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	      String url = "showError.jsp";
 	      try {
-	         request.setAttribute("myrequest", ZigboService.updateRequestProgress(Integer.parseInt(request.getParameter("RequestCode"))));
-	         //url = "activistDetail.jsp";
+	    	  ZigboService.updateRequestProgressToP(Integer.parseInt(request.getParameter("RequestCode")));
 	      }catch(Exception s){
 	         request.setAttribute("errorMsg", s.getMessage());
 	      }
 	      request.getRequestDispatcher(url).forward(request, response);
 	   }
+	   
+	   public void updateRequestProgressToD(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		      String url = "showError.jsp";
+		      try {
+		    	  ZigboService.updateRequestProgressToD(Integer.parseInt(request.getParameter("RequestCode")));
+		      }catch(Exception s){
+		         request.setAttribute("errorMsg", s.getMessage());
+		      }
+		      request.getRequestDispatcher(url).forward(request, response);
+		   }
 	   
 	   public void getRequestofMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		      String url = "showError.jsp";
@@ -180,26 +190,27 @@ public class RequestController extends HttpServlet {
 	   }
 	   
 	   public void addApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		      String url = "showError.jsp";
+		      String url = "/zigbo/request/request_list.jsp";
 		      
-		      int memberCode = Integer.parseInt(request.getParameter("MemberCode"));
-		      int itemCode = Integer.parseInt(request.getParameter("ItemCode"));
-		      String location = request.getParameter("Location");
-		      ApplyDTO apply = new ApplyDTO(0, memberCode, itemCode, location);
-		      
+		      int memberCode = Integer.parseInt(request.getParameter("memberCode"));
+		      int requestCode = Integer.parseInt(request.getParameter("requestCode"));
+		      String detail = request.getParameter("detail");
+		      ApplyDTO apply = new ApplyDTO(requestCode, memberCode, detail);
+		      HttpSession session = request.getSession();
 		      try{
+		    	  
 		         boolean result = ZigboService.addApply(apply);
 		         if(result){
-		            request.setAttribute("apply", apply);
-		            request.setAttribute("successMsg", "완료");
-		            //url = "activistDetail.jsp";
+		        	 if(ZigboService.updateRequestProgressToP(requestCode)){
+		        		 session.setAttribute("sucApply", "지원 완료");
+		        	 }
 		         }else{
-		            request.setAttribute("errorMsg", "다시 시도하세요");
+		        	 session.setAttribute("errorMsg", "다시 시도하세요");
 		         }
 		      }catch(Exception s){
-		         request.setAttribute("errorMsg", s.getMessage());
+		    	  session.setAttribute("errorMsg", s.getMessage());
 		      }
-		      request.getRequestDispatcher(url).forward(request, response);
+		      response.sendRedirect(url);
 		   }
 		   
 		   public void getApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -217,12 +228,28 @@ public class RequestController extends HttpServlet {
 		      String url = "showError.jsp";
 		      try {
 		         request.setAttribute("applyAll", ZigboService.getAllApply());
-		         url = "activistList.jsp";
+		         url = "request_list.jsp";
 		      }catch(Exception s){
 		         request.setAttribute("errorMsg", s.getMessage());
 		      }
 		      request.getRequestDispatcher(url).forward(request, response);
 		   }
+		   
+		   public void supportApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			   int memberCode = Integer.parseInt(request.getParameter("memberCode"));
+			   int itemCode = Integer.parseInt(request.getParameter("itemCode"));
+			   int requestCode = Integer.parseInt(request.getParameter("requestCode"));
+			   try {
+			         request.setAttribute("member", ZigboService.getMemberByMemberCode(memberCode));
+			         request.setAttribute("item", ZigboService.getItem(itemCode));
+			         request.setAttribute("request", ZigboService.getRequest(requestCode));
+			         request.getRequestDispatcher("/request/request_support.jsp").forward(request, response);
+			         return;
+			      }catch(Exception s){
+			         request.setAttribute("errorMsg", s.getMessage());
+			         return;
+			      }
+			   }
 		   
 			public void deleteApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			      String url = "showError.jsp";

@@ -102,12 +102,29 @@ public class RequestDAO {
 		return false;
 	}
 
-	public static boolean updateRequestProgress(int requestCode) throws SQLException {
+	public static boolean updateRequestProgressToP(int requestCode) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement(sql.getString("updateRequestProgress"));
+			pstmt = con.prepareStatement(sql.getString("updateRequestProgressToP"));
+			pstmt.setInt(1, requestCode);
+			int result = pstmt.executeUpdate();
+			if (result == 1) {
+				return true;
+			}
+		} finally {
+			DBUtil.close(con, pstmt);
+		}
+		return false;
+	}
+	
+	public static boolean updateRequestProgressToD(int requestCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("updateRequestProgressToD"));
 			pstmt.setInt(1, requestCode);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {

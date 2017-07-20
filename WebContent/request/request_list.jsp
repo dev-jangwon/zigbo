@@ -40,6 +40,13 @@
                         <%session.setAttribute("sucRequest",null);%>
                 	</script>
 				</c:if>
+				<c:if test="${sucApply!=null}">
+					<script type="text/javascript">
+                    	var sucApply = "<%=session.getAttribute("sucApply").toString()%>";
+                        alert(sucApply);
+                        <%session.setAttribute("sucApply",null);%>
+                	</script>
+				</c:if>
 					<c:choose>
 						<c:when test="${sessionScope.login!=null}">
 						<li class="active">
