@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import zigbo.model.dto.SellingDTO;
+import zigbo.model.dto.SellingMemberDTO;
 import zigbo.model.util.DBUtil;
 
 public class SellingDAO {
@@ -68,7 +69,7 @@ public class SellingDAO {
 			pstmt.setInt(1, sellingCode);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
-				selling = new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6));
+				selling = new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -87,7 +88,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()) {
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -140,7 +141,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()){
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -159,7 +160,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()){
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -178,7 +179,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()){
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -198,7 +199,26 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()){
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
+			}
+		}finally{
+			DBUtil.close(con, pstmt, rset);
+		}
+		return list;
+	}
+	
+	public static ArrayList<SellingMemberDTO> getAllSellingMember() throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<SellingMemberDTO> list = null;
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getAllSellingMember"));
+			rset = pstmt.executeQuery();
+			list = new ArrayList<SellingMemberDTO>();
+			while(rset.next()) {
+				list.add(new SellingMemberDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);

@@ -2,7 +2,6 @@ package zigbo.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +13,8 @@ import zigbo.model.ItemDAO;
 import zigbo.model.ZigboService;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.PaymentDTO;
-import zigbo.model.dto.RequestDTO;
 import zigbo.model.dto.SellingDTO;
+import zigbo.model.dto.SellingMemberDTO;
 
 public class SellingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -114,11 +113,12 @@ public class SellingController extends HttpServlet {
 		ArrayList<ItemDTO> ret = new ArrayList<ItemDTO>();
 		
 		try {
-			ArrayList<SellingDTO> list = ZigboService.getAllSelling();
+			ArrayList<SellingMemberDTO> list = ZigboService.getAllSellingMember();
 			
 			for (int i = 0; i < list.size(); i++) {
 				int itemCode = list.get(i).getItemCode();
 				ret.add(ZigboService.getItem(itemCode));
+				System.out.println(list.get(i));
 			}
 
 			request.setAttribute("sellingList", list);

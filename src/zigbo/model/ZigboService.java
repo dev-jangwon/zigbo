@@ -11,6 +11,7 @@ import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.PaymentDTO;
 import zigbo.model.dto.RequestDTO;
 import zigbo.model.dto.SellingDTO;
+import zigbo.model.dto.SellingMemberDTO;
 
 public class ZigboService {
 
@@ -93,6 +94,10 @@ public class ZigboService {
    // Âò¼ø Sellings ¹ÝÈ¯
    public static ArrayList<SellingDTO> getMostInterest() throws SQLException {
       return SellingDAO.getMostInterest();
+   }
+   
+   public static ArrayList<SellingMemberDTO> getAllSellingMember() throws SQLException{ 
+	   return SellingDAO.getAllSellingMember();
    }
    
    ////PAYMENT SERVICE ////

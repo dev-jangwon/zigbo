@@ -38,7 +38,7 @@
 					</div>	
 				</div>
 				<div class="col-md-4">
-					<div class="zigbbo-list-member">${requestScope.sellingList[status.index].memberCode}</div>
+					<div class="zigbbo-list-member">${requestScope.sellingList[status.index].email}</div>
 					<div class="zigbbo-list-price"><i class="fa fa-krw"></i>&nbsp;${item.price}</div>	
 				</div>
 			</div>
