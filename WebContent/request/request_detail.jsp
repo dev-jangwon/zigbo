@@ -53,7 +53,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">내 정보 <b class="caret"></b></a>
 						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
-							<li><a href="#">내 정보 수정</a></li>
+							<li><a href="/zigbo/mypage.jsp">내 정보 수정</a></li>
 							<li><a href="#">활동 내역</a></li>
 						</ul>
 					 </li>

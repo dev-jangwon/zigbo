@@ -15,7 +15,7 @@
 							<p style="position:absolute;right:10%;top:64%;">조회수: ${requestScope.sellingList[status.index].views}</p>
 							<p>
 								<a href='<%=url%>selling?command=sellingDetail&sellingCode=${requestScope.sellingList[status.index].sellingCode}' class="btn btn-primary" role="button" style="margin-left:20px;"><i class="fa fa-krw"></i>${item.price}</a>
-								<a href='<%=url%>selling?command=sellingDetail&sellingCode=${item.itemCode}' class="btn btn-default" role="button">상세보기</a>
+								<a href='<%=url%>selling?command=sellingDetail&sellingCode=${requestScope.sellingList[status.index].sellingCode}' class="btn btn-default" role="button">상세보기</a>
 							</p>
 		      		</div>
 		     </div>
