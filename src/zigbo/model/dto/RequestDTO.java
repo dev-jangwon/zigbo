@@ -1,16 +1,28 @@
 package zigbo.model.dto;
 
+import java.util.Date;
+
 public class RequestDTO {
 
 	private int requestCode;
 	private int itemCode; 
 	private int memberCode;
 	private int views;
-	private String uploadDate;
+	private Date uploadDate;
 	private String progress; 
 	private String location;
 	
-	public RequestDTO(int requestCode, int itemCode, int memberCode, int views, String uploadDate,  String progress, String location) {
+	public RequestDTO(int itemCode, int memberCode, String location) {
+		//add¿ë
+		this.itemCode = itemCode;
+		this.memberCode = memberCode;
+		this.uploadDate = new Date(0);
+		this.views = 0;
+		this.progress = "W";
+		this.location = location;
+	}
+	
+	public RequestDTO(int requestCode, int itemCode, int memberCode, int views, Date uploadDate,  String progress, String location) {
 		this.requestCode = requestCode;
 		this.itemCode = itemCode;
 		this.memberCode = memberCode;
@@ -72,11 +84,11 @@ public class RequestDTO {
 		this.location = location;
 	}
 	
-	public String getUploadDate() {
+	public Date getUploadDate() {
 		return uploadDate;
 	}
 
-	public void setUploadDate(String uploadDate) {
+	public void setUploadDate(Date uploadDate) {
 		this.uploadDate = uploadDate;
 	}
 

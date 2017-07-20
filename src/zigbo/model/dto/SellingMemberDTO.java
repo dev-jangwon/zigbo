@@ -1,11 +1,13 @@
 package zigbo.model.dto;
 
+import java.util.Date;
+
 public class SellingMemberDTO {
 	private int sellingCode;
 	private int memberCode;
 	private int itemCode;
 	private int views;
-	private String uploadDate;
+	private Date uploadDate;
 	private String progress;
 	private String location;
 	private String email;
@@ -14,7 +16,7 @@ public class SellingMemberDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SellingMemberDTO(int sellingCode, int memberCode, int itemCode, int views, String uploadDate, String progress, String location,
+	public SellingMemberDTO(int sellingCode, int memberCode, int itemCode, int views, Date uploadDate, String progress, String location,
 			String email) {
 		super();
 		this.sellingCode = sellingCode;
@@ -69,6 +71,12 @@ public class SellingMemberDTO {
 		this.email = email;
 	}
 	
+	public Date getUploadDate() {
+		return uploadDate;
+	}
+	public void setUploadDate(Date uploadDate) {
+		this.uploadDate = uploadDate;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

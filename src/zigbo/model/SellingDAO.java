@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import zigbo.model.dto.SellingDTO;
 import zigbo.model.dto.SellingMemberDTO;
 import zigbo.model.util.DBUtil;
+import java.util.Date;
 
 public class SellingDAO {
 	static ResourceBundle sql = DBUtil.getResourceBundle();
@@ -37,7 +38,11 @@ public class SellingDAO {
 	public static boolean addSelling(SellingDTO selling) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+		System.out.println(
+		selling.getMemberCode()+" "+
+		selling.getItemCode()+" "+
+		selling.getViews()+" "+
+		selling.getLocation());
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("addSelling"));
@@ -69,7 +74,7 @@ public class SellingDAO {
 			pstmt.setInt(1, sellingCode);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
-				selling = new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7));
+				selling = new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getDate(5), rset.getString(6), rset.getString(7));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -88,7 +93,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()) {
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getDate(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -141,7 +146,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()){
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getDate(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -160,7 +165,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()){
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getDate(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -179,7 +184,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()){
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getDate(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -199,7 +204,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingDTO>();
 			while(rset.next()){
-				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7)));
+				list.add(new SellingDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getDate(5), rset.getString(6), rset.getString(7)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);
@@ -218,7 +223,7 @@ public class SellingDAO {
 			rset = pstmt.executeQuery();
 			list = new ArrayList<SellingMemberDTO>();
 			while(rset.next()) {
-				list.add(new SellingMemberDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8)));
+				list.add(new SellingMemberDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4), rset.getDate(5), rset.getString(6), rset.getString(7), rset.getString(8)));
 			}
 		}finally{
 			DBUtil.close(con, pstmt, rset);

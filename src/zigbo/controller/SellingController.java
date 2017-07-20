@@ -62,7 +62,16 @@ public class SellingController extends HttpServlet {
 		String price = request.getParameter("price");
 		String location = request.getParameter("location");
 		String picture = request.getParameter("picture");
-		//itemCode가져옴
+		
+		if (title == null || title.length() == 0 || detail == null || detail.length() == 0
+				|| price == null || price.length() == 0 || location == null || location.length() == 0
+				|| picture == null || picture.length() == 0) {
+			request.setAttribute("errorMsg", "모든 정보를 입력해주세요");
+			request.getAttribute("errorMsg");
+			request.getRequestDispatcher("./sales/sales_write.jsp").forward(request, response);
+			return;
+		}
+		
 		ItemDTO item = new ItemDTO(title, price, detail, location, picture);
 		int itemCode = 0;
 		try{
@@ -74,18 +83,18 @@ public class SellingController extends HttpServlet {
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
 		}
-		
+
 		//memberCode가져옴
 		HttpSession session = request.getSession();
 		int memberCode = (int)session.getAttribute("login");
 		
 		SellingDTO selling = new SellingDTO(memberCode, itemCode, location);
-		
+		System.out.println("selling 있니? "+selling);
 		try{
 			boolean result = ZigboService.addSelling(selling);
+			System.out.println("result? "+result);
 			if(result){
-				System.out.println("addSelling됨");
-				request.setAttribute("successMsg", "가입 완료");
+				request.setAttribute("successMsg", "판매 등록 완료");
 				url = "./sales/sales_list.jsp";
 			}else{
 				request.setAttribute("errorMsg", "다시 시도하세요");

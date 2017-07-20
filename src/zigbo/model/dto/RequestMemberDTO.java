@@ -1,12 +1,14 @@
 package zigbo.model.dto;
 
+import java.util.Date;
+
 public class RequestMemberDTO {
 
 	private int requestCode;
 	private int itemCode; 
 	private int memberCode;
 	private int views;
-	private String uploadDate;
+	private Date uploadDate;
 	private String progress; 
 	private String location;
 	private String email;
@@ -14,7 +16,7 @@ public class RequestMemberDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public RequestMemberDTO(int requestCode, int itemCode, int memberCode, int views, String uploadDate,
+	public RequestMemberDTO(int requestCode, int itemCode, int memberCode, int views, Date uploadDate,
 			String progress, String location, String email) {
 		super();
 		this.requestCode = requestCode;
@@ -50,10 +52,10 @@ public class RequestMemberDTO {
 	public void setViews(int views) {
 		this.views = views;
 	}
-	public String getUploadDate() {
+	public Date getUploadDate() {
 		return uploadDate;
 	}
-	public void setUploadDate(String uploadDate) {
+	public void setUploadDate(Date uploadDate) {
 		this.uploadDate = uploadDate;
 	}
 	public String getProgress() {
@@ -74,6 +76,8 @@ public class RequestMemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

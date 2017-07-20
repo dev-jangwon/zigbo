@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html lang="ko">
@@ -12,10 +13,10 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     
-    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" />
-    <link href="../assets/css/ct-paper.css" rel="stylesheet"/>
-    <link href="../assets/css/demo.css" rel="stylesheet" />
-     <link href="../assets/css/zigbo.css" rel="stylesheet" />
+    <link href="/zigbo/bootstrap3/css/bootstrap.css" rel="stylesheet" />
+    <link href="/zigbo/assets/css/ct-paper.css" rel="stylesheet"/>
+    <link href="/zigbo/assets/css/demo.css" rel="stylesheet" />
+     <link href="/zigbo/assets/css/zigbo.css" rel="stylesheet" />
         
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -27,6 +28,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
+			<c:if test="${errorMsg!=null}">
+				<script type="text/javascript">
+                    var errMsg = "<%=request.getAttribute("errorMsg").toString()%>";
+                	alert(errMsg);
+				</script>
+           	</c:if>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/zigbo/index.jsp">ZigBBo</a>
 			</div>
@@ -66,12 +73,14 @@
 	                    <div class="row">
 	                        <div class="col-md-8 col-md-offset-2">
 		                        	<div class="form-group">
+		                        	<form action="/zigbo/request" method="get">
+		                        	<input type="hidden" name="command" value="addRequest">
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">상품명</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			<input type="text" value="" placeholder="상품명 또는 요청 제목을 입력하세요" class="form-control">		
+			                        			<input type="text" value="" placeholder="상품명 또는 요청 제목을 입력하세요" class="form-control" name="title">		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
@@ -79,7 +88,7 @@
 			                        			<h4 style="margin:0px;padding-top:5px;">제품 설명</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			<textarea class="form-control" rows="4" cols="50" placeholder="상품에 대한 상세 설명을 해주세요"></textarea>		
+			                        			<textarea class="form-control" rows="4" cols="50" placeholder="상품에 대한 상세 설명을 해주세요" name="detail"></textarea>		
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
@@ -87,7 +96,7 @@
 			                        			<h4 style="margin:0px;padding-top:5px;">구매 가격</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			<input type="text" value="" placeholder="구매 가격을 입력해주세요" class="form-control">
+			                        			<input type="text" value="" placeholder="구매 가격을 입력해주세요" class="form-control" name="price">
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
@@ -95,19 +104,20 @@
 			                        			<h4 style="margin:0px;padding-top:5px;">구매 지역</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			<input type="text" value="" placeholder="구매 지역을 입력해주세요" class="form-control">
+			                        			<input type="text" value="" placeholder="구매 지역을 입력해주세요" class="form-control" name="location">
 			                        		</div>
 			                        	</div>	
 			                        	<div class="row" style="margin-bottom:20px;">
 			                        		<div class="col-md-3">
 			                        			<h4 style="margin:0px;padding-top:5px;">이미지</h4>
+			                        			<input type="hidden" value="img.jpeg" name="picture">
 			                        		</div>
 			                        		<div class="col-md-9">
 			                        			
 			                        		</div>
 			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
-			                        		<button href="#" class="btn btn-fill btn-primary">등록</button>
+			                        		<button href="./request/request_list.jsp" class="btn btn-fill btn-primary" type="submit">등록</button>
 			                        	</div>
 			                    	</div> 
 	                        </div>
@@ -125,16 +135,16 @@
 	        </div>
 	    </div>
 	</footer>
-	<script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="../assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+	<script src="/zigbo/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="/zigbo/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 
-	<script src="../bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+	<script src="/zigbo/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
 	
 	<!--  Plugins -->
-	<script src="../assets/js/ct-paper-checkbox.js"></script>
-	<script src="../assets/js/ct-paper-radio.js"></script>
-	<script src="../assets/js/bootstrap-select.js"></script>
-	<script src="../assets/js/bootstrap-datepicker.js"></script>
-	<script src="../assets/js/ct-paper.js"></script>  
+	<script src="/zigbo/assets/js/ct-paper-checkbox.js"></script>
+	<script src="/zigbo/assets/js/ct-paper-radio.js"></script>
+	<script src="/zigbo/assets/js/bootstrap-select.js"></script>
+	<script src="/zigbo/assets/js/bootstrap-datepicker.js"></script>
+	<script src="/zigbo/assets/js/ct-paper.js"></script>  
 </body>
 </html>
