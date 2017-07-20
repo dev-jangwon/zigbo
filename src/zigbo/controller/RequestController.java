@@ -123,7 +123,6 @@ public class RequestController extends HttpServlet {
 	      String url = "showError.jsp";
 	      try {
 	         request.setAttribute("myrequest", ZigboService.getRequest(Integer.parseInt(request.getParameter("RequestCode"))));
-	         //url = "activistDetail.jsp";
 	      }catch(Exception s){
 	         request.setAttribute("errorMsg", s.getMessage());
 	      }

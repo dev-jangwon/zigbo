@@ -48,22 +48,12 @@
 						<a href="/zigbo/sales/sales_list.jsp">íŒë§¤</a>
 					</li>
 					<li>
-<<<<<<< HEAD
 						<a href="/zigbo/request/request_list.jsp">êµ¬ë§¤</a>
-=======
-						<a href="/zigbo/request/request_list.jsp">¿äÃ»</a>
->>>>>>> 215f7d4cda9324347607c786c63e49d4a05ea2af
 					</li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ë‚´ ì •ë³´ <b class="caret"></b></a>
 						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
-<<<<<<< HEAD
-							<li><a href="/zigbo/mypage.jsp">ë‚´ ì •ë³´ ìˆ˜ì •</a></li>
-							<li><a href="#">í™œë™ ë‚´ì—­</a></li>
-=======
-							<li><a href="/zigbo/mypage.jsp">³» Á¤º¸ ¼öÁ¤</a></li>
-							<li><a href="/zigbo/mypage.jsp">È°µ¿ ³»¿ª</a></li>
->>>>>>> 215f7d4cda9324347607c786c63e49d4a05ea2af
+							<li><a href="/zigbo/mypage.jsp">ë‚´ ì •ë³´</a></li>
 						</ul>
 					 </li>
 				</ul>

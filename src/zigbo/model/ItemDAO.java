@@ -34,7 +34,7 @@ public class ItemDAO {
 	      Connection con = null;
 	      PreparedStatement pstmt = null;
 	      ResultSet rset = null;
-	      ItemDTO item = null;
+	      
 	      try{
 	         con = DBUtil.getConnection();
 	         pstmt = con.prepareStatement(sql.getString("addItem"));
@@ -44,6 +44,12 @@ public class ItemDAO {
 	         pstmt.setString(4, Item.getLocation());
 	         pstmt.setString(5, Item.getPicture());
 	         int result = pstmt.executeUpdate();
+	         ArrayList<ItemDTO> all = ZigboService.getAllItem();
+	         for(ItemDTO i:all){
+	        	 if(i.getTitle().equals(Item.getTitle())){
+	        		 System.out.println(i.getItemCode());
+	        	 }
+	         }
 	         if(result == 1){
 	            return true;
 	         }

@@ -13,7 +13,7 @@
 							<p>${item.detail }</p>
 							<p style="position:absolute;right:10%;top:64%;">조회수: ${requestScope.requestList[status.index].views}</p>
 							<p>
-								<a href='<%=url%>request?command=requestDetail&requestCode=${requestScope.requestList[status.index].requestCode}' class="btn btn-primary" role="button" style="margin-left:20px;"><i class="fa fa-krw"></i>${item.price}</a>
+								<a href='<%=url%>request?command=requestDetail&requestCode=${requestScope.requestList[status.index].requestCode}' class="btn btn-primary" role="button" style="margin-left:5px;"><i class="fa fa-krw"></i>${item.price}</a>
 								<a href='<%=url%>request?command=requestDetail&requestCode=${requestScope.requestList[status.index].requestCode}' class="btn btn-default" role="button">상세보기</a>
 							</p>
 		      		</div>
