@@ -54,14 +54,14 @@
 					</c:choose>
 					<li><a href="./sales/sales_list.jsp">판매</a>
 					</li>
-					<li><a href="./request/request_list.jsp">구매</a>
+					<li><a href="./request/request_list.jsp">요청</a>
 					</li>
 					<c:if test="${sessionScope.login!=null}">
 						<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">내 정보 <b class="caret"></b></a>
 						<ul class="dropdown-menu dropdown-menu-right" style="transform: translate3d(0px, 40px, 0px);">
 							<li><a href="/zigbo/mypage.jsp">내 정보 수정</a></li>
-							<li><a href="#">활동 내역</a></li>
+							<li><a href="/zigbo/mypage.jsp">활동 내역</a></li>
 						</ul>
 					 </li>
 					</c:if>

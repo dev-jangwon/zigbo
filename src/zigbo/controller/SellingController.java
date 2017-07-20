@@ -28,9 +28,9 @@ public class SellingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		String command = request.getParameter("command");
-		System.out.println("controller에는 들어왔냐");
+		
 		try {
 			if(command.equals("addSelling")) {
 				addSelling(request, response);
@@ -67,7 +67,6 @@ public class SellingController extends HttpServlet {
 	}
 	
 	public void sellingPurchase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("sellingPurchase왔다");
 		String url = "showError.jsp";
 		int sellingCode = Integer.parseInt(request.getParameter("sellingCode"));
 		HttpSession session = request.getSession();

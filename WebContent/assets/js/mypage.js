@@ -15,7 +15,7 @@ function getRequestList() {
 						"<li>"+
 							"<div class='row'>"+
 								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"판매코드"+
+									"요청코드"+
 								"</div>"+
 								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"날짜"+
@@ -73,7 +73,7 @@ function getSellingList() {
 						"<li>"+
 							"<div class='row'>"+
 								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"구매코드"+
+									"판매코드"+
 								"</div>"+
 								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"날짜"+
