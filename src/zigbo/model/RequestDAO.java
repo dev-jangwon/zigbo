@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.RequestDTO;
+import zigbo.model.dto.RequestMemberDTO;
 import zigbo.model.util.DBUtil;
 
 public class RequestDAO {
@@ -170,6 +170,26 @@ public class RequestDAO {
 			while (rset.next()) {
 				list.add(new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
 						rset.getString(5), rset.getString(6), rset.getString(7)));
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return list;
+	}
+	
+	public static ArrayList<RequestMemberDTO> getAllRequestMember() throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<RequestMemberDTO> list = null;
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getAllRequestMember"));
+			rset = pstmt.executeQuery();
+			list = new ArrayList<RequestMemberDTO>();
+			while (rset.next()) {
+				list.add(new RequestMemberDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
+						rset.getString(5), rset.getString(6), rset.getString(7), rset.getString(8)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);

@@ -10,6 +10,7 @@ import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.PaymentDTO;
 import zigbo.model.dto.RequestDTO;
+import zigbo.model.dto.RequestMemberDTO;
 import zigbo.model.dto.SellingDTO;
 import zigbo.model.dto.SellingMemberDTO;
 
@@ -163,6 +164,10 @@ public class ZigboService {
 	// getAllRequest()
 	public static ArrayList<RequestDTO> getAllRequest() throws SQLException {
 		return RequestDAO.getAllRequest();
+	}
+	
+	public static ArrayList<RequestMemberDTO> getAllRequestMember() throws SQLException {
+		return RequestDAO.getAllRequestMember();
 	}
 
 	public static boolean updateRequestViews(int requestCode) throws SQLException {
