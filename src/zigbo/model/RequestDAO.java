@@ -29,10 +29,11 @@ public class RequestDAO {
 		try {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement(sql.getString("addRequest"));
-			pstmt.setInt(1, request.getMemberCode());
-			pstmt.setInt(2, request.getItemCode());
+			pstmt.setInt(1, request.getItemCode());
+			pstmt.setInt(2, request.getMemberCode());
 			pstmt.setInt(3, request.getViews());
-			pstmt.setString(4, request.getLocation());
+			pstmt.setString(4, request.getProgress());
+			pstmt.setString(5, request.getLocation());
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;
@@ -56,7 +57,7 @@ public class RequestDAO {
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				request = new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6), rset.getString(7));
+						rset.getDate(5), rset.getString(6), rset.getString(7));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -76,7 +77,7 @@ public class RequestDAO {
 			list = new ArrayList<RequestDTO>();
 			while (rset.next()) {
 				list.add(new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6), rset.getString(7)));
+						rset.getDate(5), rset.getString(6), rset.getString(7)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -148,7 +149,7 @@ public class RequestDAO {
 			list = new ArrayList<RequestDTO>();
 			while (rset.next()) {
 				list.add(new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6), rset.getString(7)));
+						rset.getDate(5), rset.getString(6), rset.getString(7)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -169,7 +170,7 @@ public class RequestDAO {
 			list = new ArrayList<RequestDTO>();
 			while (rset.next()) {
 				list.add(new RequestDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getInt(4),
-						rset.getString(5), rset.getString(6), rset.getString(7)));
+						rset.getDate(5), rset.getString(6), rset.getString(7)));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);

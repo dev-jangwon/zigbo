@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import zigbo.model.ItemDAO;
 import zigbo.model.ZigboService;
 import zigbo.model.dto.ApplyDTO;
 import zigbo.model.dto.ItemDTO;
@@ -56,19 +58,44 @@ public class RequestController extends HttpServlet {
 	}
 	
 	 public void addRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	      String url = "showError.jsp";
-	      
-	      int memberCode = Integer.parseInt(request.getParameter("MemberCode"));
-	      int itemCode = Integer.parseInt(request.getParameter("ItemCode"));
-	      String location = request.getParameter("Location");
-	      RequestDTO myrequest = new RequestDTO(0, itemCode, memberCode, 0,"", "W", location);
+	    String url = "showError.jsp";
+		String title = request.getParameter("title");
+		String detail = request.getParameter("detail");
+		String price = request.getParameter("price");
+		String location = request.getParameter("location");
+		String picture = request.getParameter("picture");
+		
+		if (title == null || title.length() == 0 || detail == null || detail.length() == 0 || price == null
+				|| price.length() == 0 || location == null || location.length() == 0 || picture == null
+				|| picture.length() == 0) {
+			request.setAttribute("errorMsg", "모든 정보를 입력해주세요");
+			request.getAttribute("errorMsg");
+			request.getRequestDispatcher("./request/request_write.jsp").forward(request, response);
+			return;
+		}
+		
+		ItemDTO item = new ItemDTO(title, price, detail, location, picture);
+		int itemCode = 0;
+		try{
+			if(!ZigboService.addItem(item)){
+				//item 추가가 되지 않음
+				return;
+			}
+			itemCode = ItemDAO.getItemCode(title,detail,location);
+		}catch(Exception s){
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+
+		HttpSession session = request.getSession();
+		int memberCode = (int)session.getAttribute("login");
+	    RequestDTO myrequest = new RequestDTO(itemCode, memberCode, location);
 	      
 	      try{
 	         boolean result = ZigboService.addRequest(myrequest);
 	         if(result){
 	            request.setAttribute("myrequest", myrequest);
-	            request.setAttribute("successMsg", "요청 성공");
-	            //url = "activistDetail.jsp";
+	            request.setAttribute("successMsg", "요청 등록 성공");
+	            url = "./request/request_list.jsp";
 	         }else{
 	            request.setAttribute("errorMsg", "다시 시도하세요");
 	         }

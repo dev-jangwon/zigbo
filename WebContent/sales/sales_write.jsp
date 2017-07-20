@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -11,10 +12,10 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     
-    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" />
-    <link href="../assets/css/ct-paper.css" rel="stylesheet"/>
-    <link href="../assets/css/demo.css" rel="stylesheet" />
-     <link href="../assets/css/zigbo.css" rel="stylesheet" />
+    <link href="/zigbo/bootstrap3/css/bootstrap.css" rel="stylesheet" />
+    <link href="/zigbo/assets/css/ct-paper.css" rel="stylesheet"/>
+    <link href="/zigbo/assets/css/demo.css" rel="stylesheet" />
+     <link href="/zigbo/assets/css/zigbo.css" rel="stylesheet" />
         
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -32,14 +33,17 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
+				<c:if test="${errorMsg!=null}">
+					<script type="text/javascript">
+                    	var errMsg = "<%=request.getAttribute("errorMsg").toString()%>";
+                    	alert(errMsg);
+                    </script>
+                </c:if>
 					<li class="active">
 						<a href="#">로그아웃</a>
 					</li>
 					<li>
 						<a href="#">판매</a>
-					</li>
-					<li>
-						session: ${session.getAttribute("login")}
 					</li>
 					<li>
 						<a href="#">구매</a>
@@ -116,7 +120,7 @@
 			                        		</div>
 			                        	</div>
 			                        	<div class="row text-center" style="margin-bottom:20px;">
-			                        			<button href="#" class="btn btn-fill btn-primary" type="submit">등록</button>
+			                        			<button href="./sales/sales_list.jsp" class="btn btn-fill btn-primary" type="submit">등록</button>
 			                        	</div>
 			                    	</form>
 			                    	</div>
@@ -135,16 +139,16 @@
 	        </div>
 	    </div>
 	</footer>
-	<script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="../assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+	<script src="/zigbo/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="/zigbo/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 
-	<script src="../bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+	<script src="/zigbo/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
 	
 	<!--  Plugins -->
-	<script src="../assets/js/ct-paper-checkbox.js"></script>
-	<script src="../assets/js/ct-paper-radio.js"></script>
-	<script src="../assets/js/bootstrap-select.js"></script>
-	<script src="../assets/js/bootstrap-datepicker.js"></script>
-	<script src="../assets/js/ct-paper.js"></script>  
+	<script src="/zigbo/assets/js/ct-paper-checkbox.js"></script>
+	<script src="/zigbo/assets/js/ct-paper-radio.js"></script>
+	<script src="/zigbo/assets/js/bootstrap-select.js"></script>
+	<script src="/zigbo/assets/js/bootstrap-datepicker.js"></script>
+	<script src="/zigbo/assets/js/ct-paper.js"></script>  
 </body>
 </html>

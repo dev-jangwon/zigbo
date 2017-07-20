@@ -1,11 +1,14 @@
 package zigbo.model.dto;
 
+import java.util.Date;
+
 public class SellingDTO {
 	
 	private int sellingCode;
 	private int memberCode;
 	private int itemCode;
 	private int views;
+	private Date uploadDate;
 	private String progress;
 	private String location;
 	
@@ -15,19 +18,29 @@ public class SellingDTO {
 		this.memberCode = memberCode;
 		this.itemCode = itemCode;
 		this.views = 0;
-		this.progress = "wait"; //"wait"가 대기(DB에서는 W), "done"가 진행(DB에서는 D)
+		this.uploadDate = new Date(0);
+		this.progress = "W"; //"W"가 대기, "D"가 진행
 		this.location = location;
 	}
 	
-	public SellingDTO(int sellingCode, int memberCode, int itemCode, int views, String progress, String location) { //Selling 검색시 사용
+	public SellingDTO(int sellingCode, int memberCode, int itemCode, int views, Date uploadDate, String progress, String location) { //Selling 검색시 사용
 		this.sellingCode = sellingCode;
 		this.memberCode = memberCode;
 		this.itemCode = itemCode;
 		this.views = views;
+		this.uploadDate = uploadDate;
 		this.progress = progress;
 		this.location = location;
 	}
 	
+	public Date getUploadDate() {
+		return uploadDate;
+	}
+
+	public void setUploadDate(Date uploadDate) {
+		this.uploadDate = uploadDate;
+	}
+
 	public int getSellingCode() {
 		return sellingCode;
 	}
@@ -74,13 +87,14 @@ public class SellingDTO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("SellingDTO [sellingCode=").append(sellingCode).append(", memberCode=").append(memberCode)
-				.append(", itemCode=").append(itemCode).append(", views=").append(views).append(", progress=")
-				.append(progress).append(", location=").append(location).append("]");
+				.append(", itemCode=").append(itemCode).append(", views=").append(views).append(", uploadDate=")
+				.append(uploadDate).append(", progress=").append(progress).append(", location=").append(location)
+				.append("]");
 		return builder.toString();
 	}
 	

@@ -71,7 +71,8 @@ public class MemberController extends HttpServlet {
 		}
 		MemberDTO member = new MemberDTO(email, password, phone, address, account);
 		try{
-			if(ZigboService.addMember(member)){
+			System.out.println(ZigboService.addMember(member));
+			if(true){
 				request.setAttribute("successMsg", "가입 완료");
 				url = "index.jsp";
 			}else{
