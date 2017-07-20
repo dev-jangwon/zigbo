@@ -27,10 +27,11 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<c:if test="${successMsg!=null}">
+			<c:if test="${sucRegister!=null}">
 				<script type="text/javascript">
-                	var successMsg = "<%=request.getAttribute("successMsg").toString()%>";
-                    alert(successMsg);
+                	var sucRegister = "<%=session.getAttribute("sucRegister").toString()%>";
+                    alert(sucRegister);
+                    <%session.setAttribute("sucRegister",null);%>
                 </script>
 			</c:if>
 			<div class="navbar-header">

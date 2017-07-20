@@ -33,10 +33,11 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
-				<c:if test="${successMsg!=null}">
+				<c:if test="${sucRequest!=null}">
 					<script type="text/javascript">
-                    	var sucMsg = "<%=request.getAttribute("successMsg").toString()%>";
-                        alert(sucMsg);
+                    	var sucRequest = "<%=session.getAttribute("sucRequest").toString()%>";
+                        alert(sucRequest);
+                        <%session.setAttribute("sucRequest",null);%>
                 	</script>
 				</c:if>
 					<c:choose>

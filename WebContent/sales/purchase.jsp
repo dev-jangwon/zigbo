@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -11,10 +12,10 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     
-    <link href="../bootstrap3/css/bootstrap.css" rel="stylesheet" />
-    <link href="../assets/css/ct-paper.css" rel="stylesheet"/>
-    <link href="../assets/css/demo.css" rel="stylesheet" />
-     <link href="../assets/css/zigbo.css" rel="stylesheet" />
+    <link href="/zigbo/bootstrap3/css/bootstrap.css" rel="stylesheet" />
+    <link href="/zigbo/assets/css/ct-paper.css" rel="stylesheet"/>
+    <link href="/zigbo/assets/css/demo.css" rel="stylesheet" />
+     <link href="/zigbo/assets/css/zigbo.css" rel="stylesheet" />
         
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -26,6 +27,20 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
+			<c:if test="${errorMsg!=null}">
+				<script type="text/javascript">
+                	var errorMsg = "<%=session.getAttribute("errorMsg").toString()%>";
+                    alert(errorMsg);
+                    <%session.setAttribute("errorMsg",null);%>
+               	</script>
+			</c:if>
+			<c:if test="${errRetry!=null}">
+				<script type="text/javascript">
+                	var errRetry = "<%=session.getAttribute("errRetry").toString()%>";
+                    alert(errRetry);
+                    <%session.setAttribute("errRetry",null);%>
+               	</script>
+			</c:if>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/zigbo/index.jsp">ZigBBo</a>
 			</div>
@@ -74,7 +89,7 @@
 				                        			<h4 style="margin:0px;padding-top:5px;">판매 상품</h4>
 				                        		</div>
 				                        		<div class="col-md-9">
-				                        			<input type="text" value="" disabled class="form-control">
+				                        			<input type="text" value="${requestScope.item.title}" disabled class="form-control">
 				                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">
@@ -98,18 +113,10 @@
 			                        				</div>
 			                        			<div class="row" style="margin-bottom:0px;">
 			                        				<div class="col-md-2">
-			                        					주문자
-			                        				</div>
-			                        				<div class="col-md-10">
-			                        					<input type="text" value="" disabled class="form-control">
-			                        				</div>
-			                        			</div>
-			                        			<div class="row" style="margin-bottom:0px;">
-			                        				<div class="col-md-2">
 			                        					이메일
 			                        				</div>
 			                        				<div class="col-md-10">
-			                        					<input type="text" value="" disabled class="form-control">
+			                        					<input type="text" value="${requestScope.buyer.email}" disabled class="form-control">
 			                        				</div>
 			                        			</div>
 			                        			<div class="row" style="margin-bottom:0px;">
@@ -117,7 +124,7 @@
 			                        					휴대폰
 			                        				</div>
 			                        				<div class="col-md-10">
-			                        					<input type="text" value="" disabled class="form-control">
+			                        					<input type="text" value="${requestScope.buyer.phone}" disabled class="form-control">
 			                        				</div>
 			                        			</div>
 			                        			<div class="row" style="margin-bottom:0px;">
@@ -125,7 +132,7 @@
 			                        					주소
 			                        				</div>
 			                        				<div class="col-md-10">
-			                        					<input type="text" value="" disabled class="form-control">
+			                        					<input type="text" value="${requestScope.buyer.address}" disabled class="form-control">
 			                        				</div>
 			                        			</div>
 			                        		</div>
@@ -140,7 +147,7 @@
 			                        					상품 금액 
 			                        				</div>
 			                        				<div class="col-md-10">
-			                        					<input type="text" value="" disabled class="form-control">
+			                        					<input type="text" value="$ ${requestScope.item.price}" disabled class="form-control">
 			                        				</div>
 			                        			</div>
 			                        			<div class="row" style="margin-bottom:0px;">
@@ -148,7 +155,7 @@
 			                        					수수료 
 			                        				</div>
 			                        				<div class="col-md-10">
-			                        					<input type="text" value="" disabled class="form-control">
+			                        					<input type="text" value="$ ${requestScope.item.price*0.1}" disabled class="form-control">
 			                        				</div>
 			                        			</div>
 			                        			<hr>
@@ -163,16 +170,16 @@
 			                        			<div class="col-md-2">
 				                        			</div>
 				                        			<div class="col-md-10">
-				                        				<input type="text" value="" disabled class="form-control">
+				                        				<input type="text" value="$ ${requestScope.item.price*1.1}" disabled class="form-control">
 				                        			</div>
 				                        		</div>
 			                        		</div>
 			                        		</div>
 			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
-			                        		<button href="#" class="btn btn-fill btn-primary">구매</button>
+			                        		<button onclick="location.href='/zigbo/selling?command=addPayment&sellingCode=${requestScope.selling.sellingCode}&memberCode=${requestScope.buyer.memberCode}&Address=${requestScope.buyer.address}'" class="btn btn-fill btn-primary">결제</button>
 			                        	</div>
-			                    	</div> 
+			                    	</div>
 	                        </div>
 	            			</div>
 	           		 </div>
@@ -188,16 +195,17 @@
 	        </div>
 	    </div>
 	</footer>
-	<script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-	<script src="../assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+	<script src="/zigbo/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="/zigbo/assets/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 
-	<script src="../bootstrap3/js/bootstrap.js" type="text/javascript"></script>
+	<script src="/zigbo/bootstrap3/js/bootstrap.js" type="text/javascript"></script>
 	
 	<!--  Plugins -->
-	<script src="../assets/js/ct-paper-checkbox.js"></script>
-	<script src="../assets/js/ct-paper-radio.js"></script>
-	<script src="../assets/js/bootstrap-select.js"></script>
-	<script src="../assets/js/bootstrap-datepicker.js"></script>
-	<script src="../assets/js/ct-paper.js"></script>  
+	<script src="/zigbo/assets/js/ct-paper-checkbox.js"></script>
+	<script src="/zigbo/assets/js/ct-paper-radio.js"></script>
+	<script src="/zigbo/assets/js/bootstrap-select.js"></script>
+	<script src="/zigbo/assets/js/bootstrap-datepicker.js"></script>
+	<script src="/zigbo/assets/js/ct-paper.js"></script>  
+	
 </body>
 </html>

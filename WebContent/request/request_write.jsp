@@ -30,8 +30,16 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<c:if test="${errorMsg!=null}">
 				<script type="text/javascript">
-                    var errMsg = "<%=request.getAttribute("errorMsg").toString()%>";
-                	alert(errMsg);
+                    var errorMsg = "<%=session.getAttribute("errorMsg").toString()%>";
+                	alert(errorMsg);
+                	<%session.setAttribute("errorMsg",null);%>
+				</script>
+           	</c:if>
+           	<c:if test="${errInfo!=null}">
+				<script type="text/javascript">
+                    var errInfo = "<%=session.getAttribute("errInfo").toString()%>";
+                	alert(errorMsg);
+                	<%session.setAttribute("errInfo",null);%>
 				</script>
            	</c:if>
 			<div class="navbar-header">

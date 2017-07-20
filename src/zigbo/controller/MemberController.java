@@ -43,14 +43,14 @@ public class MemberController extends HttpServlet {
 	}
 	
 	public void addMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "index.jsp";
-		
+		String url = "register.jsp";
+		HttpSession session = request.getSession();
 		String email = request.getParameter("Email").trim();
 		
 		try {
 			if(ZigboService.getCountByEmail(email)>0){
-				request.setAttribute("duplicateMsg", "이미 존재하는 이메일입니다.");
-				request.getRequestDispatcher("register.jsp").forward(request, response);
+				session.setAttribute("duplicateEmail", "이미 존재하는 이메일입니다.");
+				response.sendRedirect(url);
 				return;
 			}
 		} catch (SQLException e) {
@@ -65,22 +65,22 @@ public class MemberController extends HttpServlet {
 		if (email == null || email.trim().length() == 0 || password == null || password.trim().length() == 0
 				|| phone == null || phone.trim().length() == 0 || address == null || address.trim().length() == 0
 				|| account == null || account.trim().length() == 0) {
-			request.setAttribute("errorMsg", "모든 정보를 입력해주세요");
-			request.getRequestDispatcher("register.jsp").forward(request, response);
+			session.setAttribute("errInfo", "모든 정보를 입력해주세요");
+			response.sendRedirect(url);
 			return;
 		}
 		MemberDTO member = new MemberDTO(email, password, phone, address, account);
 		try{
-			if(true){
-				request.setAttribute("successMsg", "가입 완료");
+			if(ZigboService.addMember(member)){
+				session.setAttribute("sucRegister", "가입 완료");
 				url = "index.jsp";
 			}else{
-				request.setAttribute("errorMsg", "다시 시도하세요");
+				session.setAttribute("errRetry", "다시 시도하세요");
 			}
 		}catch(Exception s){
-			request.setAttribute("errorMsg", s.getMessage());
+			session.setAttribute("errorMsg", s.getMessage());
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		response.sendRedirect(url);
 	}
 	
 	public void getMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -93,7 +93,6 @@ public class MemberController extends HttpServlet {
 				request.setAttribute("getMember",member);
 				HttpSession session = request.getSession(); // 세션 생성
 				session.setAttribute("login", member.getMemberCode());
-
 				url = "index.jsp";
 			}else{
 				request.setAttribute("errorMsg", "존재하지 않는 회원 정보입니다.");

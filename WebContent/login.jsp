@@ -39,10 +39,11 @@
 				<div class="row">
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
-                            <c:if test="${errorMsg!=null}">
+                            <c:if test="${errInfo!=null}">
                             	<script type="text/javascript">
-                            		var errMsg = "<%=request.getAttribute("errorMsg").toString()%>";
-                            		alert(errMsg);
+                            		var errInfo = "<%=session.getAttribute("errInfo").toString()%>";
+                            		alert(errInfo);
+                            		<%session.setAttribute("errInfo",null);%>
                             	</script>
 							</c:if>
                                 <h3 class="title">Log in</h3>

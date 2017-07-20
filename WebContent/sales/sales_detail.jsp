@@ -164,7 +164,7 @@
 			                        		</div>
 			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
-			                        		<button href="#" class="btn btn-fill btn-primary">구매</button>
+			                        		<button onclick="location.href='/zigbo/selling?command=sellingPurchase&sellingCode=${requestScope.selling.sellingCode}'" class="btn btn-fill btn-primary">구매</button>
 			                        	</div>
 			                    	</div> 
 	                        </div>

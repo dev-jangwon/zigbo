@@ -36,14 +36,30 @@
                             <div class="register-card">
                             <c:if test="${errorMsg!=null}">
                             	<script type="text/javascript">
-                            		var errMsg = "<%=request.getAttribute("errorMsg").toString()%>";
+                            		var errMsg = "<%=session.getAttribute("errorMsg").toString()%>";
                             		alert(errMsg);
+                            		<%session.setAttribute("errorMsg",null);%>
                             	</script>
 							</c:if>
-							<c:if test="${duplicateMsg!=null}">
+							<c:if test="${duplicateEmail!=null}">
                             	<script type="text/javascript">
-                            		var errMsg = "<%=request.getAttribute("duplicateMsg").toString()%>";
-                            		alert(errMsg);
+                            		var duplicateEmail = "<%=session.getAttribute("duplicateEmail").toString()%>";
+                            		alert(duplicateEmail);
+                            		<%session.setAttribute("duplicateEmail",null);%>
+                            	</script>
+							</c:if>
+							<c:if test="${errInfo!=null}">
+                            	<script type="text/javascript">
+                            		var errInfo = "<%=session.getAttribute("errInfo").toString()%>";
+                            		alert(errInfo);
+                            		<%session.setAttribute("errInfo",null);%>
+                            	</script>
+							</c:if>
+							<c:if test="${errRetry!=null}">
+                            	<script type="text/javascript">
+                            		var errRetry = "<%=session.getAttribute("errRetry").toString()%>";
+                            		alert(errRetry);
+                            		<%session.setAttribute("errRetry",null);%>
                             	</script>
 							</c:if>
                                 <h3 class="title">Welcome to ZigBBo!</h3>

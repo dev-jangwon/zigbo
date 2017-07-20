@@ -33,10 +33,18 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
-					<c:if test="${successMsg!=null}">
+					<c:if test="${sucSales!=null}">
 						<script type="text/javascript">
-                        	var sucMsg = "<%=request.getAttribute("successMsg").toString()%>";
-                            alert(sucMsg);
+                        	var sucSales = "<%=session.getAttribute("sucSales").toString()%>";
+                            alert(sucSales);
+                            <%session.setAttribute("sucSales",null);%>
+                        </script>
+                    </c:if>
+                    <c:if test="${sucPurchase!=null}">
+						<script type="text/javascript">
+                        	var sucPurchase = "<%=session.getAttribute("sucPurchase").toString()%>";
+                            alert(sucPurchase);
+                            <%session.setAttribute("sucPurchase",null);%>
                         </script>
                     </c:if>
 					<c:choose>
@@ -51,6 +59,13 @@
 						</li>
 						</c:otherwise>
 					</c:choose>
+					<c:if test="${sucPurchase!=null}">
+						<script type="text/javascript">
+                        	var sucPurchase = "<%=session.getAttribute("sucPurchase").toString()%>";
+                            alert(sucPurchase);
+                            <%session.setAttribute("sucPurchase",null);%>
+                        </script>
+                    </c:if>
 					<li>
 						<a href="./sales_list.jsp">판매</a>
 					</li>

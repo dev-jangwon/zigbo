@@ -8,10 +8,10 @@ insert into member values(4,'mnopqr@naver.com','1234','01033333333','대전','하나
 
 -- item insert
 -- int itemCode, String price, String detail, String location, String picture1, String picture2
-insert into item values(1, '이름1','1000원','상세정보1','서울','사진1');
-insert into item values(2, '이름2','2000원','상세정보2','경기','사진1');
-insert into item values(3, '이름3','3000원','상세정보3','부산','사진1');
-insert into item values(4, '이름4','4000원','상세정보4','대전','사진1');
+insert into item values(1, '이름1','1000','상세정보1','서울','사진1');
+insert into item values(2, '이름2','2000','상세정보2','경기','사진1');
+insert into item values(3, '이름3','3000','상세정보3','부산','사진1');
+insert into item values(4, '이름4','4000','상세정보4','대전','사진1');
 
 -- selling insert
 -- int sellingCode, int memberCode, int itemCode, int views, Date upload, String progress, String location

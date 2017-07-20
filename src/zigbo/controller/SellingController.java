@@ -23,7 +23,7 @@ public class SellingController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		String command = request.getParameter("command");
-
+		System.out.println("controller에는 들어왔냐");
 		try {
 			if(command.equals("addSelling")) {
 				addSelling(request, response);
@@ -47,6 +47,8 @@ public class SellingController extends HttpServlet {
 				getPaymentofMember(request, response);
 			} else if (command.equals("sellingDetail")) {
 				sellingDetail(request, response);
+			} else if( command.equals("sellingPurchase")){
+				sellingPurchase(request, response);
 			}
 		} catch (Exception s) {
 			request.setAttribute("errorMsg", s.getMessage());
@@ -55,8 +57,32 @@ public class SellingController extends HttpServlet {
 		}
 	}
 	
-	public void addSelling(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void sellingPurchase(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("sellingPurchase왔다");
 		String url = "showError.jsp";
+		int sellingCode = Integer.parseInt(request.getParameter("sellingCode"));
+		HttpSession session = request.getSession();
+		try {
+			int buyerCode = (int)session.getAttribute("login");
+			MemberDTO buyer = ZigboService.getMemberByMemberCode(buyerCode);
+			SellingDTO selling = ZigboService.getSelling(sellingCode);
+			int itemCode = selling.getItemCode();
+			ItemDTO item = ZigboService.getItem(itemCode);
+			
+			request.setAttribute("buyer", buyer);
+			request.setAttribute("selling", selling);
+			request.setAttribute("item", item);
+			
+			url = "/sales/purchase.jsp";
+		}catch(Exception s){
+			request.setAttribute("errorMsg", s.getMessage());
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
+	
+	public void addSelling(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "./sales/sales_write.jsp";
+		HttpSession session = request.getSession();
 		String title = request.getParameter("title");
 		String detail = request.getParameter("detail");
 		String price = request.getParameter("price");
@@ -66,9 +92,8 @@ public class SellingController extends HttpServlet {
 		if (title == null || title.length() == 0 || detail == null || detail.length() == 0
 				|| price == null || price.length() == 0 || location == null || location.length() == 0
 				|| picture == null || picture.length() == 0) {
-			request.setAttribute("errorMsg", "모든 정보를 입력해주세요");
-			request.getAttribute("errorMsg");
-			request.getRequestDispatcher("./sales/sales_write.jsp").forward(request, response);
+			session.setAttribute("errInfo", "모든 정보를 입력해주세요");
+			response.sendRedirect(url);
 			return;
 		}
 		
@@ -76,31 +101,28 @@ public class SellingController extends HttpServlet {
 		int itemCode = 0;
 		try{
 			if(!ZigboService.addItem(item)){
-				//item 추가가 되지 않음
 				return;
 			}
 			itemCode = ItemDAO.getItemCode(title,detail,location);
 		}catch(Exception s){
-			request.setAttribute("errorMsg", s.getMessage());
+			session.setAttribute("errorMsg", s.getMessage());
 		}
 
-		//memberCode가져옴
-		HttpSession session = request.getSession();
 		int memberCode = (int)session.getAttribute("login");
-		
 		SellingDTO selling = new SellingDTO(memberCode, itemCode, location);
+		
 		try{
 			boolean result = ZigboService.addSelling(selling);
 			if(result){
-				request.setAttribute("successMsg", "판매 등록 완료");
+				session.setAttribute("sucSales", "판매 등록 완료");
 				url = "./sales/sales_list.jsp";
 			}else{
-				request.setAttribute("errorMsg", "다시 시도하세요");
+				session.setAttribute("errRetry", "다시 시도하세요");
 			}
 		}catch(Exception s){
-			request.setAttribute("errorMsg", s.getMessage());
+			session.setAttribute("errorMsg", s.getMessage());
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		response.sendRedirect(url);
 	}
 	
 	public void getSelling(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -221,24 +243,26 @@ public class SellingController extends HttpServlet {
 	}
 	
 	public void addPayment(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "showError.jsp";
-		
-		int sellingCode = Integer.parseInt(request.getParameter("SellingCode"));
-		int memberCode = Integer.parseInt(request.getParameter("MemberCode"));
-		String address = request.getParameter("Address");
+		request.setCharacterEncoding("UTF-8");
+		String url = "/zigbo/sales/purchase.jsp";
+		System.out.println("addPayment옴");
+		int sellingCode = Integer.parseInt(request.getParameter("sellingCode"));
+		int memberCode = Integer.parseInt(request.getParameter("memberCode"));
+		String address = (String)request.getParameter("Address");
+	
 		PaymentDTO payment = new PaymentDTO(sellingCode, memberCode, address);
-		
+		HttpSession session = request.getSession();
 		try{
 			boolean result = ZigboService.addPayment(payment);
 			if(result){
-				request.setAttribute("payment", payment);
-				request.setAttribute("successMsg", "가입 완료");
-				//url = "activistDetail.jsp";
+				session.setAttribute("sucPurchase", "결제 완료");
+				response.sendRedirect("/zigbo/sales/sales_list.jsp");
+				return;
 			}else{
-				request.setAttribute("errorMsg", "다시 시도하세요");
+				session.setAttribute("errRetry", "다시 시도하세요");
 			}
 		}catch(Exception s){
-			request.setAttribute("errorMsg", s.getMessage());
+			session.setAttribute("errorMsg", s.getMessage());
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}
