@@ -46,7 +46,7 @@ public class MemberController extends HttpServlet {
 		String url = "register.jsp";
 		HttpSession session = request.getSession();
 		String email = request.getParameter("Email").trim();
-		System.out.println(email);
+
 		try {
 			if(ZigboService.getCountByEmail(email)>0){
 				session.setAttribute("duplicateEmail", "이미 존재하는 이메일입니다.");
@@ -93,6 +93,7 @@ public class MemberController extends HttpServlet {
 				request.setAttribute("getMember",member);
 				HttpSession session = request.getSession(); // 세션 생성
 				session.setAttribute("login", member.getMemberCode());
+				session.setAttribute("email", member.getEmail());
 				url = "index.jsp";
 			}else{
 				request.setAttribute("errorMsg", "존재하지 않는 회원 정보입니다.");

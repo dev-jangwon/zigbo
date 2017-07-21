@@ -14,16 +14,16 @@ function getRequestList() {
 			$(".request-ul").append(
 						"<li>"+
 							"<div class='row'>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"요청코드"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"날짜"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"진행상태"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"이동하기"+
 								"</div>"+
 							"</div>"+
@@ -46,13 +46,13 @@ function getRequestList() {
 				$(".request-ul").append(
 						"<li>" +
 						"<div class='row'>"+
-							"<div class='col-md-3'>" + obj.requestCode +
+							"<div class='col-md-3 zigbo-col-md'>" + obj.requestCode +
 							"</div>" +
-							"<div class='col-md-3'>" + obj.uploadDate +
+							"<div class='col-md-3 zigbo-col-md'>" + obj.uploadDate.replace('?', ',') +
 							"</div>" +
-							"<div class='col-md-3'>" + progress +
+							"<div class='col-md-3 zigbo-col-md'>" + progress +
 							"</div>" +
-							"<div class='col-md-3'>" + 
+							"<div class='col-md-3 zigbo-col-md'>" + 
 								href +
 							"</div>" +
 							"</div>"+
@@ -78,16 +78,16 @@ function getSellingList() {
 			$(".selling-ul").append(
 						"<li>"+
 							"<div class='row'>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"판매코드"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"날짜"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"진행상태"+
 								"</div>"+
-								"<div class='col-md-3' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"이동하기"+
 								"</div>"+
 							"</div>"+
@@ -107,13 +107,13 @@ function getSellingList() {
 				$(".selling-ul").append(
 						"<li>" +
 						"<div class='row'>"+
-							"<div class='col-md-3'>" + obj.sellingCode +
+							"<div class='col-md-3 zigbo-col-md'>" + obj.sellingCode +
 							"</div>" +
-							"<div class='col-md-3'>" + obj.uploadDate +
+							"<div class='col-md-3 zigbo-col-md'>" + obj.uploadDate.replace('?', ',') +
 							"</div>" +
-							"<div class='col-md-3'>" + progress +
+							"<div class='col-md-3 zigbo-col-md'>" + progress +
 							"</div>" +
-							"<div class='col-md-3'>" + 
+							"<div class='col-md-3 zigbo-col-md'>" + 
 								"<a href='/zigbo/selling?command=sellingDetail&sellingCode=" + obj.sellingCode +"'>이동</a>" +
 							"</div>" +
 							"</div>"+
@@ -132,21 +132,24 @@ function getPurchaseList() {
 		method: "get",
 		dataType: "json",
 		success: function(result) {
-			console.log(result);
-			if (JSON.parse(result[0].purchaseList).length == 0) {
+			if (JSON.parse(result[0].purchaseList).length == 0 && JSON.parse(result[2].requestPaymentList).length == 0) {
 				$(".purchase-ul").append("데이터가 없습니다");
+				return;
 			} else {
 				$(".purchase-ul").append(
 							"<li>"+
 								"<div class='row'>"+
-									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 										"결제코드"+
 									"</div>"+
-									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 										"구매 이메일"+
 									"</div>"+
-									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+									"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 										"배송주소"+
+									"</div>"+
+									"<div class='col-md-3 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
+										"구분"+
 									"</div>"+
 								"</div>"+
 							"</li>");
@@ -157,45 +160,35 @@ function getPurchaseList() {
 					$(".purchase-ul").append(
 							"<li>" +
 							"<div class='row'>"+
-								"<div class='col-md-4'>" + obj.paymentCode +
+								"<div class='col-md-3 zigbo-col-md'>" + obj.paymentCode +
 								"</div>" +
-								"<div class='col-md-4'>" + result[1].email +
+								"<div class='col-md-3 zigbo-col-md'>" + result[1].email +
 								"</div>" +
-								"<div class='col-md-4'>" + obj.address +
+								"<div class='col-md-3 zigbo-col-md'>" + obj.address +
+								"</div>"+
+								"<div class='col-md-3 zigbo-col-md'>" + "판매 결제" +
 								"</div>"+
 								"</div>"+
 							"</li>");
 				}
 			}
-			if (JSON.parse(result[2].requestPaymentList).length == 0) {
+			
+			if (JSON.parse(result[0].purchaseList).length == 0 && JSON.parse(result[2].requestPaymentList).length == 0) {
 				$(".purchase-ul").append("데이터가 없습니다");
 			} else {
-				$(".request-purchase-ul").append(
-							"<li>"+
-								"<div class='row'>"+
-									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
-										"결제코드"+
-									"</div>"+
-									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
-										"구매 이메일"+
-									"</div>"+
-									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
-										"배송주소"+
-									"</div>"+
-								"</div>"+
-							"</li>");
-			
 				for (var i = 0; i < JSON.parse(result[2].requestPaymentList).length; i++) {
 					var obj = JSON.parse(result[2].requestPaymentList)[i];
 					
-					$(".request-purchase-ul").append(
+					$(".purchase-ul").append(
 							"<li>" +
 							"<div class='row'>"+
-								"<div class='col-md-4'>" + obj.payment_code +
+								"<div class='col-md-3 zigbo-col-md'>" + obj.payment_code +
 								"</div>" +
-								"<div class='col-md-4'>" + result[1].email +
+								"<div class='col-md-3 zigbo-col-md'>" + result[1].email +
 								"</div>" +
-								"<div class='col-md-4'>" + obj.address +
+								"<div class='col-md-3 zigbo-col-md'>" + obj.address +
+								"</div>"+
+								"<div class='col-md-3 zigbo-col-md'>" + "요청 결제" +
 								"</div>"+
 								"</div>"+
 							"</li>");
@@ -221,13 +214,13 @@ function getApplyList() {
 			$(".apply-ul").append(
 						"<li>"+
 							"<div class='row'>"+
-								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-4 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"지원코드"+
 								"</div>"+
-								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-4 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"요청코드"+
 								"</div>"+
-								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+								"<div class='col-md-4 zigbo-col-md' style='font-size:1.3em;margin-bottom:10px;'>"+
 									"진행상태"+
 								"</div>"+
 							"</div>"+
@@ -247,11 +240,11 @@ function getApplyList() {
 				$(".apply-ul").append(
 						"<li>" +
 						"<div class='row'>"+
-							"<div class='col-md-4'>" + obj.applyCode +
+							"<div class='col-md-4 zigbo-col-md'>" + obj.applyCode +
 							"</div>" +
-							"<div class='col-md-4'>" + obj.requestCode +
+							"<div class='col-md-4 zigbo-col-md'>" + obj.requestCode +
 							"</div>" +
-							"<div class='col-md-4'>" + progress  +
+							"<div class='col-md-4 zigbo-col-md'>" + progress  +
 							"</div>" +
 							"</div>"+
 						"</li>");

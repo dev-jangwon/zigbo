@@ -97,7 +97,7 @@ public class SellingController extends HttpServlet {
 		String detail = request.getParameter("detail");
 		String price = request.getParameter("price");
 		String location = request.getParameter("location");
-		String picture = request.getParameter("picture");
+		String picture ="basic.png";
 		
 		if (title == null || title.length() == 0 || detail == null || detail.length() == 0
 				|| price == null || price.length() == 0 || location == null || location.length() == 0
@@ -108,7 +108,7 @@ public class SellingController extends HttpServlet {
 		}
 		
 		ItemDTO item = new ItemDTO(title, price, detail, location, picture);
-		System.out.println(item.toString());
+
 		int itemCode = 0;
 		try{
 			if(!ZigboService.addItem(item)){
@@ -116,7 +116,6 @@ public class SellingController extends HttpServlet {
 			}
 			itemCode = ItemDAO.getItemCode(title,detail,location);
 		}catch(Exception s){
-			System.out.println("1");
 			s.printStackTrace();
 			session.setAttribute("errorMsg", s.getMessage());
 			return;
@@ -134,7 +133,6 @@ public class SellingController extends HttpServlet {
 				session.setAttribute("errRetry", "다시 시도하세요");
 			}
 		}catch(Exception s){
-			System.out.println("2");
 			session.setAttribute("errorMsg", s.getMessage());
 		}
 		response.sendRedirect(url);

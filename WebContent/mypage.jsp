@@ -74,6 +74,54 @@
     		<div class="section section-white section-with-space">
             <div class="container tim-container">
             		<div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center" style="margin-top:20px;">
+                        <h3>내 정보</h3>
+                    </div>
+                </div>
+                <div class="row">
+                		<div class="col-md-8 col-md-offset-2 text-center">
+                			<div class="row" style="margin-bottom:0px;margin-top:20px;">
+                				<div class="col-md-1">
+							</div>
+							<div class="col-md-4">
+								<img src="/zigbo/img/profile.png" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+							</div>
+							<div class="col-md-1">
+							</div>
+							<div class="col-md-6">
+								<div style="margin:20px; text-align: left;">이메일
+									<span style="padding-left:40px;">
+										${sessionScope.email}
+									</span>
+								</div>
+								<div style="margin:20px; text-align: left;">등&nbsp;록
+									<span style="padding-left:50px;">
+									<span class="label label-default">5</span>
+									</span>
+								</div>
+								<div style="margin:20px; text-align: left;">완&nbsp;료
+									<span style="padding-left:50px;">
+									<span class="label label-success">0</span>
+									</span>
+				                	</div>
+				           <div style="margin:20px; text-align: left;">별&nbsp;점
+				                  <span style="padding-left:50px;">
+				                        	<i class="fa fa-star" aria-hidden="true"></i>
+				                        	<i class="fa fa-star" aria-hidden="true"></i>
+				                        	<i class="fa fa-star" aria-hidden="true"></i>
+				                        	<i class="fa fa-star" aria-hidden="true"></i>
+				                   </span>
+				           </div>
+				      </div>
+				 </div>
+                		</div>
+                </div>
+                
+            </div>
+        </div>
+    		<div class="section section-white section-with-space" style="background-image:none;">
+            <div class="container tim-container">
+            		<div class="row">
             			 <div class="col-md-8 col-md-offset-2">
             			 	<div class="nav-tabs-navigation">
 							<div class="nav-tabs-wrapper">
@@ -95,10 +143,8 @@
 									</ul>
 	                            </div>
 	                            <div class="tab-pane" id="purchase">
-	                            		판매에 대한 구매
 	                                <ul class="purchase-ul" style="list-style:none;">
 									</ul>
-									요청에 대한 구매
 									<ul class="request-purchase-ul" style="list-style:none;">
 									</ul>
 	                            </div>

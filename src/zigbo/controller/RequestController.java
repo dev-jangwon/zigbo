@@ -88,7 +88,7 @@ public class RequestController extends HttpServlet {
 		String detail = request.getParameter("detail");
 		String price = request.getParameter("price");
 		String location = request.getParameter("location");
-		String picture = request.getParameter("picture");
+		String picture ="basic.png";
 		HttpSession session = request.getSession();
 		
 		if (title == null || title.length() == 0 || detail == null || detail.length() == 0 || price == null
@@ -371,7 +371,7 @@ public class RequestController extends HttpServlet {
 		   public void getApplyMemberRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			   PrintWriter writer = response.getWriter();
 			   	int memberCode = (Integer)request.getSession().getAttribute("login");
-			   	System.out.println(memberCode);
+
 			   	JSONArray jsonList = new JSONArray();
 
 			   	try {
@@ -427,7 +427,7 @@ public class RequestController extends HttpServlet {
 					RequestPaymentDTO payment = new RequestPaymentDTO(0, requestCode, memberCode, member.getAddress());
 					
 					boolean result = ZigboService.addRequestPayment(payment);
-					System.out.println(result);
+
 					if(result){
 						if(ZigboService.updateRequestProgressToD(requestCode)){
 							session.setAttribute("sucPurchase", "결제 완료");

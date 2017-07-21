@@ -10,7 +10,7 @@
       var geocoder;
       var map;
       var mapOptions = {
-          zoom: 15,
+          zoom: 5,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
       var marker;
@@ -46,7 +46,7 @@
   </head>
   <body onload="initialize()">
     <div>
-      <input id="address" type="textbox" style="width:60%" value="건대입구">
+      <input id="address" type="textbox" style="width:60%" value="호주">
       <input type="button" value="Geocode" onclick="codeAddress()">
       <input type="text" id="lat"/>
       <input type="text" id="lng"/>
