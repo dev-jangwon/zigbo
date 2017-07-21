@@ -17,17 +17,17 @@ insert into item values(ITEM_CODE_SEQ.nextval, '위베어 파우치','22000','�
 insert into item values(ITEM_CODE_SEQ.nextval, '시로이코이비토','34000','일본면세점에서 구입란 과자입니다','일본','item2.png');
 insert into item values(ITEM_CODE_SEQ.nextval, 'Benzac','68000','세트 구성으로 좀 저렴하게 치료하실수 있어요.','호주','item3.png');
 insert into item values(ITEM_CODE_SEQ.nextval, '식기 선물세트','51000','아기를 위한 다채로운 어린이 식기 선물 세트예요','독일','item4.png');
-insert into item values(ITEM_CODE_SEQ.nextval, '호빵맨바스볼 10개','50000','물에 풀어진후 나오는 장난감','일본','item5.png');
-insert into item values(ITEM_CODE_SEQ.nextval, '닥스훈트 사냥꾼옷','57000','닥스훈트 사냥꾼옷','미국','item6.png');
+insert into item values(ITEM_CODE_SEQ.nextval, '호빵맨바스볼','50000','물에 풀어진후 나오는 장난감','일본','item5.png');
+insert into item values(ITEM_CODE_SEQ.nextval, '닥스훈트 옷','57000','닥스훈트 사냥꾼옷','미국','item6.png');
 insert into item values(ITEM_CODE_SEQ.nextval, '제니쿠키','48000','침사추이 "미라도맨션"에 제니쿠키가있습니다','홍콩','item7.png');
 insert into item values(ITEM_CODE_SEQ.nextval, 'INS MINION','60000','후지필름 즉석 카메라 한정 미니온 콜라보 제품','일본','item8.png');
 
 -- selling insert
 -- int sellingCode, int memberCode, int itemCode, int views, Date upload, String progress, String location
-insert into selling values(SELLING_CODE_SEQ.nextval,1,1,100,sysdate,'W','태국');
-insert into selling values(SELLING_CODE_SEQ.nextval,2,2,200,sysdate,'W','일본');
-insert into selling values(SELLING_CODE_SEQ.nextval,3,3,300,sysdate,'W','호주');
-insert into selling values(SELLING_CODE_SEQ.nextval,4,4,400,sysdate,'W','독일');
+insert into selling values(SELLING_CODE_SEQ.nextval,1,1,27,sysdate,'W','태국');
+insert into selling values(SELLING_CODE_SEQ.nextval,2,2,53,sysdate,'W','일본');
+insert into selling values(SELLING_CODE_SEQ.nextval,3,3,122,sysdate,'W','호주');
+insert into selling values(SELLING_CODE_SEQ.nextval,4,4,108,sysdate,'W','독일');
 
 -- payment insert
 -- int paymentCode, int sellingCode, int memberCode, String address

@@ -208,7 +208,7 @@ function getApplyList() {
 		dataType: "json",
 		success: function(result) {
 			if (JSON.parse(result[0].applyList).length == 0) {
-				$(".selling-ul").append("데이터가 없습니다");
+				$(".apply-ul").append("데이터가 없습니다");
 				return;
 			}
 			$(".apply-ul").append(

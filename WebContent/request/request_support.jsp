@@ -5,7 +5,7 @@
 <head>
 
 	<meta charset="utf-8" />
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>request_support.jsp</title>
 
 	<link rel="icon" type="image/png" href="../assets/paper_img/favicon.ico">
@@ -168,7 +168,7 @@
 			</div>
 		</div>
 	</div>	
-	<footer class="footer-demo section-dark" style="bottom:0px;position:absolute;width:100%;">
+	<footer class="footer-demo section-dark" >
 	    <div class="container">
 	        <div class="copyright center-block">
 	            &copy; 2017, made with <i class="fa fa-heart heart"></i> by Zigbbo,  

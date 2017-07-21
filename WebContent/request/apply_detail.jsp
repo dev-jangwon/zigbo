@@ -5,7 +5,7 @@
 <head>
 
 	<meta charset="utf-8" />
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>request_support.jsp</title>
 
 	<link rel="icon" type="image/png" href="../assets/paper_img/favicon.ico">
@@ -175,7 +175,7 @@
 				                        			<h4 style="margin:0px;padding-top:5px;">지원 상세설명</h4>
 				                        		</div>
 				                        		<div class="col-md-9">
-				                        			<input type="text" class="form-control" name="detail" value="${requestScope.apply.detail}">
+				                        			<input type="text" class="form-control" name="detail" value="${requestScope.apply.detail}" disabled>
 				                        		</div>
 			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
