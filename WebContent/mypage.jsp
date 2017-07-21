@@ -91,7 +91,7 @@
 							<div class="col-md-6">
 								<div style="margin:20px; text-align: left;">이메일
 									<span style="padding-left:40px;">
-										d
+										${sessionScope.email}
 									</span>
 								</div>
 								<div style="margin:20px; text-align: left;">등&nbsp;록

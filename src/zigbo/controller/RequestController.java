@@ -88,7 +88,7 @@ public class RequestController extends HttpServlet {
 		String detail = request.getParameter("detail");
 		String price = request.getParameter("price");
 		String location = request.getParameter("location");
-		String picture = request.getParameter("picture");
+		String picture ="basic.png";
 		HttpSession session = request.getSession();
 		
 		if (title == null || title.length() == 0 || detail == null || detail.length() == 0 || price == null

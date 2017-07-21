@@ -16,13 +16,15 @@
     <link href="/zigbo/assets/css/ct-paper.css" rel="stylesheet"/>
     <link href="/zigbo/assets/css/demo.css" rel="stylesheet" />
      <link href="/zigbo/assets/css/zigbo.css" rel="stylesheet" />
+     
+     <link href="https://developers.google.com/maps/documentation/javascript/examples/default.css" rel="stylesheet">
         
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body onload="initialize()">
 <nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -158,9 +160,15 @@
 			                        			<h4 style="margin:0px;padding-top:5px;">위치</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			${requestScope.item.location}
+			                        			<input type="text" value="${requestScope.item.location}" class="form-control" disabled>
 			                        		</div>
 			                        	</div>
+			                        	<div class="row" style="margin-bottom:20px;">
+			                        		<div class="col-md-12" style="height:400px;">
+			                        			<div id="map_canvas" style="height:100%;"></div>
+			                        		</div>
+			                        	</div>
+			                        	
 			                        <div class="row text-center" style="margin-bottom:20px;">
 			                        		<button onclick="location.href='/zigbo/request?command=supportApply&memberCode=${requestScope.member.memberCode}&requestCode=${requestScope.request.requestCode}&itemCode=${requestScope.item.itemCode}'" class="btn btn-fill btn-primary">지원</button>
 			                        	</div>
@@ -191,5 +199,43 @@
 	<script src="/zigbo/assets/js/bootstrap-select.js"></script>
 	<script src="/zigbo/assets/js/bootstrap-datepicker.js"></script>
 	<script src="/zigbo/assets/js/ct-paper.js"></script>  
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ6ELc4lLmf2qStYSXxefqZJ6z5wTcz2s&sensor=false"></script>
+	<script>
+      var geocoder;
+      var map;
+      var mapOptions = {
+          zoom: 5,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+      var marker;
+      function initialize() {
+        geocoder = new google.maps.Geocoder();
+        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+        codeAddress();
+      }
+      function codeAddress() {
+        var address = "${requestScope.item.location}";
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            if(marker)
+              marker.setMap(null);
+            marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                draggable: true
+            });
+            google.maps.event.addListener(marker, "dragend", function() {
+             // document.getElementById('lat').value = marker.getPosition().lat();
+              //document.getElementById('lng').value = marker.getPosition().lng();
+            });
+            //document.getElementById('lat').value = marker.getPosition().lat();
+            //document.getElementById('lng').value = marker.getPosition().lng();
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
 </body>
 </html>

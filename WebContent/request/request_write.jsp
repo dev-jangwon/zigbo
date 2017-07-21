@@ -123,15 +123,6 @@
 			                        			<input type="text" value="" placeholder="구매 지역을 입력해주세요" class="form-control" name="location">
 			                        		</div>
 			                        	</div>	
-			                        	<div class="row" style="margin-bottom:20px;">
-			                        		<div class="col-md-3">
-			                        			<h4 style="margin:0px;padding-top:5px;">이미지</h4>
-			                        			<input type="hidden" value="img.jpeg" name="picture">
-			                        		</div>
-			                        		<div class="col-md-9">
-			                        			
-			                        		</div>
-			                        	</div>
 			                        <div class="row text-center" style="margin-bottom:20px;">
 			                        		<button href="./request/request_list.jsp" class="btn btn-fill btn-primary" type="submit">등록</button>
 			                        	</div>

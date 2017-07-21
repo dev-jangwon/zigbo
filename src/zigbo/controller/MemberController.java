@@ -93,6 +93,7 @@ public class MemberController extends HttpServlet {
 				request.setAttribute("getMember",member);
 				HttpSession session = request.getSession(); // 세션 생성
 				session.setAttribute("login", member.getMemberCode());
+				session.setAttribute("email", member.getEmail());
 				url = "index.jsp";
 			}else{
 				request.setAttribute("errorMsg", "존재하지 않는 회원 정보입니다.");
