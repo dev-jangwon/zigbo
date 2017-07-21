@@ -8,7 +8,7 @@
 <c:forEach var ="item" items = "${requestScope.recentSellingItems}" varStatus="status"> 
  		<div class="col-sm-4 col-md-3">
 			<div class="thumbnail">
-				<img src="img/profile.png" alt="" style="width:252.5px;height:252.5px;">
+				<img src="img/${item.picture}" alt="" style="width:252.5px;height:252.5px;">
 					<div class="caption">
 						<h3>${item.title}</h3>
 							<p>${item.detail }</p>

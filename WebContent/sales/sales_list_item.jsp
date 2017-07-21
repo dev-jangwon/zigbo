@@ -9,7 +9,7 @@
 	<div class="row item-row">
 		<div class="zigbbo-list-image-row col-md-4">
 			<a class="thumb" href='/zigbo/selling?command=sellingDetail&sellingCode=${requestScope.sellingList[status.index].sellingCode}'>
-				<img src="../img/profile.png" alt="not found image" onerror="" >
+				<img src="../img/${item.picture}" alt="not found image" onerror="" >
 			</a>
 		</div>
 		<div class="col-md-8">

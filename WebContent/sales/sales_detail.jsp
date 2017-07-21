@@ -153,7 +153,8 @@
 			                        			<h4 style="margin:0px;padding-top:5px;">이미지</h4>
 			                        		</div>
 			                        		<div class="col-md-9">
-			                        			
+			                        			${requestScope.item.picture}
+			                        			<img src="/zigbo/img/${requestScope.item.picture}" alt="not found image" onerror="" >
 			                        		</div>
 			                        	</div>
 			                        	<div class="row" style="margin-bottom:20px;">

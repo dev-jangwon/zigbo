@@ -31,7 +31,7 @@ CREATE TABLE APPLY
 	apply_code           NUMBER(3) PRIMARY KEY,
 	request_code         NUMBER(3) NOT NULL ,
 	member_code          NUMBER(3) NOT NULL ,
-	detail               VARCHAR2(200) NULL 
+	detail               VARCHAR2(500) NULL 
 );
 
 CREATE SEQUENCE interest_seq;
@@ -48,10 +48,10 @@ ALTER SEQUENCE item_code_seq nocache;
 CREATE TABLE ITEM
 (
 	item_code            NUMBER(3) NOT NULL PRIMARY KEY,
-	title				 VARCHAR2(20) NULL ,
-	price                VARCHAR2(20) NULL ,
-	detail               VARCHAR2(200) NULL ,
-	location             VARCHAR2(100) NULL ,
+	title				 VARCHAR2(50) NULL ,
+	price                VARCHAR2(50) NULL ,
+	detail               VARCHAR2(500) NULL ,
+	location             VARCHAR2(200) NULL ,
 	picture              VARCHAR2(200) NULL
 );
 
@@ -61,10 +61,10 @@ CREATE TABLE MEMBER
 (
 	member_code          NUMBER(3) NOT NULL PRIMARY KEY,
 	email                VARCHAR2(50) NOT NULL ,
-	password             VARCHAR2(10) NOT NULL ,
-	phone                VARCHAR2(20) NOT NULL ,
-	address              VARCHAR2(100) NOT NULL ,
-	account              VARCHAR2(20) NOT NULL 
+	password             VARCHAR2(50) NOT NULL ,
+	phone                VARCHAR2(50) NOT NULL ,
+	address              VARCHAR2(200) NOT NULL ,
+	account              VARCHAR2(40) NOT NULL 
 );
 
 CREATE SEQUENCE payment_code_seq;
@@ -74,7 +74,7 @@ CREATE TABLE PAYMENT
 	payment_code         NUMBER(3) NOT NULL PRIMARY KEY,
 	selling_code         NUMBER(3) NOT NULL ,
 	member_code          NUMBER(3) NOT NULL ,
-	address              VARCHAR2(100) NOT NULL 
+	address              VARCHAR2(500) NOT NULL 
 );
 
 CREATE SEQUENCE request_payment_code_seq;
@@ -84,7 +84,7 @@ CREATE TABLE REQUEST_PAYMENT
 	payment_code         NUMBER(3) NOT NULL PRIMARY KEY,
 	request_code         NUMBER(3) NOT NULL ,
 	member_code          NUMBER(3) NOT NULL ,
-	address              VARCHAR2(100) NOT NULL 
+	address              VARCHAR2(500) NOT NULL 
 );
 
 CREATE SEQUENCE request_code_seq;
@@ -97,7 +97,7 @@ CREATE TABLE REQUEST
 	views                NUMBER(4) NULL,
 	upload_date          DATE NULL,
 	progress             VARCHAR2(1) NULL ,
-	location             VARCHAR2(100) NOT NULL
+	location             VARCHAR2(500) NOT NULL
 );
 
 CREATE SEQUENCE selling_code_seq;
@@ -110,7 +110,7 @@ CREATE TABLE SELLING
 	views                NUMBER(4) NULL ,
 	upload_date          DATE NULL ,
 	progress             VARCHAR2(1) NULL ,
-	location             VARCHAR2(100) NOT NULL 
+	location             VARCHAR2(500) NOT NULL 
 );
 
 ALTER TABLE APPLY ADD (CONSTRAINT R_1 FOREIGN KEY (request_code) REFERENCES REQUEST (request_code));
