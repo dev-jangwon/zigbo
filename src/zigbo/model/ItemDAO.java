@@ -45,11 +45,7 @@ public class ItemDAO {
 	         pstmt.setString(5, Item.getPicture());
 	         int result = pstmt.executeUpdate();
 	         ArrayList<ItemDTO> all = ZigboService.getAllItem();
-	         for(ItemDTO i:all){
-	        	 if(i.getTitle().equals(Item.getTitle())){
-	        		 System.out.println(i.getItemCode());
-	        	 }
-	         }
+
 	         if(result == 1){
 	            return true;
 	         }

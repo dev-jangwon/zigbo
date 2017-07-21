@@ -143,7 +143,7 @@
 			</div>
 		</div>
 	</div>	
-	<footer class="footer-demo section-dark">
+	<footer class="footer-demo section-dark" style="bottom:0px;position:absolute;width:100%;">
 	    <div class="container">
 	        <div class="copyright center-block">
 	            &copy; 2017, made with <i class="fa fa-heart heart"></i> by Zigbbo,  

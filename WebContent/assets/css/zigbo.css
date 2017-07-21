@@ -46,7 +46,7 @@
 .mypage-backgroud {
 	margin-top: 3%;
 	position: relative;
-	margin-bottom:10%;
+	margin-bottom:5%;
 	z-index: 2;
 }
 .login-background .container {
@@ -345,5 +345,11 @@ h3{
   bottom: 0;
   margin: auto;
   right: 20px;
+}
+
+.zigbo-col-md {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 1.2em;	
 }
 

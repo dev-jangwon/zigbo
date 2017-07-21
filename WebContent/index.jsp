@@ -75,7 +75,7 @@
             		<img class="img-responsive" src="img/profile.png" alt="">
 				<h1 class="title-uppercase">직구 뽀개기</h1>
 				<hr class="custom-hr-white">
- 				<h3>직구 뽀개기</h3>
+ 				<h3 style="color:#fff;margin-bottom:10px;">Welcome to Zigbbo!</h3>
             </div>
     </div>
 
@@ -100,7 +100,6 @@
 								<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenuSale">
 									<li role="presentation"><a role="menuitem" tabindex="-1" onclick="getRecentSelling()">최신</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1" onclick="getViewSelling()">조회수</a></li>
-									<li role="presentation"><a role="menuitem" tabindex="-1" onclick="getZZimSelling()">찜</a></li>
 			    					</ul>
 								<button class="btn btn-primary" onclick="location.href='./request/request_list.jsp'">더보기</button>
 							</div>
