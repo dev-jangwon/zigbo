@@ -47,9 +47,18 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="">
 				<ul class="nav navbar-nav pull-right">
-					<li class="active">
-						<a href="/zigbo/login.jsp">로그인</a>
-					</li>
+					<c:choose>
+						<c:when test="${sessionScope.login!=null}">
+						<li class="active">
+							<a href="/zigbo/index.jsp" onclick="logoutFtn()">로그아웃</a>
+						</li>
+						</c:when>
+						<c:otherwise>
+						<li class="active">
+							<a href="/zigbo/login.jsp">로그인</a>
+						</li>
+						</c:otherwise>
+					</c:choose>
 					<li>
 						<a href="./sales_list.jsp">판매</a>
 					</li>
