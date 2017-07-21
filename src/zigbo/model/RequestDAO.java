@@ -214,5 +214,26 @@ public class RequestDAO {
 		}
 		return list;
 	}
+	
+	public static int getItemCodebyRequest(int requestCode) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int itemCode = 0;
+		
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getItemCodebyRequest"));
+			pstmt.setInt(1, requestCode);
+			rset = pstmt.executeQuery();
+			
+			if (rset.next()) {
+				itemCode = rset.getInt(1);
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return itemCode;
+	} 
 
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import zigbo.model.dto.PaymentDTO;
+import zigbo.model.dto.RequestPaymentDTO;
 import zigbo.model.util.DBUtil;
 
 public class PaymentDAO {
@@ -78,5 +79,46 @@ public class PaymentDAO {
 		}
 		return list;
 	}
-
+	
+	public static boolean addRequestPayment(RequestPaymentDTO payment) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("addRequestPayment"));
+			pstmt.setInt(1, payment.getRequest_code());
+			pstmt.setInt(2, payment.getMember_code());
+			pstmt.setString(3, payment.getAddress());
+			int result = pstmt.executeUpdate();
+			
+			if(result == 1){
+				return true;
+			}
+		}finally{
+			DBUtil.close(con, pstmt);
+		}
+		return false;
+	}
+	
+	public static ArrayList<RequestPaymentDTO> getRequestPayment(int memberCode) throws SQLException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<RequestPaymentDTO> list = new ArrayList<RequestPaymentDTO>();
+		
+		try{
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement(sql.getString("getRequestPaymentofMember"));
+			pstmt.setInt(1, memberCode);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()){
+				list.add(new RequestPaymentDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getString(4)));
+			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return list;
+	}
+	
 }

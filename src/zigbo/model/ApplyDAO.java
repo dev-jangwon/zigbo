@@ -142,4 +142,23 @@ public class ApplyDAO {
 			return list;
 		}
 	   
+	   public static ApplyDTO getApplyByRequest(int requestCode) throws SQLException{
+		      Connection con = null;
+		      PreparedStatement pstmt = null;
+		      ResultSet rset = null;
+		      ApplyDTO Apply = null;
+		      
+		      try{
+		         con = DBUtil.getConnection();
+		         pstmt = con.prepareStatement(sql.getString("getApplyByRequest"));
+		         pstmt.setInt(1, requestCode);
+		         rset = pstmt.executeQuery();
+		         if(rset.next()){
+		            Apply = new ApplyDTO(rset.getInt(1), rset.getInt(2), rset.getInt(3), rset.getString(4));
+		         }
+		      }finally{
+		         DBUtil.close(con, pstmt, rset);
+		      }
+		      return Apply;
+		   }
 }

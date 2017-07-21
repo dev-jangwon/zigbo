@@ -32,11 +32,15 @@ function getRequestList() {
 			for (var i = 0; i < JSON.parse(result[0].requestList).length; i++) {
 				var obj = JSON.parse(result[0].requestList)[i];
 				var progress = "<span class='label label-info>완료</span>";
-
+				var href = "<a href='/zigbo/request?command=requestDetail&requestCode=" + obj.requestCode +"'>이동</a>";
+				
 				if (obj.progress == 'W') {
 					progress = "<span class='label label-primary'>대기중</span>";
 				} else if (obj.progress=='P') {
 					progress = "<span class='label label-success'>진행중</span>";
+					href = "<a href='/zigbo/request?command=applyDetail&requestCode=" + obj.requestCode +"'>이동</a>";
+				} else if (obj.progress = 'D') {
+					progress = "<span class='label label-info'>완료</span>";
 				}
 				
 				$(".request-ul").append(
@@ -49,7 +53,7 @@ function getRequestList() {
 							"<div class='col-md-3'>" + progress +
 							"</div>" +
 							"<div class='col-md-3'>" + 
-								"<a href='/zigbo/request?command=requestDetail&requestCode=" + obj.requestCode +"'>이동</a>" +
+								href +
 							"</div>" +
 							"</div>"+
 						"</li>");
@@ -128,41 +132,76 @@ function getPurchaseList() {
 		method: "get",
 		dataType: "json",
 		success: function(result) {
+			console.log(result);
 			if (JSON.parse(result[0].purchaseList).length == 0) {
 				$(".purchase-ul").append("데이터가 없습니다");
-				return;
-			}
-			$(".purchase-ul").append(
-						"<li>"+
-							"<div class='row'>"+
-								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"결제코드"+
-								"</div>"+
-								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"구매 이메일"+
-								"</div>"+
-								"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
-									"배송주소"+
-								"</div>"+
-							"</div>"+
-						"</li>");
-		
-			for (var i = 0; i < JSON.parse(result[0].purchaseList).length; i++) {
-				var obj = JSON.parse(result[0].purchaseList)[i];
-				
+			} else {
 				$(".purchase-ul").append(
-						"<li>" +
-						"<div class='row'>"+
-							"<div class='col-md-4'>" + obj.paymentCode +
-							"</div>" +
-							"<div class='col-md-4'>" + result[1].email +
-							"</div>" +
-							"<div class='col-md-4'>" + obj.address +
-							"</div>"+
-							"</div>"+
-						"</li>");
+							"<li>"+
+								"<div class='row'>"+
+									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+										"결제코드"+
+									"</div>"+
+									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+										"구매 이메일"+
+									"</div>"+
+									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+										"배송주소"+
+									"</div>"+
+								"</div>"+
+							"</li>");
+			
+				for (var i = 0; i < JSON.parse(result[0].purchaseList).length; i++) {
+					var obj = JSON.parse(result[0].purchaseList)[i];
+					
+					$(".purchase-ul").append(
+							"<li>" +
+							"<div class='row'>"+
+								"<div class='col-md-4'>" + obj.paymentCode +
+								"</div>" +
+								"<div class='col-md-4'>" + result[1].email +
+								"</div>" +
+								"<div class='col-md-4'>" + obj.address +
+								"</div>"+
+								"</div>"+
+							"</li>");
+				}
 			}
-		}
+			if (JSON.parse(result[2].requestPaymentList).length == 0) {
+				$(".purchase-ul").append("데이터가 없습니다");
+			} else {
+				$(".request-purchase-ul").append(
+							"<li>"+
+								"<div class='row'>"+
+									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+										"결제코드"+
+									"</div>"+
+									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+										"구매 이메일"+
+									"</div>"+
+									"<div class='col-md-4' style='font-size:1.3em;margin-bottom:10px;'>"+
+										"배송주소"+
+									"</div>"+
+								"</div>"+
+							"</li>");
+			
+				for (var i = 0; i < JSON.parse(result[2].requestPaymentList).length; i++) {
+					var obj = JSON.parse(result[2].requestPaymentList)[i];
+					
+					$(".request-purchase-ul").append(
+							"<li>" +
+							"<div class='row'>"+
+								"<div class='col-md-4'>" + obj.payment_code +
+								"</div>" +
+								"<div class='col-md-4'>" + result[1].email +
+								"</div>" +
+								"<div class='col-md-4'>" + obj.address +
+								"</div>"+
+								"</div>"+
+							"</li>");
+				}
+			}
+		}	
 	});
 }
 
@@ -234,6 +273,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	    	getRequestList();
     } else if ((target == '#purchase')) {
     		$('.purchase-ul').empty();
+    		$('.request-purchase-ul').empty();
     		getPurchaseList();
     } else if ((target == '#apply')) {
     		$('.apply-ul').empty();

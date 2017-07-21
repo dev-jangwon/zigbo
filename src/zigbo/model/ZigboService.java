@@ -12,6 +12,7 @@ import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.PaymentDTO;
 import zigbo.model.dto.RequestDTO;
 import zigbo.model.dto.RequestMemberDTO;
+import zigbo.model.dto.RequestPaymentDTO;
 import zigbo.model.dto.SellingDTO;
 import zigbo.model.dto.SellingMemberDTO;
 
@@ -218,5 +219,21 @@ public class ZigboService {
 	 
 	 public static ArrayList<ApplyRequestDTO> getApplyMemberRequest(int memberCode) throws SQLException {
 		 return ApplyDAO.getApplyMemberRequest(memberCode);
+	 }
+	 
+	 public static int getItemCodebyRequest(int requestCode) throws SQLException {
+		 return RequestDAO.getItemCodebyRequest(requestCode);
+	 }
+	 
+	 public static ApplyDTO getApplyByRequest(int requestCode) throws SQLException{
+		 return ApplyDAO.getApplyByRequest(requestCode);
+	 }
+	 
+	 public static boolean addRequestPayment(RequestPaymentDTO payment) throws SQLException {
+		 return PaymentDAO.addRequestPayment(payment);
+	 }
+	 
+	 public static ArrayList<RequestPaymentDTO> getRequestPayment(int memberCode) throws SQLException{
+		 return PaymentDAO.getRequestPayment(memberCode);
 	 }
 }

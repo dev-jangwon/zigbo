@@ -225,4 +225,6 @@ public class SellingDAO {
 		}
 		return list;
 	}
+	
+	
 }

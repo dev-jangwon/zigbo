@@ -20,6 +20,7 @@ import zigbo.model.ZigboService;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.MemberDTO;
 import zigbo.model.dto.PaymentDTO;
+import zigbo.model.dto.RequestPaymentDTO;
 import zigbo.model.dto.SellingDTO;
 import zigbo.model.dto.SellingMemberDTO;
 
@@ -347,12 +348,17 @@ public class SellingController extends HttpServlet {
 	   	try {
 	   		String email = ZigboService.getEmailByMemberCode(memberCode);
 			ArrayList<PaymentDTO> paymentList = ZigboService.getPaymentofMember(memberCode);
+			ArrayList<RequestPaymentDTO> requestPaymentList = ZigboService.getRequestPayment(memberCode);
 			JSONObject jsonOb = new JSONObject();
 			String stringList = new Gson().toJson(paymentList);
 		    jsonOb.put("purchaseList", stringList);
 		    jsonList.add(jsonOb);
 		    jsonOb = new JSONObject();
 		    jsonOb.put("email", email);
+		    jsonList.add(jsonOb);
+		    jsonOb = new JSONObject();
+		    String rpStringList = new Gson().toJson(requestPaymentList);
+		    jsonOb.put("requestPaymentList", rpStringList);
 		    jsonList.add(jsonOb);
 		} catch (Exception e) {
 			e.printStackTrace();

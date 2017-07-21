@@ -21,8 +21,10 @@ import zigbo.model.dto.ApplyDTO;
 import zigbo.model.dto.ApplyRequestDTO;
 import zigbo.model.dto.ItemDTO;
 import zigbo.model.dto.MemberDTO;
+import zigbo.model.dto.PaymentDTO;
 import zigbo.model.dto.RequestDTO;
 import zigbo.model.dto.RequestMemberDTO;
+import zigbo.model.dto.RequestPaymentDTO;
 
 public class RequestController extends HttpServlet {
 	
@@ -68,6 +70,10 @@ public class RequestController extends HttpServlet {
 				getMyApply(request, response);
 			} else if (command.equals("getApplyMemberRequest")) {
 				getApplyMemberRequest(request, response);
+			} else if (command.equals("applyDetail")) {
+				applyDetail(request, response);
+			} else if (command.equals("addRequestApply")) {
+				addRequestApply(request, response);
 			}
 		}catch(Exception s){
 			request.setAttribute("errorMsg", s.getMessage());
@@ -381,5 +387,61 @@ public class RequestController extends HttpServlet {
 
 			    writer.print(jsonList);
 		   }
-
+		   
+		   public void applyDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			   String url = "showError.jsp";
+				
+				int requestCode = Integer.parseInt(request.getParameter("requestCode"));
+				ItemDTO item = new ItemDTO();
+				ApplyDTO apply = new ApplyDTO();
+				MemberDTO member = new MemberDTO();
+				
+				try {
+					int itemCode = ZigboService.getItemCodebyRequest(requestCode);
+					item = ZigboService.getItem(itemCode);
+					apply = ZigboService.getApplyByRequest(requestCode);
+					member = ZigboService.getMemberByMemberCode(apply.getMemberCode());
+					
+					request.setAttribute("item", item);
+					request.setAttribute("apply", apply);
+					request.setAttribute("member", member);
+					request.setAttribute("requestCode", requestCode);
+					
+					url = "./request/apply_detail.jsp";
+				}catch(Exception s){
+					s.printStackTrace();
+					request.setAttribute("errorMsg", s.getMessage());
+				}
+				request.getRequestDispatcher(url).forward(request, response);
+		   }
+		   
+		   public void addRequestApply(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			   	HttpSession session = request.getSession();
+				
+			   	int requestCode = Integer.parseInt(request.getParameter("requestCode"));
+				int memberCode = (int)session.getAttribute("login");
+				MemberDTO member = new MemberDTO();
+				
+				try{
+					member = ZigboService.getMemberByMemberCode(memberCode);
+					RequestPaymentDTO payment = new RequestPaymentDTO(0, requestCode, memberCode, member.getAddress());
+					
+					boolean result = ZigboService.addRequestPayment(payment);
+					System.out.println(result);
+					if(result){
+						if(ZigboService.updateRequestProgressToD(requestCode)){
+							session.setAttribute("sucPurchase", "결제 완료");
+							response.sendRedirect("/zigbo/mypage.jsp");
+							return;
+						}
+					}else{
+						session.setAttribute("errRetry", "다시 시도하세요");
+					}
+				}catch(Exception s){
+					s.printStackTrace();
+					session.setAttribute("errorMsg", s.getMessage());
+				}
+				response.sendRedirect("/zigbo/mypage.jsp");
+		   }
+		   
 }

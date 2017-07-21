@@ -13,6 +13,8 @@ DROP TABLE REQUEST cascade constraint;
 -- "�Ǹ�" : �̰� �ȰŴ�
 DROP TABLE SELLING cascade constraint;
 
+DROP TABLE REQUEST_PAYMENT cascade constraint;
+
 DROP SEQUENCE apply_code_seq;
 DROP SEQUENCE interest_seq;
 DROP SEQUENCE item_code_seq;
@@ -20,6 +22,7 @@ DROP SEQUENCE member_code_seq;
 DROP SEQUENCE payment_code_seq;
 DROP SEQUENCE request_code_seq;
 DROP SEQUENCE selling_code_seq;
+DROP SEQUENCE request_payment_code_seq;
 
 CREATE SEQUENCE apply_code_seq;
 ALTER SEQUENCE apply_code_seq nocache;
@@ -74,6 +77,16 @@ CREATE TABLE PAYMENT
 	address              VARCHAR2(100) NOT NULL 
 );
 
+CREATE SEQUENCE request_payment_code_seq;
+ALTER SEQUENCE request_payment_code_seq nocache;
+CREATE TABLE REQUEST_PAYMENT
+(
+	payment_code         NUMBER(3) NOT NULL PRIMARY KEY,
+	request_code         NUMBER(3) NOT NULL ,
+	member_code          NUMBER(3) NOT NULL ,
+	address              VARCHAR2(100) NOT NULL 
+);
+
 CREATE SEQUENCE request_code_seq;
 ALTER SEQUENCE request_code_seq nocache;
 CREATE TABLE REQUEST
@@ -110,3 +123,5 @@ ALTER TABLE REQUEST ADD (CONSTRAINT R_10 FOREIGN KEY (item_code) REFERENCES ITEM
 ALTER TABLE REQUEST ADD (CONSTRAINT R_11 FOREIGN KEY (member_code) REFERENCES MEMBER (member_code));
 ALTER TABLE SELLING ADD (CONSTRAINT R_12 FOREIGN KEY (member_code) REFERENCES MEMBER (member_code));
 ALTER TABLE SELLING ADD (CONSTRAINT R_13 FOREIGN KEY (item_code) REFERENCES ITEM (item_code));
+ALTER TABLE REQUEST_PAYMENT ADD (CONSTRAINT R_14 FOREIGN KEY (request_code) REFERENCES REQUEST (request_code));
+ALTER TABLE REQUEST_PAYMENT ADD (CONSTRAINT R_15 FOREIGN KEY (member_code) REFERENCES MEMBER (member_code));

@@ -27,10 +27,11 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<c:if test="${successMsg!=null}">
+			<c:if test="${sucPurchase!=null}">
 				<script type="text/javascript">
-                	var successMsg = "<%=request.getAttribute("successMsg").toString()%>";
+                		var successMsg = "<%=session.getAttribute("sucPurchase").toString()%>";
                     alert(successMsg);
+                    <%session.setAttribute("sucPurchase",null);%>
                 </script>
 			</c:if>
 			<div class="navbar-header">
@@ -94,7 +95,11 @@
 									</ul>
 	                            </div>
 	                            <div class="tab-pane" id="purchase">
+	                            		판매에 대한 구매
 	                                <ul class="purchase-ul" style="list-style:none;">
+									</ul>
+									요청에 대한 구매
+									<ul class="request-purchase-ul" style="list-style:none;">
 									</ul>
 	                            </div>
 	                            <div class="tab-pane" id="apply">
