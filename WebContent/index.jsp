@@ -4,6 +4,7 @@
 <html lang="ko">
 <head>
 	<meta charset="utf-8" />
+	
 	<link rel="icon" type="image/png" href="assets/paper_img/favicon.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
@@ -21,6 +22,8 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
       
 </head>
 <body>
@@ -140,21 +143,21 @@
                 <div class="row example-pages">
                     <div class="col-md-4">
                         <a>
-                            <img src="assets/paper_img/examples/landing.jpg" alt="Rounded Image" class="img-rounded img-responsive">
+                            <img src="img/sell.jpg" alt="Rounded Image" class="img-rounded img-responsive">
                             <h5 style="font-size:2em;color:#2c3e50;">판매</h5>
                         </a>
                         <p style="font-size:1.4em;text-align:left;">해외에서 싸고 좋은 물건을 발견하면 직뽀에서 직접 판매자가 되어보세요.</p>
                     </div>
                     <div class="col-md-4">
                         <a>
-                            <img src="assets/paper_img/examples/register.jpg" alt="Rounded Image" class="img-rounded img-responsive">
-                            <h5 style="font-size:2em;color:#2c3e50;">구매</h5>
+                            <img src="img/req.jpg" alt="" class="img-rounded img-responsive">
+                            <h5 style="font-size:2em;color:#2c3e50;">요청</h5>
                         </a>
                         <p style="font-size:1.4em;text-align:left;">해외에서 필요한 물건이 있으면 무엇이든 요청해보세요. 비싸고 오래걸리는 해외배송의 문제점을 해결했습니다.</p>
                     </div>
                     <div class="col-md-4">
                         <a>
-                            <img src="assets/paper_img/examples/profile.jpg" alt="Rounded Image" class="img-rounded img-responsive">
+                            <img src="img/apply.jpg" alt="" class="img-rounded img-responsive">
                             <h5 style="font-size:2em;color:#2c3e50;">지원</h5>
                         </a>
                         <p style="font-size:1.4em;text-align:left;">오늘도 평화로운 중고OO에서 <br>많이 당해보셨나요? 직뽀가 중간에서 안전한 거래를 보장하겠습니다. 마음 놓고 거래를 통해 수수료를 받아가세요.</p>
